@@ -1,4 +1,3 @@
-
 class DireccionUsuario {
   constructor(id_direccion, calle, numero, colonia, ciudad, estado, codigo_postal) {
     this.id_direccion = id_direccion;
