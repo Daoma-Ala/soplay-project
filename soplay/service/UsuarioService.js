@@ -23,6 +23,13 @@ class UsuarioService {
 
 
     async consultarUsuarioPorId(id) {
+        try {
+            const usuario = await UsuarioDao.consultarId(id);
+            return usuario;
+        } catch (error) {
+            console.error('Error en consultar Usuario:', error);
+            throw new Error('No se pudo consultar el usuario por ID');
+        }
 
     }
 
