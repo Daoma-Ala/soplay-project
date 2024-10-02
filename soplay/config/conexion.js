@@ -7,7 +7,6 @@ const createConnection = async () => {
     password: 'root',
     database: 'soplay'
   });
-  console.log('Conectado a la base de datos MySQL');
   return connection;
 };
 
