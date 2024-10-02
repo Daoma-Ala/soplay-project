@@ -52,10 +52,11 @@ const { UsuarioService, ServicioService, CotizacionService } = require('./servic
             cantidad: 4
         };
         CotizacionService.agregarServicio(dataAgregarServicio);
-          */
+         
          
 
         console.log(await UsuarioService.consultarUsuarioPorId(1));
+         */
     } catch (error) {
         console.error(error.message);
     }
