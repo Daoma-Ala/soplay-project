@@ -1,5 +1,5 @@
 const createConnection = require('../config/conexion.js');
-const Servicio = require('../dominio/Servicio.js');
+const Servicio = require('../model/Servicio.js');
 
 class ServicioDao {
 

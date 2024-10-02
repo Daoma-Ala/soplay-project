@@ -20,7 +20,7 @@ CREATE TABLE `usuarios` (
   `apellido_materno` varchar(50) NOT NULL,
   `fecha_nacimiento` date NOT NULL,
   `tipo` ENUM('Cliente', 'Encargado') NOT NULL,
-  `sexo` ENUM('nasculino', 'Femenino', 'Otro') NOT NULL,
+  `sexo` ENUM('Masculino', 'Femenino', 'Otro') NOT NULL,
   `telefono` varchar(20) NOT NULL,
   `id_direccion` int,
   FOREIGN KEY (`id_direccion`) REFERENCES `direccion_usuario`(`id_direccion`)
@@ -28,7 +28,7 @@ CREATE TABLE `usuarios` (
 
 CREATE TABLE `cotizaciones` (
   `id_cotizacion` int(11) primary key auto_increment,
-  `serie` int(11) NOT NULL unique,
+  `serie` varchar(150) NOT NULL unique,
   `fecha_cotizacion` datetime NOT NULL DEFAULT current_timestamp,
   `monto` float,
   `id_usuario` int(11) NOT NULL,

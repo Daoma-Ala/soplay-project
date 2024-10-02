@@ -1,5 +1,5 @@
 const createConnection = require('../config/conexion.js');
-const CotizacionServicio = require('../dominio/CotizacionServicio.js');
+const CotizacionServicio = require('../model/CotizacionServicio.js');
 
 class CotizacionServicioDao {
 
@@ -12,7 +12,6 @@ class CotizacionServicioDao {
                 'INSERT INTO cotizaciones_servicios (id_cotizacion, id_servicio, cantidad) VALUES (?, ?, ?)',
                 [id_cotizacion, id_servicio, cantidad]
             );
-            return resultado.insertId;
         } catch (error) {
             console.error('Error al crear cotización-servicio:', error);
             throw new Error('Error al crear cotización-servicio');

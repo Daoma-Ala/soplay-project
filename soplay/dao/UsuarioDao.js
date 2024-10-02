@@ -1,5 +1,5 @@
 const createConnection = require('../config/conexion.js');
-const Usuario = require('../dominio/Usuario.js');
+const Usuario = require('../model/Usuario.js');
 const DireccionDao = require('../dao/DireccionUsuarioDao.js');
 class UsuarioDao {
 

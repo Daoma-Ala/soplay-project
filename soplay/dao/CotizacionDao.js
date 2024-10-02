@@ -1,5 +1,5 @@
 const createConnection = require('../config/conexion.js');
-const Cotizacion = require('../dominio/Cotizacion.js');
+const Cotizacion = require('../model/Cotizacion.js');
 
 class CotizacionDao {
 

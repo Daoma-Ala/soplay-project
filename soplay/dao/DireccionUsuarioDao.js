@@ -1,5 +1,5 @@
 const createConnection = require('../config/conexion.js');
-const Direccion = require('../dominio/DireccionUsuario.js');
+const Direccion = require('../model/DireccionUsuario.js');
 
 class DireccionDao {
 
@@ -9,8 +9,7 @@ class DireccionDao {
             const { calle, numero, colonia, ciudad, estado, codigo_postal } = direccion;
             const [resultado] = await db.query(
                 'INSERT INTO direccion_usuario (calle, numero, colonia, ciudad, estado, codigo_postal) VALUES (?, ?, ?, ?, ?, ?)',
-                [calle, numero, colonia, ciudad, estado, codigo_postal]
-            );
+                [calle, numero, colonia, ciudad, estado, codigo_postal]);
             return resultado.insertId;
         } catch (error) {
             console.error('Error al crear dirección:', error);
