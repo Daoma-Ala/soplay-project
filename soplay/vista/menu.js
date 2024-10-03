@@ -21,13 +21,9 @@ function mostrarMenu(){
     console.log('-----------------------')
 }
 
-<<<<<<< HEAD
-function agregarUsuario(){
 
-
-=======
 async function agregarUsuario(){
->>>>>>> Julio
+
     console.log('\nAgrear nuevo Usuario');
     try{
         const usuario = {
