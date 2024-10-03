@@ -28,7 +28,9 @@ class CotizacionServicioDao {
                 [id_cotizacion, id_servicio]
             );
             if (rows.length === 0) {
-                throw new Error('Cotización-Servicio no encontrada');
+             
+             
+                return null;
             }
             const row = rows[0];
             return new CotizacionServicio(row.id_cotizacion, row.id_servicio, row.cantidad, row.sub_total);
@@ -59,7 +61,7 @@ class CotizacionServicioDao {
     async actualizar(cotizacionServicio) {
         const db = await createConnection();
         try {
-            const { id_cotizacion, id_servicio, cantidad, sub_total } = cotizacionServicio;
+            const { id_cotizacion, id_servicio, cantidad } = cotizacionServicio;
 
             await db.query(
                 'UPDATE cotizaciones_servicios SET cantidad = ? WHERE id_cotizacion = ? AND id_servicio = ?',

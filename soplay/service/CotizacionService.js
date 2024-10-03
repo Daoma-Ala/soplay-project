@@ -53,8 +53,11 @@ class CotizacionService {
     }
 
     async agregarServicio(data) {
-        const cotizacionServicio = new CotizacionServicio(data.id_cotizacion, data.id_servicio, data.cantidad);
-        CotizacionServicioDao.crear(cotizacionServicio);
+        const cotizacionServicio = await CotizacionServicioDao.consultarId(data.id_cotizacion, data.id_servicio);
+        if (!cotizacionServicio) {
+           await CotizacionServicioDao.crear(new CotizacionServicio(data.id_cotizacion, data.id_servicio, data.cantidad));
+        }
+        CotizacionServicioDao.actualizar(data);
     }
 }
 
