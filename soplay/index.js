@@ -2,7 +2,7 @@ const { UsuarioService, ServicioService, CotizacionService } = require('./servic
 
 (async () => {
     try {
-        /*
+    /*
         
                 const data = {
                     correo: 'usuario@example.com',
@@ -23,12 +23,13 @@ const { UsuarioService, ServicioService, CotizacionService } = require('./servic
                         codigo_postal: '12345',
                     },
                 };
-        
+
                 const usuarioId = await UsuarioService.crearUsuario(data);
         
                 console.log('Usuario creado con ID:', usuarioId);
+        
        
-
+ 
         const dataServicio = {
             nombre: 'Pegado de plastico',
             descripcion: 'Pegado de plastico',
@@ -36,7 +37,8 @@ const { UsuarioService, ServicioService, CotizacionService } = require('./servic
         };
         const servicio_id = await ServicioService.crearServicio(dataServicio);
         console.log('Servicio creado con ID:', servicio_id);
-  
+            
+   
 
         const dataCotizacion = {
             serie: 'COT-2024-001',
@@ -45,16 +47,16 @@ const { UsuarioService, ServicioService, CotizacionService } = require('./servic
 
         const id_cotizacion = await CotizacionService.crearCotizacion(dataCotizacion);
         console.log('Cotización creada con ID:', id_cotizacion);
-      
+
+
+     
         dataAgregarServicio = {
             id_cotizacion: 1,
             id_servicio: 1,
             cantidad: 4
         };
         CotizacionService.agregarServicio(dataAgregarServicio);
-         
-         
-
+  
         console.log(await UsuarioService.consultarUsuarioPorId(1));
          */
     } catch (error) {
