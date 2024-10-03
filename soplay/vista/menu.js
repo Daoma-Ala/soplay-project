@@ -98,7 +98,7 @@ async function agregarServicioCotizacion(){
             id_servicio: parseInt(await pregunta('ID del servicio: ')),
             cantidad: parseInt(await pregunta('Cantidad: '))
         };
-        await CotizacionService.dataAgregarServicio(dataAgregarServicio);
+        await CotizacionService.agregarServicio(dataAgregarServicio);
         console.log('Servicio agregado a la Cotización exitosamente');
     }catch(error){
         console.error('Error al agregar Servicio a la Cotización', error.message);
