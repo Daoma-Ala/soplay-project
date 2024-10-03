@@ -1,7 +1,7 @@
 create database soplay;
 use soplay;
 
-CREATE TABLE `direccion_usuario` (
+CREATE TABLE `direccion` (
   `id_direccion` int(11) PRIMARY KEY auto_increment,
   `calle` varchar(80) NOT NULL,
   `numero` varchar(20) NOT NULL,
@@ -19,11 +19,11 @@ CREATE TABLE `usuarios` (
   `apellido_paterno` varchar(50) NOT NULL,
   `apellido_materno` varchar(50) NOT NULL,
   `fecha_nacimiento` date NOT NULL,
-  `tipo` ENUM('Cliente', 'Encargado') NOT NULL,
-  `sexo` ENUM('Masculino', 'Femenino', 'Otro') NOT NULL,
+  `tipo` ENUM('CLIENTE', 'ENCARGADO') NOT NULL,
+  `sexo` ENUM('MASCULINO', 'FEMENINO', 'OTRO') NOT NULL,
   `telefono` varchar(20) NOT NULL,
   `id_direccion` int,
-  FOREIGN KEY (`id_direccion`) REFERENCES `direccion_usuario`(`id_direccion`)
+  FOREIGN KEY (`id_direccion`) REFERENCES `direccion`(`id_direccion`)
 );
 
 CREATE TABLE `cotizaciones` (
