@@ -1,11 +1,13 @@
 const createConnection = require('../config/conexion.js');
 const Usuario = require('../model/Usuario.js');
-const DireccionDao = require('../dao/DireccionUsuarioDao.js');
+const DireccionDao = require('./DireccionDao.js');
+
 class UsuarioDao {
 
-    async crear(usuario) {
-        const db = await createConnection();
+    async crearUsuario(usuario) {
+        const connection = await createConnection();
         try {
+            await connection.beginTransaction();
             const {
                 correo,
                 password,
@@ -16,30 +18,40 @@ class UsuarioDao {
                 tipo,
                 sexo,
                 telefono,
-                id_direccion
+                direccion
             } = usuario;
 
-            const [resultado] = await db.query(
+
+            const id_direccion = await DireccionDao.crearDireccion(direccion, connection);
+
+            const [resultado] = await connection.query(
                 'INSERT INTO usuarios (correo, password, nombres, apellido_paterno, apellido_materno, fecha_nacimiento, tipo, sexo, telefono, id_direccion) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)',
                 [correo, password, nombres, apellido_paterno, apellido_materno, fecha_nacimiento, tipo, sexo, telefono, id_direccion]
             );
+
+            await connection.commit();
+
             return resultado.insertId;
         } catch (error) {
+            await connection.rollback();
             console.error('Error al crear usuario:', error);
             throw new Error('Error al crear usuario');
         } finally {
-            await db.end();
+            await connection.end();
         }
     }
 
-    async consultarId(id) {
-        const db = await createConnection();
+    async consultarUsuarioPorId(id) {
+        const connection = await createConnection();
         try {
-            const [rows] = await db.query('SELECT * FROM usuarios WHERE id_usuario = ?', [id]);
+            const [rows] = await connection.query('SELECT * FROM usuarios WHERE id_usuario = ?', [id]);
             if (rows.length === 0) {
                 throw new Error('Usuario no encontrado');
             }
             const row = rows[0];
+
+            const direccion = await DireccionDao.consultarDireccionPorId(row.id_direccion);
+
             return new Usuario(
                 row.id_usuario,
                 row.correo,
@@ -51,18 +63,18 @@ class UsuarioDao {
                 row.tipo,
                 row.sexo,
                 row.telefono,
-                row.id_direccion
+                direccion
             );
         } catch (error) {
             console.error('Error al obtener usuario:', error);
             throw new Error('Error al obtener usuario');
         } finally {
-            await db.end();
+            await connection.end();
         }
     }
 
-    async actualizar(usuario) {
-        const db = await createConnection();
+    async actualizarUsuario(usuario) {
+        const connection = await createConnection();
         try {
             const {
                 id_usuario,
@@ -74,33 +86,39 @@ class UsuarioDao {
                 fecha_nacimiento,
                 tipo,
                 sexo,
-                telefono,
-                id_direccion
+                telefono
             } = usuario;
 
-            await db.query(
-                'UPDATE usuarios SET correo = ?, password = ?, nombres = ?, apellido_paterno = ?, apellido_materno = ?, fecha_nacimiento = ?, tipo = ?, sexo = ?, telefono = ?, id_direccion = ? WHERE id_usuario = ?',
-                [correo, password, nombres, apellido_paterno, apellido_materno, fecha_nacimiento, tipo, sexo, telefono, id_direccion, id_usuario]
+            await connection.query(
+                'UPDATE usuarios SET correo = ?, password = ?, nombres = ?, apellido_paterno = ?, apellido_materno = ?, fecha_nacimiento = ?, tipo = ?, sexo = ?, telefono = ? WHERE id_usuario = ?',
+                [correo, password, nombres, apellido_paterno, apellido_materno, fecha_nacimiento, tipo, sexo, telefono, id_usuario]
             );
         } catch (error) {
             console.error('Error al actualizar usuario:', error);
             throw new Error('Error al actualizar usuario');
         } finally {
-            await db.end();
+            await connection.end();
         }
     }
 
     async eliminar(id_usuario) {
-        const db = await createConnection();
+        const connection = await createConnection();
         try {
-            const id_direccion = (await this.consultarId(id_usuario)).id_direccion;
-            await db.query('DELETE FROM usuarios WHERE id_usuario = ?', [id_usuario]);
-            await DireccionDao.eliminar(id_direccion);
+            await connection.beginTransaction();
+
+            const usuario = await this.consultarUsuarioPorId(id_usuario);
+
+            await sDireccionDao.eliminarDireccion(usuario.direccion.id_direccion);
+
+            await connection.query('DELETE FROM usuarios WHERE id_usuario = ?', [id_usuario]);
+
+            await connection.commit();
         } catch (error) {
+            await connection.rollback();
             console.error('Error al eliminar usuario:', error);
             throw new Error('Error al eliminar usuario');
         } finally {
-            await db.end();
+            await connection.end();
         }
     }
 }

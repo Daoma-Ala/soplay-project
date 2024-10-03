@@ -5,6 +5,5 @@ class Foto {
       this.id_servicio = id_servicio;
     }
   }
-  
   module.exports = Foto;
   

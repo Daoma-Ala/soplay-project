@@ -1,4 +1,4 @@
-class DireccionUsuario {
+class Direccion {
   constructor(id_direccion, calle, numero, colonia, ciudad, estado, codigo_postal) {
     this.id_direccion = id_direccion;
     this.calle = calle;
@@ -9,5 +9,4 @@ class DireccionUsuario {
     this.codigo_postal = codigo_postal;
   }
 }
-
-module.exports = DireccionUsuario;
+module.exports = Direccion;

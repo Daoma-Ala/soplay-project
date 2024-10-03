@@ -1,30 +1,43 @@
 const createConnection = require('../config/conexion.js');
 const Servicio = require('../model/Servicio.js');
+const Foto = require('../model/Foto.js');
+const FotoDao = require('../dao/FotoDao.js');
 
 class ServicioDao {
 
-    async crear(servicio) {
-        const db = await createConnection();
+    async crearServicio(servicio) {
+        const connection = await createConnection();
         try {
-            const { nombre, descripcion, precio } = servicio;
 
-            const [resultado] = await db.query(
+            connection.beginTransaction();
+            const { nombre, descripcion, precio, fotos } = servicio;
+
+            const [resultado] = await connection.query(
                 'INSERT INTO servicios (nombre, descripcion, precio) VALUES (?, ?, ?)',
                 [nombre, descripcion, precio]
             );
+
+            const servicioId = resultado.insertId;
+            for (const foto of fotos) {
+                foto.id_servicio = servicioId;
+                await FotoDao.crearFoto(foto, connection);
+            }
+
+            connection.commit();
             return resultado.insertId;
         } catch (error) {
+            connection.rollback();
             console.error('Error al crear servicio:', error);
             throw new Error('Error al crear servicio');
         } finally {
-            await db.end();
+            await connection.end();
         }
     }
 
     async consultarId(id) {
-        const db = await createConnection();
+        const connection = await createConnection();
         try {
-            const [rows] = await db.query('SELECT * FROM servicios WHERE id_servicio = ?', [id]);
+            const [rows] = await connection.query('SELECT * FROM servicios WHERE id_servicio = ?', [id]);
             if (rows.length === 0) {
                 throw new Error('Servicio no encontrado');
             }
@@ -34,29 +47,33 @@ class ServicioDao {
             console.error('Error al obtener servicio:', error);
             throw new Error('Error al obtener servicio');
         } finally {
-            await db.end();
+            await connection.end();
         }
     }
 
-    async obtenerTodos() {
-        const db = await createConnection();
+    async consultarTodosServicios() {
+        const connection = await createConnection();
         try {
-            const [rows] = await db.query('SELECT * FROM servicios');
-            return rows.map(row => new Servicio(row.id_servicio, row.nombre, row.descripcion, row.precio));
+            const [rows] = await connection.query('SELECT * FROM servicios');
+            const serviciosConFotos = await Promise.all(rows.map(async row => {
+                const fotos = await FotoDao.obtenerFotosServicio(row.id_servicio);
+                return new Servicio(row.id_servicio, row.nombre, row.descripcion, row.precio, fotos);
+            }));
+            return serviciosConFotos;
         } catch (error) {
             console.error('Error al obtener servicios:', error);
             throw new Error('Error al obtener servicios');
         } finally {
-            await db.end();
+            await connection.end();
         }
     }
 
     async actualizar(servicio) {
-        const db = await createConnection();
+        const connection = await createConnection();
         try {
             const { id_servicio, nombre, descripcion, precio } = servicio;
 
-            await db.query(
+            await connection.query(
                 'UPDATE servicios SET nombre = ?, descripcion = ?, precio = ? WHERE id_servicio = ?',
                 [nombre, descripcion, precio, id_servicio]
             );
@@ -64,19 +81,19 @@ class ServicioDao {
             console.error('Error al actualizar servicio:', error);
             throw new Error('Error al actualizar servicio');
         } finally {
-            await db.end();
+            await connection.end();
         }
     }
 
     async eliminar(id_servicio) {
-        const db = await createConnection();
+        const connection = await createConnection();
         try {
-            await db.query('DELETE FROM servicios WHERE id_servicio = ?', [id_servicio]);
+            await connection.query('DELETE FROM servicios WHERE id_servicio = ?', [id_servicio]);
         } catch (error) {
             console.error('Error al eliminar servicio:', error);
             throw new Error('Error al eliminar servicio');
         } finally {
-            await db.end();
+            await connection.end();
         }
     }
 }

@@ -7,8 +7,9 @@ const CotizacionServicio = require('../model/CotizacionServicio.js');
 class CotizacionService {
 
     async crearCotizacion(data) {
-        const nuevaCotizacion = new Cotizacion(null, data.serie, null, null, data.id_usuario);
-        const idCotizacion = await CotizacionDao.crear(nuevaCotizacion);
+        const { serie, id_usuario, cotizacion_servicios } = data;
+        const nuevaCotizacion = new Cotizacion(null, serie, null, null, id_usuario, cotizacion_servicios);
+        const idCotizacion = await CotizacionDao.crearCotizacion(nuevaCotizacion);
         return idCotizacion;
     }
 
@@ -20,16 +21,7 @@ class CotizacionService {
         return cotizacion;
     }
 
-    async actualizarCotizacion(data) {
-        const cotizacionExistente = await this.obtenerCotizacionPorId(data.id_cotizacion);
-        if (!cotizacionExistente) {
-            throw new Error('No se puede actualizar. Cotización no encontrada');
-        }
-        cotizacionExistente.serie = data.serie || cotizacionExistente.serie;
-        cotizacionExistente.id_usuario = data.id_usuario || cotizacionExistente.id_usuario;
 
-        await CotizacionDao.actualizar(cotizacionExistente);
-    }
 
     async obtenerCotizacionesPorUsuario(id_usuario) {
         const cotizaciones = await CotizacionDao.obtenerCotizacionesUsuario(id_usuario);
@@ -53,9 +45,9 @@ class CotizacionService {
     }
 
     async agregarServicio(data) {
-        const cotizacionServicio = new CotizacionServicio(data.id_cotizacion, data.id_servicio, data.cantidad);
-        CotizacionServicioDao.crear(cotizacionServicio);
-   }
+        const cotizacionServicio = new CotizacionServicio(data.id_cotizacion, data.id_servicio, data.cantidad, null);
+        await CotizacionServicioDao.actualizarCotizacionServicio(cotizacionServicio);
+    }
 }
 
 module.exports = new CotizacionService();

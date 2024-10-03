@@ -4,9 +4,14 @@ const Servicio = require('../model/Servicio.js');
 class ServicioService {
 
     async crearServicio(data) {
-        const servicioNuevo = new Servicio(null, data.nombre, data.descripcion, data.precio);
-        const id_servicio = await ServicioDao.crear(servicioNuevo);
+        const { nombre, descripcion, precio, fotos } = data;
+        const servicioNuevo = new Servicio(null, nombre, descripcion, precio, fotos);
+        const id_servicio = await ServicioDao.crearServicio(servicioNuevo);
         return id_servicio;
+    }
+
+    async consultarTodosServicios() {
+        return await ServicioDao.consultarTodosServicios();
     }
 
 }

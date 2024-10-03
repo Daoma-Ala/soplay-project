@@ -1,29 +1,37 @@
 const createConnection = require('../config/conexion.js');
 const Cotizacion = require('../model/Cotizacion.js');
+const CotizacionServicioDao = require('../dao/CotizacionServicioDao.js');
 
 class CotizacionDao {
 
-    async crear(cotizacion) {
-        const db = await createConnection();
+    async crearCotizacion(cotizacion) {
+        const connection = await createConnection();
         try {
-            const { serie, id_usuario } = cotizacion;
-            const [resultado] = await db.query(
+            await connection.beginTransaction();
+            const { serie, id_usuario, cotizacion_servicios } = cotizacion;
+            const [resultado] = await connection.query(
                 'INSERT INTO cotizaciones (serie, id_usuario) VALUES (?, ?)',
                 [serie, id_usuario]
             );
+            for (const cotizacion_servicio of cotizacion_servicios) {
+                cotizacion_servicio.id_cotizacion = resultado.insertId;
+                CotizacionServicioDao.crearCotizacionServicio(cotizacion_servicio, connection);
+            }
+            await connection.commit();
             return resultado.insertId;
         } catch (error) {
+            await connection.rollback();
             console.error('Error al crear cotización:', error);
             throw new Error('Error al crear cotización');
         } finally {
-            await db.end();
+            await connection.end();
         }
     }
 
     async consultarId(id) {
-        const db = await createConnection();
+        const connection = await createConnection();
         try {
-            const [rows] = await db.query('SELECT * FROM cotizaciones WHERE id_cotizacion = ?', [id]);
+            const [rows] = await connection.query('SELECT * FROM cotizaciones WHERE id_cotizacion = ?', [id]);
             if (rows.length === 0) {
                 throw new Error('Cotización no encontrada');
             }
@@ -33,16 +41,16 @@ class CotizacionDao {
             console.error('Error al obtener cotización:', error);
             throw new Error('Error al obtener cotización');
         } finally {
-            await db.end();
+            await connection.end();
         }
     }
 
     async actualizar(cotizacion) {
-        const db = await createConnection();
+        const connection = await createConnection();
         try {
             const { id_cotizacion, serie, id_usuario } = cotizacion;
 
-            await db.query(
+            await connection.query(
                 'UPDATE cotizaciones SET serie = ?, id_usuario = ? WHERE id_cotizacion = ?',
                 [serie, id_usuario, id_cotizacion]
             );
@@ -50,45 +58,56 @@ class CotizacionDao {
             console.error('Error al actualizar cotización:', error);
             throw new Error('Error al actualizar cotización');
         } finally {
-            await db.end();
+            await connection.end();
         }
     }
 
     async obtenerCotizacionesUsuario(id_usuario) {
-        const db = await createConnection();
+        const connection = await createConnection();
         try {
-            const [rows] = await db.query('SELECT * FROM cotizaciones WHERE id_usuario = ?', [id_usuario]);
-            return rows.map(row => new Cotizacion(row.id_cotizacion, row.serie, row.fecha_cotizacion, row.monto, row.id_usuario));
+            const [rows] = await connection.query('SELECT * FROM cotizaciones WHERE id_usuario = ?', [id_usuario]);
+
+
+            let cotizaciones = rows.map(row => new Cotizacion(row.id_cotizacion, row.serie, row.fecha_cotizacion, row.monto, row.id_usuario));
+
+            for (const cotizacion of cotizaciones) {
+                const cotizacion_servicios = await CotizacionServicioDao.obtenerPorCotizacionId(cotizacion.id_cotizacion);
+                cotizacion.cotizacion_servicios = cotizacion_servicios;
+            }
+
+            return cotizaciones;
+
+
         } catch (error) {
             console.error('Error al obtener cotizaciones por usuario:', error);
             throw new Error('Error al obtener cotizaciones por usuario');
         } finally {
-            await db.end();
+            await connection.end();
         }
     }
 
-    async obtenerTodos() {
-        const db = await createConnection();
+    async obtenerTodosCotizaciones() {
+        const connection = await createConnection();
         try {
-            const [rows] = await db.query('SELECT * FROM cotizaciones');
+            const [rows] = await connection.query('SELECT * FROM cotizaciones');
             return rows.map(row => new Cotizacion(row.id_cotizacion, row.serie, row.fecha_cotizacion, row.monto, row.id_usuario));
         } catch (error) {
             console.error('Error al obtener cotizaciones:', error);
             throw new Error('Error al obtener cotizaciones');
         } finally {
-            await db.end();
+            await connection.end();
         }
     }
 
     async eliminar(id) {
-        const db = await createConnection();
+        const connection = await createConnection();
         try {
-            await db.query('DELETE FROM cotizaciones WHERE id_cotizacion = ?', [id]);
+            await connection.query('DELETE FROM cotizaciones WHERE id_cotizacion = ?', [id]);
         } catch (error) {
             console.error('Error al eliminar cotización:', error);
             throw new Error('Error al eliminar cotización');
         } finally {
-            await db.end();
+            await connection.end();
         }
     }
 }

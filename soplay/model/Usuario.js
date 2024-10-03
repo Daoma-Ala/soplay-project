@@ -1,5 +1,5 @@
 class Usuario {
-  constructor(id_usuario, correo, password, nombres, apellido_paterno, apellido_materno, fecha_nacimiento, tipo, sexo, telefono, id_direccion) {
+  constructor(id_usuario, correo, password, nombres, apellido_paterno, apellido_materno, fecha_nacimiento, tipo, sexo, telefono, direccion) {
     this.id_usuario = id_usuario;
     this.correo = correo;
     this.password = password;
@@ -10,8 +10,7 @@ class Usuario {
     this.tipo = tipo;
     this.sexo = sexo;
     this.telefono = telefono;
-    this.id_direccion = id_direccion;
+    this.direccion = direccion;
   }
 }
-
 module.exports = Usuario;

@@ -1,13 +1,12 @@
 const createConnection = require('../config/conexion.js');
-const Foto = require('../dominio/Foto.js');
+const Foto = require('../model/Foto.js');
 
 class FotoDao {
 
-    async crear(foto) {
-        const db = await createConnection();
+    async crearFoto(foto, connection) {
         try {
             const { ruta, id_servicio } = foto;
-            const [resultado] = await db.query(
+            const [resultado] = await connection.query(
                 'INSERT INTO fotos (ruta, id_servicio) VALUES (?, ?)',
                 [ruta, id_servicio]
             );
@@ -15,15 +14,13 @@ class FotoDao {
         } catch (error) {
             console.error('Error al crear foto:', error);
             throw new Error('Error al crear foto');
-        } finally {
-            await db.end();
-        }
+        } 
     }
 
     async consultarId(id) {
-        const db = await createConnection();
+        const connection = await createConnection();
         try {
-            const [rows] = await db.query('SELECT * FROM fotos WHERE id_foto = ?', [id]);
+            const [rows] = await connection.query('SELECT * FROM fotos WHERE id_foto = ?', [id]);
             if (rows.length === 0) {
                 throw new Error('Foto no encontrada');
             }
@@ -33,15 +30,15 @@ class FotoDao {
             console.error('Error al obtener foto:', error);
             throw new Error('Error al obtener foto');
         } finally {
-            await db.end();
+            await connection.end();
         }
     }
 
     async actualizar(foto) {
-        const db = await createConnection();
+        const connection = await createConnection();
         try {
             const { id_foto, ruta, id_servicio } = foto;
-            await db.query(
+            await connection.query(
                 'UPDATE fotos SET ruta = ?, id_servicio = ? WHERE id_foto = ?',
                 [ruta, id_servicio, id_foto]
             );
@@ -49,32 +46,32 @@ class FotoDao {
             console.error('Error al actualizar foto:', error);
             throw new Error('Error al actualizar foto');
         } finally {
-            await db.end();
+            await connection.end();
         }
     }
 
     async eliminar(id) {
-        const db = await createConnection();
+        const connection = await createConnection();
         try {
-            await db.query('DELETE FROM fotos WHERE id_foto = ?', [id]);
+            await connection.query('DELETE FROM fotos WHERE id_foto = ?', [id]);
         } catch (error) {
             console.error('Error al eliminar foto:', error);
             throw new Error('Error al eliminar foto');
         } finally {
-            await db.end();
+            await connection.end();
         }
     }
 
     async obtenerFotosServicio(id_servicio) {
-        const db = await createConnection();
+        const connection = await createConnection();
         try {
-            const [rows] = await db.query('SELECT * FROM fotos WHERE id_servicio = ?', [id_servicio]);
+            const [rows] = await connection.query('SELECT * FROM fotos WHERE id_servicio = ?', [id_servicio]);
             return rows.map(row => new Foto(row.id_foto, row.ruta, row.id_servicio));
         } catch (error) {
             console.error('Error al obtener fotos por servicio:', error);
             throw new Error('Error al obtener fotos por servicio');
         } finally {
-            await db.end();
+            await connection.end();
         }
     }
 }

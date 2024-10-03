@@ -1,28 +1,25 @@
 const createConnection = require('../config/conexion.js');
-const Direccion = require('../model/DireccionUsuario.js');
+const Direccion = require('../model/Direccion.js');
 
 class DireccionDao {
 
-    async crear(direccion) {
-        const db = await createConnection();
+    async crearDireccion(direccion, connection) {
         try {
             const { calle, numero, colonia, ciudad, estado, codigo_postal } = direccion;
-            const [resultado] = await db.query(
-                'INSERT INTO direccion_usuario (calle, numero, colonia, ciudad, estado, codigo_postal) VALUES (?, ?, ?, ?, ?, ?)',
+            const [resultado] = await connection.query(
+                'INSERT INTO direccion (calle, numero, colonia, ciudad, estado, codigo_postal) VALUES (?, ?, ?, ?, ?, ?)',
                 [calle, numero, colonia, ciudad, estado, codigo_postal]);
             return resultado.insertId;
         } catch (error) {
             console.error('Error al crear dirección:', error);
             throw new Error('Error al crear dirección');
-        } finally {
-            await db.end();
         }
     }
 
-    async consultarId(id) {
-        const db = await createConnection();
+    async consultarDireccionPorId(id) {
+        const connection = await createConnection();
         try {
-            const [rows] = await db.query('SELECT * FROM direccion_usuario WHERE id_direccion = ?', [id]);
+            const [rows] = await connection.query('SELECT * FROM direccion WHERE id_direccion = ?', [id]);
             if (rows.length === 0) {
                 throw new Error('Dirección no encontrada');
             }
@@ -40,35 +37,34 @@ class DireccionDao {
             console.error('Error al obtener dirección:', error);
             throw new Error('Error al obtener dirección');
         } finally {
-            await db.end();
+            await connection.end();
         }
     }
 
-    async actualizar(direccion) {
-        const db = await createConnection();
+    async actualizarDireccion(id_direccion, direccionActualizada) {
+        const connection = await createConnection();
         try {
-            const { id_direccion, calle, numero, colonia, ciudad, estado, codigo_postal } = direccion;
-            await db.query(
-                'UPDATE direccion_usuario SET calle = ?, numero = ?, colonia = ?, ciudad = ?, estado = ?, codigo_postal = ? WHERE id_direccion = ?',
-                [calle, numero, colonia, ciudad, estado, codigo_postal, id_direccion]
-            );
+            const { calle, numero, colonia, ciudad, estado, codigo_postal } = direccionActualizada;
+            await connection.query(
+                'UPDATE direccion SET calle = ?, numero = ?, colonia = ?, ciudad = ?, estado = ?, codigo_postal = ? WHERE id_direccion = ?',
+                [calle, numero, colonia, ciudad, estado, codigo_postal, id_direccion]);
         } catch (error) {
             console.error('Error al actualizar dirección:', error);
             throw new Error('Error al actualizar dirección');
         } finally {
-            await db.end();
+            await connection.end();
         }
     }
 
-    async eliminar(id_direccion) {
-        const db = await createConnection();
+    async eliminarDireccion(id_direccion) {
+        const connection = await createConnection();
         try {
-            await db.query('DELETE FROM direccion_usuario WHERE id_direccion = ?', [id_direccion]);
+            await connection.query('DELETE FROM direccion WHERE id_direccion = ?', [id_direccion]);
         } catch (error) {
             console.error('Error al eliminar dirección:', error);
             throw new Error('Error al eliminar dirección');
         } finally {
-            await db.end();
+            await connection.end();
         }
     }
 }
