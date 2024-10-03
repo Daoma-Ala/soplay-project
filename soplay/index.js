@@ -45,6 +45,7 @@ const { UsuarioService, ServicioService, CotizacionService } = require('./servic
 
         const id_cotizacion = await CotizacionService.crearCotizacion(dataCotizacion);
         console.log('Cotización creada con ID:', id_cotizacion);
+        
       
         dataAgregarServicio = {
             id_cotizacion: 1,
@@ -52,10 +53,10 @@ const { UsuarioService, ServicioService, CotizacionService } = require('./servic
             cantidad: 4
         };
         CotizacionService.agregarServicio(dataAgregarServicio);
-          */
          
 
         console.log(await UsuarioService.consultarUsuarioPorId(1));
+        */
     } catch (error) {
         console.error(error.message);
     }
