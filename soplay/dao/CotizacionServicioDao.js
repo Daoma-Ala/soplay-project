@@ -18,6 +18,23 @@ class CotizacionServicioDao {
         }
     }
 
+
+    async crearCotizacionDetalle(cotizacionServicio) {
+        const connection = await createConnection();
+        try {
+            const { id_cotizacion, servicio, cantidad } = cotizacionServicio;
+
+            const [resultado] = await connection.query(
+                'INSERT INTO cotizaciones_servicios (id_cotizacion, id_servicio, cantidad) VALUES (?, ?, ?)',
+                [id_cotizacion, servicio, cantidad]
+            );
+        } catch (error) {
+            console.error('Error al crear cotización-servicio:', error);
+            throw new Error('Error al crear cotización-servicio');
+        } finally {
+            await connection.end();
+        }
+    }
     async consultarId(id_cotizacion, id_servicio) {
         const connection = await createConnection();
         try {
@@ -27,11 +44,10 @@ class CotizacionServicioDao {
             );
             if (rows.length === 0) {
 
-
                 return null;
             }
             const row = rows[0];
-            return new CotizacionServicio(row.id_cotizacion, row.id_servicio, row.cantidad, row.sub_total);
+            return new CotizacionSerzvicio(row.id_cotizacion, row.id_servicio, row.cantidad, row.sub_total);
         } catch (error) {
             console.error('Error al obtener cotización-servicio:', error);
             throw new Error('Error al obtener cotización-servicio');

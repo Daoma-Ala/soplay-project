@@ -1,37 +1,46 @@
 const UsuarioDao = require('../dao/UsuarioDao.js');
-const DireccionDao = require('../dao/DireccionDao.js');
 const Usuario = require('../model/Usuario.js');
-const Direccion = require('../model/Direccion.js');
+
 
 class UsuarioService {
 
-    async crearUsuario(data) {
-        const {
-            correo,
-            password,
-            nombres,
-            apellido_paterno,
-            apellido_materno,
-            fecha_nacimiento,
-            tipo,
-            sexo,
-            telefono,
-            direccion
-        } = data;
-        const usuarioNuevo = new Usuario(null, correo, password, nombres, apellido_paterno, apellido_materno, fecha_nacimiento, tipo, sexo, telefono, direccion);
-        const id_usuario = await UsuarioDao.crearUsuario(usuarioNuevo);
-        if (id_usuario != null) {
-            return id_usuario;
-        } else {
-            DireccionDao.eliminar(id_direccion);
-            throw new Error("No se pudo crear el usuario: ID no devuelto.");
+    async getAllUsuarios() {
+        try {
+            return await UsuarioDao.getAllUsuarios();
+        } catch (error) {
+            console.error('Error en consultar todos los Usuarios:', error.message);
+            throw new Error('No se pudo consultar el usuario por ID');
         }
     }
 
-
-    async consultarUsuarioPorId(id) {
+    async addUsuario(usuario) {
         try {
-            const usuario = await UsuarioDao.consultarUsuarioPorId(id);
+            const {
+                correo,
+                password,
+                nombres,
+                apellido_paterno,
+                apellido_materno,
+                fecha_nacimiento,
+                tipo,
+                sexo,
+                telefono,
+                direccion
+            } = usuario;
+
+            const usuarioNuevo = new Usuario(null, correo, password, nombres, apellido_paterno, apellido_materno, fecha_nacimiento, tipo, sexo, telefono, direccion);
+            const id_usuario = await UsuarioDao.addUsuario(usuarioNuevo);
+
+            return id_usuario;
+        } catch (error) {
+            console.error("Error en el servicio:", error);
+            throw new Error('No se pudo crear el usuario: ' + error.message);
+        };
+    }
+
+    async getUsuarioById(id_usuario) {
+        try {
+            const usuario = await UsuarioDao.getUsuarioById(id_usuario);
             return usuario;
         } catch (error) {
             console.error('Error en consultar Usuario:', error);
@@ -39,8 +48,26 @@ class UsuarioService {
         }
 
     }
-}
 
+    async updateUsuario(id_usuario, datosUsuario) {
+        try {
+            await UsuarioDao.updateUsuario(id_usuario, datosUsuario);
+        } catch (error) {
+            console.error('Error al actualizar el usuario:', error.message);
+            throw new Error('No se pudo actualizar el usuario por ID');
+        }
+    }
+
+    async deleteUsuario(id_usuario) {
+        try {
+            await UsuarioDao.deleteUsuario(id_usuario);
+        } catch (error) {
+            console.error('Error al eliminar el usuario:', error.message);
+            throw new Error('No se pudo eliminar el usuario por ID');
+        }
+    }
+
+}
 
 
 module.exports = new UsuarioService();

@@ -1,16 +1,6 @@
 create database soplay;
 use soplay;
 
-CREATE TABLE `direccion` (
-  `id_direccion` int(11) PRIMARY KEY auto_increment,
-  `calle` varchar(80) NOT NULL,
-  `numero` varchar(20) NOT NULL,
-  `colonia` varchar(80) NOT NULL,
-  `ciudad` varchar(80) NOT NULL,
-  `estado` varchar(80) NOT NULL,
-  `codigo_postal` varchar(20) NOT NULL
-);
-
 CREATE TABLE `usuarios` (
   `id_usuario` int(11) PRIMARY KEY auto_increment,
   `correo` varchar(80) NOT NULL unique,
@@ -21,9 +11,19 @@ CREATE TABLE `usuarios` (
   `fecha_nacimiento` date NOT NULL,
   `tipo` ENUM('CLIENTE', 'ENCARGADO') NOT NULL,
   `sexo` ENUM('MASCULINO', 'FEMENINO', 'OTRO') NOT NULL,
-  `telefono` varchar(20) NOT NULL,
-  `id_direccion` int,
-  FOREIGN KEY (`id_direccion`) REFERENCES `direccion`(`id_direccion`)
+  `telefono` varchar(20) NOT NULL
+);
+
+CREATE TABLE `direccion` (
+  `id_direccion` int(11) PRIMARY KEY auto_increment,
+  `calle` varchar(80) NOT NULL,
+  `numero` varchar(20) NOT NULL,
+  `colonia` varchar(80) NOT NULL,
+  `ciudad` varchar(80) NOT NULL,
+  `estado` varchar(80) NOT NULL,
+  `codigo_postal` varchar(20) NOT NULL,
+  `id_usuario` int NOT NULL,
+  FOREIGN KEY (`id_usuario`) REFERENCES `usuarios`(`id_usuario`) ON DELETE CASCADE
 );
 
 CREATE TABLE `cotizaciones` (
@@ -31,8 +31,8 @@ CREATE TABLE `cotizaciones` (
   `serie` varchar(150) NOT NULL unique,
   `fecha_cotizacion` datetime NOT NULL DEFAULT current_timestamp,
   `monto` float,
-  `id_usuario` int(11) NOT NULL,
-  FOREIGN KEY (`id_usuario`) REFERENCES `usuarios`(`id_usuario`)
+  `id_usuario` int(11) ,
+  FOREIGN KEY (`id_usuario`) REFERENCES `usuarios`(`id_usuario`) ON delete set null
 );
 
 CREATE TABLE `servicios` (
