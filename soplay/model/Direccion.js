@@ -7,6 +7,7 @@ class Direccion {
     this.ciudad = ciudad;
     this.estado = estado;
     this.codigo_postal = codigo_postal;
+    this.id_usuario;
   }
 }
 module.exports = Direccion;

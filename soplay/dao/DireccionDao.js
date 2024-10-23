@@ -3,12 +3,12 @@ const Direccion = require('../model/Direccion.js');
 
 class DireccionDao {
 
-    async crearDireccion(direccion, connection) {
+    async addDireccion(direccion, connection) {
         try {
-            const { calle, numero, colonia, ciudad, estado, codigo_postal } = direccion;
+            const { calle, numero, colonia, ciudad, estado, codigo_postal, id_usuario } = direccion;
             const [resultado] = await connection.query(
-                'INSERT INTO direccion (calle, numero, colonia, ciudad, estado, codigo_postal) VALUES (?, ?, ?, ?, ?, ?)',
-                [calle, numero, colonia, ciudad, estado, codigo_postal]);
+                'INSERT INTO direccion (calle, numero, colonia, ciudad, estado, codigo_postal, id_usuario) VALUES (?, ?, ?, ?, ?, ?, ?)',
+                [calle, numero, colonia, ciudad, estado, codigo_postal, id_usuario]);
             return resultado.insertId;
         } catch (error) {
             console.error('Error al crear dirección:', error);
@@ -16,10 +16,10 @@ class DireccionDao {
         }
     }
 
-    async consultarDireccionPorId(id) {
+    async getDireccionById(id_direccion) {
         const connection = await createConnection();
         try {
-            const [rows] = await connection.query('SELECT * FROM direccion WHERE id_direccion = ?', [id]);
+            const [rows] = await connection.query('SELECT * FROM direccion WHERE id_usuario = ?', [id_direccion]);
             if (rows.length === 0) {
                 throw new Error('Dirección no encontrada');
             }
@@ -41,13 +41,18 @@ class DireccionDao {
         }
     }
 
-    async actualizarDireccion(id_direccion, direccionActualizada) {
+    async updateDireccion(id_usuario, datosDireccion) {
         const connection = await createConnection();
         try {
-            const { calle, numero, colonia, ciudad, estado, codigo_postal } = direccionActualizada;
-            await connection.query(
-                'UPDATE direccion SET calle = ?, numero = ?, colonia = ?, ciudad = ?, estado = ?, codigo_postal = ? WHERE id_direccion = ?',
-                [calle, numero, colonia, ciudad, estado, codigo_postal, id_direccion]);
+            const campos = Object.keys(datosDireccion);
+            const valores = Object.values(datosDireccion);
+            if (campos.length === 0) {
+                throw new Error('No se proporcionaron campos para actualizar');
+            }
+            const setClause = campos.map(campo => `${campo} = ?`).join(', ');
+            valores.push(id_usuario);
+            const query = `UPDATE direccion SET ${setClause} WHERE id_usuario = ?`;
+            await connection.query(query, valores);
         } catch (error) {
             console.error('Error al actualizar dirección:', error);
             throw new Error('Error al actualizar dirección');
@@ -56,17 +61,17 @@ class DireccionDao {
         }
     }
 
-    async eliminarDireccion(id_direccion) {
-        const connection = await createConnection();
+    /*
+    async eliminarDireccion(id_direccion, connection) {
         try {
             await connection.query('DELETE FROM direccion WHERE id_direccion = ?', [id_direccion]);
         } catch (error) {
             console.error('Error al eliminar dirección:', error);
             throw new Error('Error al eliminar dirección');
-        } finally {
-            await connection.end();
         }
+     
     }
+               */
 }
 
 module.exports = new DireccionDao();
