@@ -1,6 +1,5 @@
 const mysql = require('mysql2/promise');
 
-
 const createConnection = async () => {
   const connection = await mysql.createConnection({
     host: process.env.DB_HOST,
