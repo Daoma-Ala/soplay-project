@@ -11,7 +11,9 @@ app.use(errorHandler);
 
 // Rutas 
 const usuarioRoutes = require('./routes/usuario.js');
-app.use('/usuario', usuarioRoutes);
+app.use('/api/v1/usuario', usuarioRoutes);
+
+// Midelware de rutas para la autenticacion
 
 
 // Levantar servidor
