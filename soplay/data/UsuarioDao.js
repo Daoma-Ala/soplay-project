@@ -132,13 +132,29 @@ class UsuarioDao {
             if (!usuario) {
                 throw new Error('Usuario no encontrado');
             }
-
             await connection.query('DELETE FROM usuarios WHERE id_usuario = ?', [id_usuario]);
             await connection.commit();
         } catch (error) {
             console.error('Error al eliminar usuario:', error);
             await connection.rollback();
             throw new Error('Error al eliminar usuario: ' + error.message);
+        } finally {
+            await connection.end();
+        }
+    }
+
+    async loginUsuario(correo, password) {
+        const connection = await createConnection();
+        try {
+            const [rows] = await connection.query('SELECT id_usuario FROM usuarios WHERE correo = ? AND password = ?', [correo, password]);
+            if (rows.length === 0) {
+                throw new Error('Usuario no encontrado');
+            }
+            const row = rows[0];
+            return row;
+        } catch (error) {
+            console.error('Error al obtener usuario', error);
+            throw new Error('Error al obtener usuario');
         } finally {
             await connection.end();
         }

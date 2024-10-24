@@ -67,6 +67,15 @@ class UsuarioService {
         }
     }
 
+    async loginUsuario(correo, password) {
+        try {
+            return await UsuarioDao.loginUsuario(correo, password);
+        } catch (error) {
+            console.error('Error al logear al usuario:', error.message);
+            throw new Error('No se pudo logear al usuario por credenciales');
+        }
+    }
+
 }
 
 
