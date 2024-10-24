@@ -2,7 +2,7 @@ const ServicioDao = require('../data/ServicioDao.js');
 const Servicio = require('../model/Servicio.js');
 
 class ServicioService {
-    
+
     async getAllServicios() {
         try {
             return await ServicioDao.consultarTodosServicios();

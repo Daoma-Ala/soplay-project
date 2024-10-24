@@ -146,12 +146,12 @@ class UsuarioDao {
     async loginUsuario(correo, password) {
         const connection = await createConnection();
         try {
-            const [rows] = await connection.query('SELECT id_usuario FROM usuarios WHERE correo = ? AND password = ?', [correo, password]);
+            const [rows] = await connection.query('SELECT id_usuario, tipo FROM usuarios WHERE correo = ? AND password = ?', [correo, password]);
             if (rows.length === 0) {
                 throw new Error('Usuario no encontrado');
             }
             const row = rows[0];
-            return row;
+            return { id_usuario: row.id_usuario, tipo: row.tipo };
         } catch (error) {
             console.error('Error al obtener usuario', error);
             throw new Error('Error al obtener usuario');

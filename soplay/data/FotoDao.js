@@ -14,7 +14,7 @@ class FotoDao {
         } catch (error) {
             console.error('Error al crear foto:', error);
             throw new Error('Error al crear foto');
-        } 
+        }
     }
 
     async consultarId(id) {

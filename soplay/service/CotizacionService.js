@@ -22,7 +22,6 @@ class CotizacionService {
     }
 
 
-
     async obtenerCotizacionesPorUsuario(id_usuario) {
         const cotizaciones = await CotizacionDao.obtenerCotizacionesUsuario(id_usuario);
         if (cotizaciones.length === 0) {

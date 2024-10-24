@@ -1,4 +1,5 @@
 const express = require('express');
+const cookieParser = require('cookie-parser');
 const app = express();
 const RUTA_BASE = '/api/v1';
 
@@ -7,6 +8,9 @@ require('dotenv').config();
 
 // Middleware para analizar JSON
 app.use(express.json());
+
+// Configurar cookie-parser
+app.use(cookieParser());
 
 // Midelware de rutas para la autenticacion
 const authRoutes = require('./routes/authRoutes.js');
