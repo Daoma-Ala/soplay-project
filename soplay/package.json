@@ -1,8 +1,9 @@
 {
   "name": "soplay",
   "version": "1.0.0",
-  "main": "index.js",
+  "main": "app.js",
   "scripts": {
+    "start": "node app.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
@@ -10,10 +11,7 @@
   "license": "ISC",
   "description": "",
   "dependencies": {
-<<<<<<< HEAD
-=======
     "dotenv": "^16.4.5",
->>>>>>> Daniel
     "express": "^4.21.1",
     "mysql2": "^3.11.3"
   }

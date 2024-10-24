@@ -1,4 +1,4 @@
-const DireccionService = require('../services/DireccionService.js');
+const DireccionService = require('../service/DireccionService.js');
 
 exports.getDireccionById = async (req, res) => {
     try {

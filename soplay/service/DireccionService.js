@@ -1,4 +1,4 @@
-const DireccionDao = require('../dao/DireccionDao.js');
+const DireccionDao = require('../data/DireccionDao.js');
 const Direccion = require('../model/Direccion.js');
 
 class DireccionService {

@@ -1,6 +1,6 @@
-const CotizacionDao = require('../dao/CotizacionDao.js');
+const CotizacionDao = require('../data/CotizacionDao.js');
 const Cotizacion = require('../model/Cotizacion.js');
-const CotizacionServicioDao = require('../dao/CotizacionServicioDao.js');
+const CotizacionServicioDao = require('../data/CotizacionServicioDao.js');
 const CotizacionServicio = require('../model/CotizacionServicio.js');
 
 

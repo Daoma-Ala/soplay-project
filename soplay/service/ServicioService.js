@@ -1,4 +1,4 @@
-const ServicioDao = require('../dao/ServicioDao.js');
+const ServicioDao = require('../data/ServicioDao.js');
 const Servicio = require('../model/Servicio.js');
 
 class ServicioService {

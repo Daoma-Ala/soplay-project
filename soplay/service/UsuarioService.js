@@ -1,4 +1,4 @@
-const UsuarioDao = require('../dao/UsuarioDao.js');
+const UsuarioDao = require('../data/UsuarioDao.js');
 const Usuario = require('../model/Usuario.js');
 
 

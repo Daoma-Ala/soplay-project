@@ -11,6 +11,5 @@ const createConnection = async () => {
   return connection;
 };
 
-
 module.exports = createConnection;
 
