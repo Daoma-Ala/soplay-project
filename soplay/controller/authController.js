@@ -15,7 +15,7 @@ exports.login = async (req, res) => {
         console.log(token);
     } catch (error) {
         console.error(error);
-        res.status(500).json({ message: "No se pudo logear el usuario", error: error.message });
+        res.status(500).json({ message: "No se pudo loguear el usuario", error: error.message });
     }
 };
 

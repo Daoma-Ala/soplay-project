@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router();
-const usuarioController = require('../controller/UsuarioController.js');
+const usuarioController = require('../controller/usuarioController.js');
 const proctectedRoutes = require('../middlewares/proctectedRoutes.js');
 
 // Rutas

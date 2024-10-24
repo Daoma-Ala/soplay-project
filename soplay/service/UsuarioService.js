@@ -71,8 +71,8 @@ class UsuarioService {
         try {
             return await UsuarioDao.loginUsuario(correo, password);
         } catch (error) {
-            console.error('Error al logear al usuario:', error.message);
-            throw new Error('No se pudo logear al usuario por credenciales');
+            console.error('Error al loguear al usuario:', error.message);
+            throw new Error('No se pudo loguear al usuario por credenciales');
         }
     }
 
