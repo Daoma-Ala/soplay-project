@@ -1,3 +1,5 @@
+
+/*
 const readline = require('readline');
 const { UsuarioService, ServicioService, CotizacionService } = require('../service/ModuloService.js');
 const Cotizacion = require('../model/Cotizacion.js');
@@ -209,3 +211,4 @@ async function menuPrincipal() {
 
 
 module.exports = { menuPrincipal };
+*/

@@ -24,10 +24,14 @@ app.use(errorHandler);
 const usuarioRoutes = require('./routes/usuarioRoutes.js');
 const servicioRoutes = require('./routes/servicioRoutes.js');
 const direccionRoutes = require('./routes/direccionRoutes.js');
+const cotizacionRoutes = require('./routes/cotizacionRoutes.js');
+const cotizacionDetalladaRoutes = require('./routes/CotizacionDetalladaRoutes.js');
 
 app.use(`${RUTA_BASE}/usuario`, usuarioRoutes);
 app.use(`${RUTA_BASE}/servicio`, servicioRoutes);
 app.use(`${RUTA_BASE}/direccion`, direccionRoutes);
+app.use(`${RUTA_BASE}/cotizacion`, cotizacionRoutes);
+app.use(`${RUTA_BASE}/cotizacion-detalle`, cotizacionDetalladaRoutes);
 
 // Levantar servidor
 const PORT = process.env.PORT || 3000;

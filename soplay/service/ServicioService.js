@@ -5,7 +5,7 @@ class ServicioService {
 
     async getAllServicios() {
         try {
-            return await ServicioDao.consultarTodosServicios();
+            return await ServicioDao.getAllServicios();
         } catch (error) {
             console.error('Error en consultar todos los servicios:', error.message);
             throw new Error('No se pudo consultar los servicios');
@@ -16,7 +16,7 @@ class ServicioService {
         try {
             const { nombre, descripcion, precio, fotos } = servicio;
             const nuevoServicio = new Servicio(null, nombre, descripcion, precio, fotos);
-            const id_servicio = await ServicioDao.crearServicio(nuevoServicio);
+            const id_servicio = await ServicioDao.addServicio(nuevoServicio);
             return id_servicio;
         } catch (error) {
             console.error('Error al crear servicio:', error.message);
@@ -26,7 +26,7 @@ class ServicioService {
 
     async getServicioById(id_servicio) {
         try {
-            const servicio = await ServicioDao.consultarId(id_servicio);
+            const servicio = await ServicioDao.getServicioById(id_servicio);
             return servicio;
         } catch (error) {
             console.error('Error al consultar servicio:', error.message);
@@ -36,7 +36,7 @@ class ServicioService {
 
     async updateServicio(id_servicio, datosServicio) {
         try {
-            await ServicioDao.actualizar({ id_servicio, ...datosServicio });
+            await ServicioDao.updateServicio({ id_servicio, ...datosServicio });
         } catch (error) {
             console.error('Error al actualizar servicio:', error.message);
             throw new Error('No se pudo actualizar el servicio');
@@ -45,7 +45,7 @@ class ServicioService {
 
     async deleteServicio(id_servicio) {
         try {
-            await ServicioDao.eliminar(id_servicio);
+            await ServicioDao.deleteServicio(id_servicio);
         } catch (error) {
             console.error('Error al eliminar servicio:', error.message);
             throw new Error('No se pudo eliminar el servicio');

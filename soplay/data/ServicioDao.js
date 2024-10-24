@@ -5,7 +5,7 @@ const FotoDao = require('../data/FotoDao.js');
 
 class ServicioDao {
 
-    async crearServicio(servicio) {
+    async addServicio(servicio) {
         const connection = await createConnection();
         try {
 
@@ -20,7 +20,7 @@ class ServicioDao {
             const servicioId = resultado.insertId;
             for (const foto of fotos) {
                 foto.id_servicio = servicioId;
-                await FotoDao.crearFoto(foto, connection);
+                await FotoDao.addFoto(foto, connection);
             }
 
             connection.commit();
@@ -34,7 +34,7 @@ class ServicioDao {
         }
     }
 
-    async consultarId(id) {
+    async getServicioById(id) {
         const connection = await createConnection();
         try {
             const [rows] = await connection.query('SELECT * FROM servicios WHERE id_servicio = ?', [id]);
@@ -51,12 +51,12 @@ class ServicioDao {
         }
     }
 
-    async consultarTodosServicios() {
+    async getAllServicios() {
         const connection = await createConnection();
         try {
             const [rows] = await connection.query('SELECT * FROM servicios');
             const serviciosConFotos = await Promise.all(rows.map(async row => {
-                const fotos = await FotoDao.obtenerFotosServicio(row.id_servicio);
+                const fotos = await FotoDao.getFotos_servicio(row.id_servicio);
                 return new Servicio(row.id_servicio, row.nombre, row.descripcion, row.precio, fotos);
             }));
             return serviciosConFotos;
@@ -68,7 +68,7 @@ class ServicioDao {
         }
     }
 
-    async actualizar(servicio) {
+    async updateServicio(servicio) {
         const connection = await createConnection();
         try {
             const { id_servicio, nombre, descripcion, precio } = servicio;
@@ -85,7 +85,7 @@ class ServicioDao {
         }
     }
 
-    async eliminar(id_servicio) {
+    async deleteServicio(id_servicio) {
         const connection = await createConnection();
         try {
             await connection.query('DELETE FROM servicios WHERE id_servicio = ?', [id_servicio]);

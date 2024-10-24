@@ -3,7 +3,7 @@ const Foto = require('../model/Foto.js');
 
 class FotoDao {
 
-    async crearFoto(foto, connection) {
+    async addFoto(foto, connection) {
         try {
             const { ruta, id_servicio } = foto;
             const [resultado] = await connection.query(
@@ -17,7 +17,7 @@ class FotoDao {
         }
     }
 
-    async consultarId(id) {
+    async getFotobyId(id) {
         const connection = await createConnection();
         try {
             const [rows] = await connection.query('SELECT * FROM fotos WHERE id_foto = ?', [id]);
@@ -34,7 +34,7 @@ class FotoDao {
         }
     }
 
-    async actualizar(foto) {
+    async updateFoto(foto) {
         const connection = await createConnection();
         try {
             const { id_foto, ruta, id_servicio } = foto;
@@ -50,7 +50,7 @@ class FotoDao {
         }
     }
 
-    async eliminar(id) {
+    async deleteFoto(id) {
         const connection = await createConnection();
         try {
             await connection.query('DELETE FROM fotos WHERE id_foto = ?', [id]);
@@ -62,7 +62,7 @@ class FotoDao {
         }
     }
 
-    async obtenerFotosServicio(id_servicio) {
+    async getFotos_servicio(id_servicio) {
         const connection = await createConnection();
         try {
             const [rows] = await connection.query('SELECT * FROM fotos WHERE id_servicio = ?', [id_servicio]);

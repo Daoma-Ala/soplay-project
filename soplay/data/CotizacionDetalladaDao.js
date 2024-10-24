@@ -3,23 +3,7 @@ const CotizacionServicio = require('../model/CotizacionServicio.js');
 
 class CotizacionServicioDao {
 
-    async crearCotizacionServicio(cotizacionServicio, connection) {
-
-        try {
-            const { id_cotizacion, servicio, cantidad } = cotizacionServicio;
-
-            const [resultado] = await connection.query(
-                'INSERT INTO cotizaciones_servicios (id_cotizacion, id_servicio, cantidad) VALUES (?, ?, ?)',
-                [id_cotizacion, servicio, cantidad]
-            );
-        } catch (error) {
-            console.error('Error al crear cotización-servicio:', error);
-            throw new Error('Error al crear cotización-servicio');
-        }
-    }
-
-
-    async crearCotizacionDetalle(cotizacionServicio) {
+    async addCotizacionDetallada(cotizacionServicio) {
         const connection = await createConnection();
         try {
             const { id_cotizacion, servicio, cantidad } = cotizacionServicio;
@@ -35,7 +19,7 @@ class CotizacionServicioDao {
             await connection.end();
         }
     }
-    async consultarId(id_cotizacion, id_servicio) {
+    async getCotizacionDetalladaById(id_cotizacion, id_servicio) {
         const connection = await createConnection();
         try {
             const [rows] = await connection.query(
@@ -56,7 +40,7 @@ class CotizacionServicioDao {
         }
     }
 
-    async obtenerPorCotizacionId(id_cotizacion) {
+    async getAllByCotizacionId(id_cotizacion) {
         const connection = await createConnection();
         try {
             const [rows] = await connection.query(
@@ -72,7 +56,7 @@ class CotizacionServicioDao {
         }
     }
 
-    async actualizarCotizacionServicio(cotizacionServicio) {
+    async updateCotizacionDetallada(cotizacionServicio) {
         const connection = await createConnection();
         try {
             const { id_cotizacion, servicio, cantidad } = cotizacionServicio;
@@ -89,7 +73,7 @@ class CotizacionServicioDao {
         }
     }
 
-    async eliminar(id_cotizacion, id_servicio) {
+    async deleteCotizacionDetallada(id_cotizacion, id_servicio) {
         const connection = await createConnection();
         try {
             await connection.query('DELETE FROM cotizaciones_servicios WHERE id_cotizacion = ? AND id_servicio = ?', [id_cotizacion, id_servicio]);

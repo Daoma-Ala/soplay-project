@@ -1,58 +1,44 @@
 const CotizacionDao = require('../data/CotizacionDao.js');
 const Cotizacion = require('../model/Cotizacion.js');
-const CotizacionServicioDao = require('../data/CotizacionServicioDao.js');
-const CotizacionServicio = require('../model/CotizacionServicio.js');
-
 
 class CotizacionService {
 
-    async crearCotizacion(data) {
+    async addCotizacion(data) {
         const { serie, id_usuario, cotizacion_servicios } = data;
         const nuevaCotizacion = new Cotizacion(null, serie, null, null, id_usuario, cotizacion_servicios);
-        const idCotizacion = await CotizacionDao.crearCotizacion(nuevaCotizacion);
+        const idCotizacion = await CotizacionDao.addCotizacion(nuevaCotizacion);
         return idCotizacion;
     }
 
-    async obtenerCotizacionPorId(id) {
-        const cotizacion = await CotizacionDao.consultarId(id);
+    async getCotizacionById(id) {
+        const cotizacion = await CotizacionDao.getCotizacionById(id);
         if (!cotizacion) {
             throw new Error('Cotización no encontrada');
         }
         return cotizacion;
     }
 
-
-    async obtenerCotizacionesPorUsuario(id_usuario) {
-        const cotizaciones = await CotizacionDao.obtenerCotizacionesUsuario(id_usuario);
+    async getCotizacionesbyUsuario(id_usuario) {
+        const cotizaciones = await CotizacionDao.getCotizacionesbyUsuario(id_usuario);
         if (cotizaciones.length === 0) {
             throw new Error('No se encontraron cotizaciones para el usuario');
         }
         return cotizaciones;
     }
 
-    async obtenerTodasLasCotizaciones() {
-        const cotizaciones = await CotizacionDao.obtenerTodos();
+    async getAllCotizaciones() {
+        const cotizaciones = await CotizacionDao.getAllCotizaciones();
         return cotizaciones;
     }
 
-    async eliminarCotizacion(id) {
-        const cotizacionExistente = await this.obtenerCotizacionPorId(id);
+    async deleteCotizacion(id) {
+        const cotizacionExistente = await this.getCotizacionById(id);
         if (!cotizacionExistente) {
             throw new Error('No se puede eliminar. Cotización no encontrada');
         }
-        await CotizacionDao.eliminar(id);
+        await CotizacionDao.deleteCotizacion(id);
     }
 
-    async agregarServicio(data) {
-        const cotizacionServicio = new CotizacionServicio(data.id_cotizacion, data.id_servicio, data.cantidad, null);
-        const idResultado = await CotizacionServicioDao.consultarId(data.id_cotizacion, data.id_servicio);
-        if (idResultado == null) {
-            await CotizacionServicioDao.crearCotizacionDetalle(cotizacionServicio);
-        } else {
-            await CotizacionServicioDao.actualizarCotizacionServicio(cotizacionServicio);
-        }
-
-    }
 }
 
 module.exports = new CotizacionService();
