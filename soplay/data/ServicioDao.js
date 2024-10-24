@@ -17,11 +17,14 @@ class ServicioDao {
                 [nombre, descripcion, precio]
             );
 
-            const servicioId = resultado.insertId;
-            for (const foto of fotos) {
-                foto.id_servicio = servicioId;
-                await FotoDao.addFoto(foto, connection);
+            if (fotos) {
+                const servicioId = resultado.insertId;
+                for (const foto of fotos) {
+                    foto.id_servicio = servicioId;
+                    await FotoDao.addFoto(foto, connection);
+                }
             }
+
 
             connection.commit();
             return resultado.insertId;

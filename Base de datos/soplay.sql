@@ -37,7 +37,7 @@ CREATE TABLE `cotizaciones` (
 
 CREATE TABLE `servicios` (
   `id_servicio` int(11) PRIMARY KEY auto_increment,
-  `nombre` varchar(80) NOT NULL,
+  `nombre` varchar(80) NOT NULL unique,
   `descripcion` varchar(255) NOT NULL,
   `precio` float NOT NULL
 );
@@ -46,16 +46,16 @@ CREATE TABLE `fotos` (
   `id_foto` int(11) PRIMARY KEY auto_increment,
   `ruta` varchar(400) NOT NULL,
   `id_servicio` int(11) NOT NULL,
-  FOREIGN KEY (`id_servicio`) REFERENCES `servicios`(`id_servicio`)
+  FOREIGN KEY (`id_servicio`) REFERENCES `servicios`(`id_servicio`) ON DELETE CASCADE
 );
 
 CREATE TABLE `cotizaciones_servicios` (
   `id_cotizacion` INT(11),
   `id_servicio` INT(11),
   `cantidad` int NOT NULL,
-  `sub_total` float not null,
+  `sub_total` float ,
   PRIMARY KEY (`id_cotizacion`,`id_servicio`),
-  FOREIGN KEY (`id_cotizacion`) REFERENCES `cotizaciones`(`id_cotizacion`),
+  FOREIGN KEY (`id_cotizacion`) REFERENCES `cotizaciones`(`id_cotizacion`) ON DELETE CASCADE,
   FOREIGN KEY (`id_servicio`) REFERENCES servicios(`id_servicio`)
 );
 
@@ -146,6 +146,10 @@ END;
 //
 
 DELIMITER ;
+
+INSERT INTO usuarios (correo, password, nombres, apellido_paterno, apellido_materno, fecha_nacimiento, tipo, sexo, telefono)
+VALUES ('encargado@gmail.com', 'password123', 'Daniel', 'López', 'López', '1985-05-15', 'ENCARGADO', 'MASCULINO', '555-123-4567');
+
 
 
 

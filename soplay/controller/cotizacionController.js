@@ -7,13 +7,13 @@ exports.addCotizacion = async (req, res) => {
         res.status(201).json({ id_cotizacion });
     } catch (error) {
         console.error(error);
-        res.status(500).json({ message: "No se pudo crear al usuario", error: error.message });
+        res.status(500).json({ message: "No se pudo crear la cotizacion", error: error.message });
     }
 };
 
 exports.getCotizacionById = async (req, res) => {
     try {
-        const id_cotizacion = parseInt(req.param.id);
+        const id_cotizacion = parseInt(req.params.id);
         if (isNaN(id_cotizacion)) {
             return res.status(400).json({ error: 'ID de la cotización no válido' });
         }
@@ -41,7 +41,7 @@ exports.getAllCotizaciones = async (req, res) => {
 
 exports.getAllCotizacionesByUsuario = async (req, res) => {
     try {
-        const id_usuario = parseInt(req.param.id_usuario);
+        const id_usuario = parseInt(req.params.id_usuario);
         const cotizaciones = await CotizacionServicio.getCotizacionesbyUsuario(id_usuario);
         res.json(cotizaciones);
     } catch (error) {
@@ -52,7 +52,7 @@ exports.getAllCotizacionesByUsuario = async (req, res) => {
 
 exports.deleteCotizacion = async (req, res) => {
     try {
-        const id_cotizacion = parseInt(req.param.id);
+        const id_cotizacion = parseInt(req.params.id);
         if (isNaN(id_cotizacion)) {
             return res.status(400).json({ error: 'ID de la cotización no válido' });
         }

@@ -15,7 +15,7 @@ class CotizacionDao {
             );
             for (const cotizacion_servicio of cotizacion_servicios) {
                 cotizacion_servicio.id_cotizacion = resultado.insertId;
-                CotizacionServicioDao.addCotizacionDetallada(cotizacion_servicio, connection);
+                CotizacionServicioDao.addCotizacionDetalladaCreate(cotizacion_servicio, connection);
             }
             await connection.commit();
             return resultado.insertId;
@@ -36,7 +36,10 @@ class CotizacionDao {
                 throw new Error('Cotización no encontrada');
             }
             const row = rows[0];
-            return new Cotizacion(row.id_cotizacion, row.serie, row.fecha_cotizacion, row.monto, row.id_usuario, null);
+
+            const cotizacion_servicios = await CotizacionServicioDao.getAllByCotizacionId(row.id_cotizacion);
+
+            return new Cotizacion(row.id_cotizacion, row.serie, row.fecha_cotizacion, row.monto, row.id_usuario, cotizacion_servicios);
         } catch (error) {
             console.error('Error al obtener cotización:', error);
             throw new Error('Error al obtener cotización');
@@ -69,7 +72,7 @@ class CotizacionDao {
 
             let cotizaciones = rows.map(row => new Cotizacion(row.id_cotizacion, row.serie, row.fecha_cotizacion, row.monto, row.id_usuario));
             for (const cotizacion of cotizaciones) {
-                const cotizacion_servicios = await CotizacionServicioDao.obtenerPorCotizacionId(cotizacion.id_cotizacion);
+                const cotizacion_servicios = await CotizacionServicioDao.getAllByCotizacionId(cotizacion.id_cotizacion);
                 cotizacion.cotizacion_servicios = cotizacion_servicios;
             }
             return cotizaciones;

@@ -1,5 +1,6 @@
 const express = require('express');
 const cookieParser = require('cookie-parser');
+const cors = require('cors');
 const app = express();
 const RUTA_BASE = '/api/v1';
 
@@ -11,6 +12,14 @@ app.use(express.json());
 
 // Configurar cookie-parser
 app.use(cookieParser());
+
+// Configurar CORS
+const corsOptions = {
+    origin: ['http://localhost:5500', 'http://127.0.0.1:5500'],
+    credentials: true, 
+    methods: '*', 
+};
+app.use(cors(corsOptions));
 
 // Midelware de rutas para la autenticacion
 const authRoutes = require('./routes/authRoutes.js');
