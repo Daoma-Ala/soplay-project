@@ -17,23 +17,9 @@ const errorHandler = require('./middlewares/errorHandler.js')
 app.use(errorHandler);
 
 // Rutas 
-<<<<<<< HEAD
 const usuarioRoutes = require('./routes/usuarioRoutes.js');
 const servicioRoutes = require('./routes/servicioRoutes.js');
 const direccionRoutes = require('./routes/direccionRoutes.js');
-=======
-const usuarioRoutes = require('./routes/usuario.js');
-const servicioRoutes = require('./routes/servicio.js');
-const direccionRoutes = require('./routes/direccion.js');
-const cotizacionRoutes = require('/routes/cotizacion.js');
-
-app.use('/api/v1/usuario', usuarioRoutes);
-app.use('/api/v1/servicio', servicioRoutes);
-app.use('/api/v1/direccion', direccionRoutes);
-app.use('/api/v1/cotizacion', cotizacionRoutes);
-
-// Midelware de rutas para la autenticacion
->>>>>>> fc3026c0e1277331c1ffc8c7f9d5c9fea7a45726
 
 app.use(`${RUTA_BASE}/usuario`, usuarioRoutes);
 app.use(`${RUTA_BASE}/servicio`, servicioRoutes);
