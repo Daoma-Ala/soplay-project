@@ -19,8 +19,8 @@ exports.login = async (req, res) => {
             maxAge: 3600000
         });
 
-        res.json({ message: 'Usuario autenticado', id_usuario: data.id_usuario });
-        //console.log(token);
+        res.status(201).json({ message: 'Usuario autenticado', id_usuario: data.id_usuario });
+        console.log(token);
     } catch (error) {
         console.error(error);
         res.status(500).json({ message: "No se pudo loguear el usuario", error: error.message });
@@ -40,7 +40,7 @@ exports.register = async (req, res) => {
             maxAge: 3600000
         });
 
-        res.json({ message: 'Usuario autenticado', id_usuario });
+        res.status(201).json({ message: 'Usuario autenticado', id_usuario });
     } catch (error) {
         console.error(error);
         res.status(500).json({ message: "No se pudo registar el usuario", error: error.message });

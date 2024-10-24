@@ -11,7 +11,7 @@ exports.getDireccionById = async (req, res) => {
         if (!direccion) {
             return res.status(404).json({ error: 'Dirección no encontrada' });
         }
-        res.json(direccion);
+        res.status(200).json(direccion);
     } catch (error) {
         console.error(error);
         res.status(500).json({ message: "No se pudo obtener la dirección", error: error.message });

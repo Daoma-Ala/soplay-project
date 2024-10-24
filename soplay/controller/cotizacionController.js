@@ -15,14 +15,14 @@ exports.getCotizacionById = async (req, res) => {
     try {
         const id_cotizacion = parseInt(req.params.id);
         if (isNaN(id_cotizacion)) {
-            return res.status(400).json({ error: 'ID de la cotización no válido' });
+            return res.status(400).json({ error: 'ID de la cotización no es válido' });
         }
         const cotizacion = await CotizacionServicio.getCotizacionById(id_cotizacion);
 
         if (!cotizacion) {
             return res.status(404).json({ error: 'Cotización no encontrada' })
         }
-        res.json(cotizacion);
+        res.status(201).json(cotizacion);
     } catch (error) {
         console.error(error);
         res.status(500).json({ message: "No se pudo obtener a la cotización", error: error.message });
@@ -32,7 +32,7 @@ exports.getCotizacionById = async (req, res) => {
 exports.getAllCotizaciones = async (req, res) => {
     try {
         const cotizaciones = await CotizacionServicio.getAllCotizaciones();
-        res.json(cotizaciones);
+        res.status(201).json(cotizaciones);
     } catch (error) {
         console.error(error);
         res.status(500).json({ message: "No se puede consultar todas las cotizaciones" });
@@ -43,7 +43,7 @@ exports.getAllCotizacionesByUsuario = async (req, res) => {
     try {
         const id_usuario = parseInt(req.params.id_usuario);
         const cotizaciones = await CotizacionServicio.getCotizacionesbyUsuario(id_usuario);
-        res.json(cotizaciones);
+        res.status(201).json(cotizaciones);
     } catch (error) {
         console.error(error);
         res.status(500).json({ message: "No se puede consultar todas las cotizaciones por usuario" });

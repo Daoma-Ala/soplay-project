@@ -32,7 +32,7 @@ exports.getServicioById = async (req, res) => {
         if (!servicio) {
             return res.status(404).json({ error: 'Servicio no encontrado' });
         }
-        res.json(servicio);
+        res.status(200).json(servicio);
     } catch (error) {
         console.error(error);
         res.status(500).json({ message: "No se pudo obtener el servicio", error: error.message });
