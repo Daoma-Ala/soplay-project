@@ -9,6 +9,7 @@ exports.login = async (req, res) => {
                 { error: "El correo y la contraseña son obligatorios" }
             )
         }
+        
         const data = await UsuarioService.loginUsuario(correo, password);
         const token = tokenService.generateToken(data.id_usuario, data.tipo);
 

@@ -9,7 +9,7 @@ CREATE TABLE `usuarios` (
   `apellido_paterno` varchar(50) NOT NULL,
   `apellido_materno` varchar(50) NOT NULL,
   `fecha_nacimiento` date NOT NULL,
-  `tipo` ENUM('CLIENTE', 'ENCARGADO') NOT NULL,
+  `tipo` ENUM('CLIENTE', 'ENCARGADO') NOT NULL DEFAULT 'CLIENTE',
   `sexo` ENUM('MASCULINO', 'FEMENINO', 'OTRO') NOT NULL,
   `telefono` varchar(20) NOT NULL
 );
@@ -28,9 +28,10 @@ CREATE TABLE `direccion` (
 
 CREATE TABLE `cotizaciones` (
   `id_cotizacion` int(11) primary key auto_increment,
-  `serie` varchar(150) NOT NULL unique,
+  `serie` varchar(150) unique,
   `fecha_cotizacion` datetime NOT NULL DEFAULT current_timestamp,
   `monto` float,
+  `estatus` ENUM('PENDIENTE', 'APROBADA', 'RECHAZADA', 'BORRADOR') NOT NULL DEFAULT 'BORRADOR',
   `id_usuario` int(11) ,
   FOREIGN KEY (`id_usuario`) REFERENCES `usuarios`(`id_usuario`) ON delete set null
 );
@@ -144,6 +145,25 @@ BEGIN
 END;
 
 //
+
+CREATE TRIGGER before_insert_cotizacion
+BEFORE INSERT ON cotizaciones
+FOR EACH ROW
+BEGIN
+    DECLARE random_letter1 CHAR(1);
+    DECLARE random_letter2 CHAR(1);
+    DECLARE random_number INT;
+
+    -- Generar dos letras aleatorias
+    SET random_letter1 = CHAR(FLOOR(65 + (RAND() * 26))); -- A-Z
+    SET random_letter2 = CHAR(FLOOR(65 + (RAND() * 26))); -- A-Z
+
+    -- Generar un número aleatorio de 4 dígitos
+    SET random_number = FLOOR(1000 + (RAND() * 9000)); -- 1000-9999
+
+    -- Concatenar para formar la serie
+    SET NEW.serie = CONCAT(random_letter1, random_letter2, random_number, random_letter1);
+END//
 
 DELIMITER ;
 

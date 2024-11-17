@@ -7,8 +7,8 @@ class CotizacionDetalladaService {
     async addCotizacionDetallada(data) {
         const { id_cotizacion, id_servicio, cantidad } = data;
         const cotizacionServicio = new CotizacionServicio(id_cotizacion, id_servicio, cantidad, null);
-        const idResultado = await CotizacionServicioDao.getCotizacionDetalladaById(data.id_cotizacion, data.id_servicio);
-        if (idResultado == null) {
+        const idResultado = await CotizacionServicioDao.getCotizacionDetalladaById(id_cotizacion, id_servicio);
+        if (idResultado === null) {
             await CotizacionServicioDao.addCotizacionDetallada(cotizacionServicio);
         } else {
             await CotizacionServicioDao.updateCotizacionDetallada(cotizacionServicio);
