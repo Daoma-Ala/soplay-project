@@ -1,6 +1,7 @@
 const express = require('express');
 const cookieParser = require('cookie-parser');
 const cors = require('cors');
+const path = require('path');
 const app = express();
 const RUTA_BASE = '/api/v1';
 
@@ -12,6 +13,9 @@ app.use(express.json());
 
 // Configurar cookie-parser
 app.use(cookieParser());
+
+// Asegurar que las fotos sean accesibles
+app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
 
 // Configurar CORS
 const corsOptions = {

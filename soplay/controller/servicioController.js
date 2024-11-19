@@ -1,4 +1,6 @@
 const ServicioService = require('../service/ServicioService.js');
+const fs = require('fs').promises; 
+const path = require('path');
 
 exports.getAllServicios = async (req, res) => {
     try {
@@ -13,6 +15,7 @@ exports.getAllServicios = async (req, res) => {
 exports.addServicio = async (req, res) => {
     try {
         const servicioData = req.body;
+        servicioData.foto = req.file.path;
         const id_servicio = await ServicioService.addServicio(servicioData);
         res.status(201).json({ id_servicio });
     } catch (error) {
@@ -59,6 +62,19 @@ exports.deleteServicio = async (req, res) => {
         const id_servicio = parseInt(req.params.id);
         if (isNaN(id_servicio)) {
             return res.status(400).json({ error: 'ID del servicio no válido' });
+        }
+        const servicio = await ServicioService.getServicioById(id_servicio);
+
+        if(!servicio){
+            return res.status(404).json({ error: 'Servicio no encontrado' });
+        }
+        console.log(servicio);
+        // Si tiene foto el servicio desde la base de datos
+        if (servicio.foto) {
+            const fotoPath = path.resolve(servicio.foto.ruta); // se extrae la ruta completa
+            await fs.unlink(fotoPath).catch((err) => {
+                console.error('Error al eliminar la foto:', err.message);
+            });
         }
         await ServicioService.deleteServicio(id_servicio);
         res.status(201).json({ message: 'Servicio eliminado' });

@@ -154,14 +154,10 @@ BEGIN
     DECLARE random_letter2 CHAR(1);
     DECLARE random_number INT;
 
-    -- Generar dos letras aleatorias
-    SET random_letter1 = CHAR(FLOOR(65 + (RAND() * 26))); -- A-Z
-    SET random_letter2 = CHAR(FLOOR(65 + (RAND() * 26))); -- A-Z
+    SET random_letter1 = CHAR(FLOOR(65 + (RAND() * 26))); 
+    SET random_letter2 = CHAR(FLOOR(65 + (RAND() * 26))); 
 
-    -- Generar un número aleatorio de 4 dígitos
-    SET random_number = FLOOR(1000 + (RAND() * 9000)); -- 1000-9999
-
-    -- Concatenar para formar la serie
+    SET random_number = FLOOR(1000 + (RAND() * 9000)); 
     SET NEW.serie = CONCAT(random_letter1, random_letter2, random_number, random_letter1);
 END//
 

@@ -62,11 +62,12 @@ class FotoDao {
         }
     }
 
-    async getFotos_servicio(id_servicio) {
+    async getFoto_servicio(id_servicio) {
         const connection = await createConnection();
         try {
             const [rows] = await connection.query('SELECT * FROM fotos WHERE id_servicio = ?', [id_servicio]);
-            return rows.map(row => new Foto(row.id_foto, row.ruta, row.id_servicio));
+            const row = rows[0];
+            return row;
         } catch (error) {
             console.error('Error al obtener fotos por servicio:', error);
             throw new Error('Error al obtener fotos por servicio');

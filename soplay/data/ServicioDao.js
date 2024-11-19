@@ -8,23 +8,17 @@ class ServicioDao {
     async addServicio(servicio) {
         const connection = await createConnection();
         try {
-
             connection.beginTransaction();
-            const { nombre, descripcion, precio, fotos } = servicio;
+            const { nombre, descripcion, precio, foto } = servicio;
 
             const [resultado] = await connection.query(
                 'INSERT INTO servicios (nombre, descripcion, precio) VALUES (?, ?, ?)',
                 [nombre, descripcion, precio]
             );
-
-            if (fotos) {
+            if (foto) {
                 const servicioId = resultado.insertId;
-                for (const foto of fotos) {
-                    foto.id_servicio = servicioId;
-                    await FotoDao.addFoto(foto, connection);
-                }
+                    await FotoDao.addFoto({ ruta: foto, id_servicio: servicioId }, connection);
             }
-
 
             connection.commit();
             return resultado.insertId;

@@ -1,5 +1,6 @@
 const ServicioDao = require('../data/ServicioDao.js');
 const Servicio = require('../model/Servicio.js');
+const FotoDao = require('../data/FotoDao.js');
 
 class ServicioService {
 
@@ -14,8 +15,8 @@ class ServicioService {
 
     async addServicio(servicio) {
         try {
-            const { nombre, descripcion, precio, fotos } = servicio;
-            const nuevoServicio = new Servicio(null, nombre, descripcion, precio, fotos);
+            const { nombre, descripcion, precio, foto } = servicio;
+            const nuevoServicio = new Servicio(null, nombre, descripcion, precio, foto);
             const id_servicio = await ServicioDao.addServicio(nuevoServicio);
             return id_servicio;
         } catch (error) {
@@ -27,6 +28,8 @@ class ServicioService {
     async getServicioById(id_servicio) {
         try {
             const servicio = await ServicioDao.getServicioById(id_servicio);
+            const foto = await FotoDao.getFoto_servicio(id_servicio);
+            servicio.foto= foto;
             return servicio;
         } catch (error) {
             console.error('Error al consultar servicio:', error.message);
