@@ -3,7 +3,7 @@ const Foto = require('../model/Foto.js');
 
 class FotoDao {
 
-    async crearFoto(foto, connection) {
+    async addFoto(foto, connection) {
         try {
             const { ruta, id_servicio } = foto;
             const [resultado] = await connection.query(
@@ -14,10 +14,10 @@ class FotoDao {
         } catch (error) {
             console.error('Error al crear foto:', error);
             throw new Error('Error al crear foto');
-        } 
+        }
     }
 
-    async consultarId(id) {
+    async getFotobyId(id) {
         const connection = await createConnection();
         try {
             const [rows] = await connection.query('SELECT * FROM fotos WHERE id_foto = ?', [id]);
@@ -34,7 +34,7 @@ class FotoDao {
         }
     }
 
-    async actualizar(foto) {
+    async updateFoto(foto) {
         const connection = await createConnection();
         try {
             const { id_foto, ruta, id_servicio } = foto;
@@ -50,7 +50,7 @@ class FotoDao {
         }
     }
 
-    async eliminar(id) {
+    async deleteFoto(id) {
         const connection = await createConnection();
         try {
             await connection.query('DELETE FROM fotos WHERE id_foto = ?', [id]);
@@ -62,11 +62,12 @@ class FotoDao {
         }
     }
 
-    async obtenerFotosServicio(id_servicio) {
+    async getFoto_servicio(id_servicio) {
         const connection = await createConnection();
         try {
             const [rows] = await connection.query('SELECT * FROM fotos WHERE id_servicio = ?', [id_servicio]);
-            return rows.map(row => new Foto(row.id_foto, row.ruta, row.id_servicio));
+            const row = rows[0];
+            return row;
         } catch (error) {
             console.error('Error al obtener fotos por servicio:', error);
             throw new Error('Error al obtener fotos por servicio');

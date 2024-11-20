@@ -3,10 +3,10 @@ const UsuarioServicio = require('../service/UsuarioService.js');
 exports.getAllUsuarios = async (req, res) => {
     try {
         const usaurios = await UsuarioServicio.getAllUsuarios();
-        res.json(usaurios);
+        res.status(200).json(usaurios);
     } catch (error) {
         console.error(error);
-        res.status(500).json({ messgae: "No se pudo consultar todos los usuarios", error: error.message });
+        res.status(500).json({ message: "No se pudo consultar todos los usuarios", error: error.message });
     }
 };
 
@@ -32,10 +32,10 @@ exports.getUsuarioById = async (req, res) => {
         if (!usuario) {
             return res.status(404).json({ error: 'usuario no encontrado' });
         }
-        res.json(usuario);
+        res.status(200).json(usuario);
     } catch (error) {
         console.error(error);
-        res.status(500).json({ messgae: "No se pudo obtener al usuario", error: error.message });
+        res.status(500).json({ message: "No se pudo obtener al usuario", error: error.message });
     }
 };
 
@@ -47,10 +47,10 @@ exports.updateUsuario = async (req, res) => {
         }
         const usuarioData = req.body;
         await UsuarioServicio.updateUsuario(id_usuario, usuarioData);
-        res.status(201).json({ message: 'Usuario actualizado' });
+        res.status(200).json({ message: 'Usuario actualizado' });
     } catch (error) {
         console.error(error);
-        res.status(500).json({ messgae: "No se pudo actualizar el usuario", error: error.message });
+        res.status(500).json({ message: "No se pudo actualizar el usuario", error: error.message });
     }
 };
 
@@ -61,10 +61,10 @@ exports.deleteUsuario = async (req, res) => {
             return res.status(400).json({ error: 'ID del Usuario no válido' });
         }
         await UsuarioServicio.deleteUsuario(id_usuario);
-        res.status(201).json({ message: 'Usuario eliminado' });
+        res.status(200).json({ message: 'Usuario eliminado' });
     } catch (error) {
         console.error(error);
-        res.status(500).json({ messgae: "No se pudo eliminar el usuario", error: error.message });
+        res.status(500).json({ message: "No se pudo eliminar el usuario", error: error.message });
     }
 };
 
