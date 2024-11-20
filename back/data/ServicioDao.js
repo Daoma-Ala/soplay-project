@@ -1,7 +1,7 @@
 const createConnection = require('../config/conexion.js');
 const Servicio = require('../model/Servicio.js');
 const Foto = require('../model/Foto.js');
-const FotoDao = require('../data/FotoDao.js');
+const FotoDao = require('./FotoDao.js');
 
 class ServicioDao {
 

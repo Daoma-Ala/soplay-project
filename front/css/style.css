@@ -68,7 +68,10 @@ body.disablescroll {
 
 
 
+<<<<<<< HEAD:front/css/style.css
 /* -- HEADER CSS CODE -- */
+=======
+>>>>>>> 98d58f11071505e0dfa0d0d0daeef6da471d07a4:soplay/style.css
 header {
     position: fixed;
     width: 100%;
@@ -77,11 +80,20 @@ header {
     top: 0;
     z-index: 3;
     transition: all 0.5s ease-in-out;
+<<<<<<< HEAD:front/css/style.css
     border-bottom: 1px solid rgba(0, 0, 0, 0);
 }
 
 header.fixed {
     background: #fff;
+=======
+    border-bottom: 1px solid rgba(0,0,0,0);
+    background: #ccc; 
+}
+
+header.fixed {
+    background: #ccc;
+>>>>>>> 98d58f11071505e0dfa0d0d0daeef6da471d07a4:soplay/style.css
     border-bottom: 1px solid #eee;
     height: 170px;
 }
@@ -91,10 +103,16 @@ header .container {
     height: 100%;
 }
 
+<<<<<<< HEAD:front/css/style.css
 
 .header_default {
     float: left;
     width: 100%;
+=======
+.header_default {
+    float:left;
+    width:100%;
+>>>>>>> 98d58f11071505e0dfa0d0d0daeef6da471d07a4:soplay/style.css
     height: 100%;
     position: relative;
     margin: 0 0 0 0;
@@ -104,7 +122,10 @@ header .container {
     justify-content: space-between;
 }
 
+<<<<<<< HEAD:front/css/style.css
 
+=======
+>>>>>>> 98d58f11071505e0dfa0d0d0daeef6da471d07a4:soplay/style.css
 .site-branding {
     display: flex;
 }
@@ -121,11 +142,8 @@ header .container {
     float: left;
     max-width: 110px;
     height: auto;
-    margin: 0 0 0 0;
+    margin: 0;
     transition: max-width 0.4s ease-in-out;
-    flex: 1;
-    display: flex;
-    align-items: center;
 }
 
 .site-branding a.logo img.logo-2 {
@@ -145,7 +163,11 @@ header.fixed .site-branding a.logo img.logo-1 {
 }
 
 .site-branding a.logo h3 {
+<<<<<<< HEAD:front/css/style.css
     text-align: left;
+=======
+    text-align:left;
+>>>>>>> 98d58f11071505e0dfa0d0d0daeef6da471d07a4:soplay/style.css
     color: #000;
     font-size: 27px;
     font-family: 'Arial';
@@ -158,6 +180,7 @@ header.fixed .site-branding a.logo img.logo-1 {
     margin-left: 10px;
 }
 
+<<<<<<< HEAD:front/css/style.css
 
 .site-navwrap {
     /*flex-grow: 1;*/
@@ -165,6 +188,11 @@ header.fixed .site-branding a.logo img.logo-1 {
 }
 
 
+=======
+.site-navwrap {
+}
+
+>>>>>>> 98d58f11071505e0dfa0d0d0daeef6da471d07a4:soplay/style.css
 .navicons {
     display: none;
 }
@@ -184,7 +212,12 @@ header.fixed .site-branding a.logo img.logo-1 {
     transition: top 0.5s ease;
 }
 
+<<<<<<< HEAD:front/css/style.css
 .navicons a.navshow span {}
+=======
+.navicons a.navshow span {
+}
+>>>>>>> 98d58f11071505e0dfa0d0d0daeef6da471d07a4:soplay/style.css
 
 .navicons a.navhide {
     position: fixed;
@@ -206,19 +239,35 @@ header.fixed .site-branding a.logo img.logo-1 {
     justify-content: center;
 }
 
+<<<<<<< HEAD:front/css/style.css
 
 
 .sitenav {}
 
 .navwrap {}
+=======
+.sitenav {
+}
+
+.navwrap {
+}
+>>>>>>> 98d58f11071505e0dfa0d0d0daeef6da471d07a4:soplay/style.css
 
 .navouter {
     display: flex;
 }
 
+<<<<<<< HEAD:front/css/style.css
 nav.headermenu {}
 
 nav.headermenu ul {}
+=======
+nav.headermenu {
+}
+
+nav.headermenu ul {
+}
+>>>>>>> 98d58f11071505e0dfa0d0d0daeef6da471d07a4:soplay/style.css
 
 nav.headermenu ul li {
     float: left;
@@ -247,6 +296,7 @@ header.fixed nav.headermenu ul li a {
 }
 
 nav.headermenu ul li.active a {
+<<<<<<< HEAD:front/css/style.css
     background: #4ca24b;
     color: #fff !important;
 }
@@ -255,6 +305,14 @@ nav.headermenu ul li.active a {
 
 
 
+=======
+    background: #ccc;
+    color: #000000 !important;
+    border: none;
+    border-bottom: 2px solid #0008a3;
+}
+
+>>>>>>> 98d58f11071505e0dfa0d0d0daeef6da471d07a4:soplay/style.css
 .contact-info {
     float: right;
     height: auto;
@@ -295,7 +353,11 @@ nav.headermenu ul li.active a {
 }
 
 .contact-info a i {
+<<<<<<< HEAD:front/css/style.css
     color: #0008a3;
+=======
+    color:  #0008a3;
+>>>>>>> 98d58f11071505e0dfa0d0d0daeef6da471d07a4:soplay/style.css
     margin-right: 5px;
 }
 
@@ -303,7 +365,74 @@ header.fixed .contact-info a {
     color: #000;
 }
 
+<<<<<<< HEAD:front/css/style.css
 /* -- HEADER CSS ENDS -- */
+=======
+
+
+/* -- BANNER -- */
+.banner {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 500px;
+    margin: 0;
+    background-size: cover;
+    position: relative;
+    z-index: 1;
+    padding: 0;
+}
+
+.banner:before {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: #ffffff;
+    left: 0;
+    top: 0;
+    z-index: -1;
+    content: '';
+}
+
+.bannercontent {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    margin-top: 50px; /
+}
+
+.bannercontent .text h3 {
+    color: #000000;
+    font-size: 32px;
+    font-family: 'Poppins', sans-serif;
+    font-weight: normal;
+    margin-bottom: 20px;
+}
+
+.bannercontent .text h2 {
+    color: #000000;
+    font-size: 60px;
+    line-height: 1.1;
+    font-family: 'Poppins', sans-serif;
+    font-weight: bold;
+    margin-bottom: 25px;
+}
+
+.bannercontent .text p {
+    color: #000000;
+    font-size: 20px;
+    line-height: 1.6;
+    font-family: 'Poppins', sans-serif;
+}
+
+.bannercontent .text p u {
+    font-weight: bold;
+    color: #ffc818;
+}
+
+>>>>>>> 98d58f11071505e0dfa0d0d0daeef6da471d07a4:soplay/style.css
 
 
 /* -- CONTACT STARTS -- */
@@ -373,7 +502,12 @@ input[type="password"] {
 .contactform form input[type="text"],
 .contactform form input[type="email"],
 .contactform form input[type="password"],
+<<<<<<< HEAD:front/css/style.css
 .contactform form textarea {
+=======
+.contactform form input[type="number"],
+.contactform form textarea{
+>>>>>>> 98d58f11071505e0dfa0d0d0daeef6da471d07a4:soplay/style.css
     float:left;
     width:45%;
     height:60px ;
@@ -435,6 +569,258 @@ input[type="password"] {
 
 /* -- CONTACT ENDS -- */
 
+
+/* -- ABOUT CSS STARTS -- */
+.about{
+    float:left;
+    width:100%;
+    margin:0 0 0 0;
+    padding:100px 0;
+}
+.about .contentinline{
+    display: flex;
+    justify-content: space-between;
+    flex-direction: row-reverse;
+}
+.about .imagearea{
+    width: 50%;
+    margin: 0 0 0 0;
+    overflow:hidden;
+}
+.about .imagearea img{
+    float: left;
+    width: 100%;
+    height: auto;
+    aspect-ratio: 2/1.75;
+    object-fit: cover;
+    object-position: center;
+}
+.about .text{
+    width: 45%;
+    margin: 0 0 0 0;
+}
+.about .text h3{
+    text-align:left;
+    color:#000;
+    font-size:60px;
+    font-family:'Poppins';
+    margin-bottom: 10px;
+    margin-top: 0px;
+}
+.about .text h4{
+    text-align:left;
+    color: #4ca24b;
+    font-size:30px;
+    font-family:'Poppins';
+    font-weight: normal;
+    font-style: normal;
+    margin-bottom: 30px;
+    position: relative;
+}
+.about .text p{
+    text-align:left;
+    color:#000;
+    font-size:18px;
+    line-height: 170%;
+    font-family:'Poppins';
+    margin-bottom: 20px;
+}
+.about .text ul{
+    list-style: disc;
+    padding-left: 18px;
+}
+.about .text ul li{
+    text-align:left;
+    color:#000;
+    font-size:18px;
+    font-family:'Poppins';
+    margin-bottom: 3px;
+}
+/* -- ABOUT CSS ENDS -- */
+
+
+/* -- SERVICES STARTS -- */
+.services{
+    float:left;
+    width:100%;
+    margin:0 0 0 0;
+    padding:100px 0 50px 0;
+    position: relative;
+}
+.services:before{
+    position:absolute;
+    width:200px;
+    height:1px;
+    background:#ccc;
+    left:0;
+    right:0;
+    top:0;
+    content:'';
+    margin:0 auto 0 auto;
+}
+.services h3{
+    text-align:center;
+    color:#000;
+    font-size:90px;
+    font-family:'Poppins';
+    margin-bottom: 10px;
+}
+.services h4{
+    text-align:center;
+    color: #4ca24b;
+    font-size:21px;
+    font-family:'Poppins';
+    font-weight: normal;
+    font-style: normal;
+    margin-bottom: 30px;
+    position: relative;
+}
+.services_wrap{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    margin-top: 65px;
+}
+.services_wrap .item{
+    flex-basis: 30%;
+    margin-bottom: 60px;
+}
+.services_wrap .item img{
+    float: left;
+    width: 100%;
+    height: auto;
+    aspect-ratio: 1.2/1;
+    object-fit: cover;
+    margin-bottom: 10px;
+}
+.services .item h6{
+    text-align:center;
+    color: #4ca24b;
+    font-size:12px;
+    font-family:'Poppins';
+    margin-bottom: 15px;
+    text-transform: uppercase;
+    font-weight: 300;
+}
+.services_wrap .item h5{
+    text-align:center;
+    color:#000;
+    font-size:21px;
+    font-family:'Poppins';
+    font-weight: 500;
+    margin-bottom: 12px;
+}
+.services_wrap .item p{
+    text-align:center;
+    color:#000000;
+    font-size:15px;
+    font-family:'Poppins';
+    font-style: italic;
+    margin-bottom: 10px;
+}
+
+.services_wrap .item form input[type="text"],
+.services_wrap form textarea{
+    text-align: center;
+    background: #fff;
+    border: none;
+    color:#111;
+    font-size:15px;
+    font-family:'Poppins';
+    padding: 2px 0px;
+    margin: auto;
+    display: block;
+    border: 1px solid grey;
+}
+.contactform .item form textarea{
+    text-align: center;
+    margin: auto;
+    display: block;
+}
+
+.services_wrap form input[type="submit"]{
+    text-align: center;
+    padding: 10px 25px;
+    color:#fff;
+    font-size:15px;
+    font-family:'Poppins';
+    font-style: italic;
+    cursor: pointer;
+    background: #4ca24b;
+    margin: auto;
+    display: block;
+}
+
+.services_wrap form input[type="submit"]:hover {
+    background-color: #48663c;
+}
+/* -- SERVICES ENDS -- */
+
+/* -- CARRITO STARTS-- */
+body{
+    margin-top:200px;
+    background: white;
+}
+.ui-w-40 {
+    width: 40px !important;
+    height: auto;
+}
+
+.card{
+    box-shadow: 0 1px 15px 1px rgba(52,40,104,.08);   
+    background: #a4ceac;
+    color:#000;
+    font-family:'Poppins';
+    margin-top: 100px;
+}
+
+.my-custom-margin {
+    margin-top: 70px; 
+    margin-bottom: 30px; 
+}
+
+.ui-product-color {
+    display: inline-block;
+    overflow: hidden;
+    margin: .144em;
+    width: .875rem;
+    height: .875rem;
+    border-radius: 5rem;
+    -webkit-box-shadow: 0 0 0 1px rgba(0,0,0,0.15) inset;
+    box-shadow: 0 0 0 1px rgba(0,0,0,0.15) inset;
+    vertical-align: middle;
+    
+}
+/* -- CARRITO ENDS-- */
+
+
+
+/* -- MAP AREA STARTS -- */
+.maparea{
+    float:left;
+    width:100%;
+    margin:0 0 0 0;
+    padding:0 0 0 0;
+    position: relative;
+}
+.maparea .mapheading{
+    float:left;
+    width:100%;
+    margin:0 0 0 0;
+    padding:40px 0;
+    background: #0008a3;
+    text-align:left;
+    color:#fff;
+    font-size:36px;
+    font-family:'Poppins';
+}
+.maparea iframe{
+    float:left;
+    width:100%;
+    height: 600px;
+    position: relative;
+}
+/* -- MAP AREA ENDS -- */
 
 
 /* -- FOOTER STARTS -- */

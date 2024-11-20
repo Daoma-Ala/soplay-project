@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+
+    <title> Soplay </title>
+
+    <link rel="icon" type="image/png" href="./img/soplay-logo.jpg">
+
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&display=swap"
+        rel="stylesheet">
+
+
+    <!-- FONT ICONS -->
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="style-responsive.css">
+
+
+</head>
+
+<body>
+    <header>
+        <div class="container psr">
+
+            <div class="header_default">
+
+
+                <div class="site-branding">
+                    <a href="index.jsp" class="logo">
+                        <img src="img/soplay-logo.png" alt="" class="logo-1">
+                        <img src="img/soplay-logo.png" alt="" class="logo-2">
+                    </a>
+                </div>
+
+
+                <div class="header-right">
+
+
+                    <div class="site-navwrap">
+                        <div class="navicons">
+                            <a href="javascript:void;" class="navshow">
+                                <span class="lnr lnr-menu"></span>
+                            </a>
+                            <a href="javascript:void;" class="navhide">
+                                <span class="lnr lnr-cross"></span>
+                            </a>
+                        </div>
+
+                        <div class="sitenav" id="sitenav">
+                            <div class="navwrap">
+                                <div class="navouter">
+
+
+                                    <nav class="headermenu leftmenu" id="headnav" role="navigation">
+                                        <ul>
+                                            <li><a href="cotizacion.html">Cotización</a></li>
+                                            <li class="active"><a>Inicio</a></li>
+                                        </ul>
+                                    </nav>
+
+                                </div>
+                            </div>
+                        </div>
+                        <!--sitenav-->
+                    </div>
+                    <!--site-navwrap-->
+
+
+                </div>
+
+
+
+            </div>
+            <!--header_default-->
+
+        </div>
+    </header>
+    <!-- HEADER -->
+
+    <section class="services" id="services">
+        <div class="container">
+
+            <h3>Servicios</h3>
+
+            <div class="services_wrap">
+
+
+                <div class="item">
+                    <h5>SOLDADURA DE BINS</h5>
+                    <h6>Pláticos</h6>
+                    <img src="img/bins.jpg" alt="">
+                    <p>Costo: $500</p>
+                    <form action="RegistrarArticulo" method="post">                                
+                        <input type="hidden" name="id_producto" value="1">
+                        <input type="text" name="cantidad" placeholder="Cantidad*" required>
+                        <br clear="all" />
+                        <!-- <input type="submit" value="Agregar a la cotización"> -->
+                        <div class = "card-footer text-center">
+                            <div>
+                                <a href="Controlador?accion=AgregarCarrito&id=${p.getId()}" class = "btn btn-outline-info">Agregar a cotización</a>                                
+                            </div>
+                        </div>
+                    </form>
+                </div>
+
+
+                <div class="item">
+                    <h5>ENTOMATADAS (3 piezas)</h5>
+                    <h6>Antojitos</h6>
+                    <img src="images/entomatadas.jpg" alt="">
+                    <p>Rellenas de Panela</p>
+                    <p>Precio: $100</p>
+                    <form action="RegistrarArticulo" method="post">                                
+                        <input type="hidden" name="id_producto" value="2">
+                        <input type="text" name="cantidad" placeholder="Cantidad*" required>
+                        <br clear="all" />
+                        <div class = "card-footer text-center">
+                            <div>
+                                <a href="" class = "btn btn-outline-info">Agregar a Carrito</a>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+
+
+                <div class="item">
+                    <h5>FLAUTA</h5>
+                    <h6>Antojitos</h6>
+                    <img src="images/flautas.jpg" alt="">
+                    <p>Relleno de Papa y Carne</p>
+                    <p>Precio: $38</p>
+                    <form action="RegistrarArticulo" method="post">                                
+                        <input type="hidden" name="id_producto" value="3">
+                        <input type="text" name="cantidad" placeholder="Cantidad*" required>
+                        <br clear="all" />
+                        <div class = "card-footer text-center">
+                            <div>
+                                <a href="" class = "btn btn-outline-info">Agregar a Carrito</a>
+                                <a href="" class = "btn btn-danger">Comprar</a>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+
+
+
+                <div class="item">
+                    <h5>ENCHILADAS ROJAS (3 piezas)</h5>
+                    <h6>Antojitos</h6>
+                    <img src="images/enchiladas.jpg" alt="">
+                    <p>Rellenas de Panela</p>
+                    <p>Precio: $100</p>
+                    <form action="RegistrarArticulo" method="post">                                
+                        <input type="hidden" name="id_producto" value="4">
+                        <input type="text" name="cantidad" placeholder="Cantidad*" required>
+                        <br clear="all" />
+                        <div class = "card-footer text-center">
+                            <div>
+                                <a href="" class = "btn btn-outline-info">Agregar a Carrito</a>
+                                <a href="" class = "btn btn-danger">Comprar</a>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+
+
+
+
+
+    <footer>
+        <div class="container">
+
+
+            <div class="copyright">
+                Copyright &copy; <span id="copyrightyear"></span> Equipo Web Emergentes
+            </div>
+
+        </div>
+    </footer>
+    <!-- FOOTER -->
