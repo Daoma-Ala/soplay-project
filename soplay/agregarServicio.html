@@ -62,7 +62,7 @@
                                     <nav class="headermenu leftmenu" id="headnav" role="navigation">
                                         <ul>
                                             <li><a href="iniciarSesion.html">Iniciar sesión</a></li>
-											<li class="active"><a>Registrarme</a></li>
+                                            <li class="active"><a>Registrarme</a></li>
                                             <li><a href="index.html">Inicio</a></li>
                                         </ul>
                                     </nav>
@@ -89,48 +89,29 @@
     <section class="contactsection" id="contact">
         <div class="container">
 
-            <h3>Registrate</h3>
+            <h3>Registrar nuevo servicio</h3>
 
 
             <div class="contactform">
 
-                <form id="registrar" action="nuevousuario" method="post" <!-- onsubmit="return validateForm()" -->
-                    <input type="text" name="nombres" placeholder="Nombres*" required>
+                <form id="registrar" action="nuevoservicio" method="post" enctype="multipart/form-data">
+                    <input type="text" name="nombre" placeholder="Nombre*" required>
                     <br clear="all" />
                     <br clear="all" />
-                    <input type="text" name="apellidoPaterno" placeholder="Apellido paterno*" required>
+                    <input type="text" name="descripcion" placeholder="Descripción*" required>
                     <br clear="all" />
                     <br clear="all" />
-                    <input type="text" name="apellidoMaterno" placeholder="Apellido materno*" required>
+                    <input type="number" name="precio" placeholder="Precio*" required>
                     <br clear="all" />
                     <br clear="all" />
-                    <input type="text" name="fechaNacimiento" placeholder="Fecha de nacimiento*" required>
+                    <input type="file" name="imagen" accept="image/*" required>
                     <br clear="all" />
                     <br clear="all" />
-                    <input type="text" name="telefono" placeholder="Numero de telefono*" required>
-                    <br clear="all" />
-                    <br clear="all" />
-                    <input type="text" name="correo " placeholder="Email*" required>
-                    <br clear="all" />
-                    <br clear="all" />
-                    <input type="password" name="contrasena" placeholder="Contraseña*" required>
-                    <br clear="all" />
-                    <br clear="all" />
-                    <select id="gender" name="gender" class="gender-select">
-                        <option value="" disabled selected>Seleccione su género*</option>
-                        <option value="male">Hombre</option>
-                        <option value="female">Mujer</option>
-                        <option value="prefer_not_to_say">Prefiero no decir</option>
-                    </select>
-                    <br clear="all" />
-                    <br clear="all" />
-                    <input type="submit" value="Registrarme">
+                    <input type="submit" value="Registrar servicio">
                 </form>
 
-            </div>
-            <h4>¿Ya tienes una cuenta? <a href="iniciarSesion.html">Iniciar sesión</a></h4>
 
-        </div>
+            </div>
     </section>
 
     <script>
@@ -145,11 +126,6 @@
                 return false;
             }
 
-            // Validar la contraseña (no vacía)
-            if (password === "") {
-                alert("La contraseña es obligatoria");
-                return false;
-            }
 
             // Validar longitud de la contraseña (máximo 15 caracteres)
             if (password.length > 15) {
@@ -168,7 +144,7 @@
         }
     </script>
 
-    
+
 
 </body>
 

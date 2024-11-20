@@ -54,8 +54,7 @@ body.disablescroll{
 
 
 
-/* -- HEADER CSS CODE -- */
-header{
+header {
     position: fixed;
     width: 100%;
     height: 105px;
@@ -64,19 +63,21 @@ header{
     z-index: 3;
     transition: all 0.5s ease-in-out;
     border-bottom: 1px solid rgba(0,0,0,0);
+    background: #ccc; 
 }
-header.fixed{
-    background: #fff;
+
+header.fixed {
+    background: #ccc;
     border-bottom: 1px solid #eee;
     height: 170px;
 }
-header .container{
+
+header .container {
     position: relative;
     height: 100%;
 }
 
-
-.header_default{
+.header_default {
     float:left;
     width:100%;
     height: 100%;
@@ -88,63 +89,64 @@ header .container{
     justify-content: space-between;
 }
 
-
-.site-branding{
+.site-branding {
     display: flex;
 }
-.site-branding a.logo{
+
+.site-branding a.logo {
     float: left;
     text-decoration: none;
     flex: 1;
     display: flex;
     align-items: center;
 }
-.site-branding a.logo img{
+
+.site-branding a.logo img {
     float: left;
     max-width: 110px;
     height: auto;
-    margin: 0 0 0 0;
+    margin: 0;
     transition: max-width 0.4s ease-in-out;
-    flex: 1;
-    display: flex;
-    align-items: center;
 }
-.site-branding a.logo img.logo-2{
+
+.site-branding a.logo img.logo-2 {
     visibility: hidden;
 }
-header.fixed .site-branding a.logo img{
+
+header.fixed .site-branding a.logo img {
     max-width: 180px;
 }
-header.fixed .site-branding a.logo img.logo-2{
+
+header.fixed .site-branding a.logo img.logo-2 {
     visibility: visible;
 }
-header.fixed .site-branding a.logo img.logo-1{
+
+header.fixed .site-branding a.logo img.logo-1 {
     display: none;
 }
-.site-branding a.logo h3{
+
+.site-branding a.logo h3 {
     text-align:left;
     color: #000;
     font-size:27px;
     font-family:'Arial';
     letter-spacing: -1px;
 }
-.site-branding a.logo h3 span{
+
+.site-branding a.logo h3 span {
     font-family: 'Arial', serif;
     font-weight: normal;
     margin-left: 10px;
 }
 
-
-.site-navwrap{
-    /*flex-grow: 1;*/
-    float: left;
+.site-navwrap {
 }
 
-
-.navicons{
+.navicons {
     display: none;
 }
-.navicons a.navshow{
+
+.navicons a.navshow {
     position: relative;
     float: left;
     width: 32px;
@@ -158,11 +160,11 @@ header.fixed .site-branding a.logo img.logo-1{
     color: #000;
     transition: top 0.5s ease;
 }
-.navicons a.navshow span{
 
+.navicons a.navshow span {
 }
 
-.navicons a.navhide{
+.navicons a.navhide {
     position: fixed;
     right: 20px;
     top: 10px;
@@ -170,7 +172,8 @@ header.fixed .site-branding a.logo img.logo-1{
     text-decoration: none;
     display: none;
 }
-.navicons a.navhide span{
+
+.navicons a.navhide span {
     float: left;
     width: 48px;
     height: 48px;
@@ -181,22 +184,23 @@ header.fixed .site-branding a.logo img.logo-1{
     justify-content: center;
 }
 
-
-
-.sitenav{
+.sitenav {
 }
-.navwrap{
+
+.navwrap {
 }
-.navouter{
+
+.navouter {
     display: flex;
 }
 
-nav.headermenu{
+nav.headermenu {
+}
 
+nav.headermenu ul {
 }
-nav.headermenu ul{
-}
-nav.headermenu ul li{
+
+nav.headermenu ul li {
     float: left;
     text-align:left;
     color:#000;
@@ -207,27 +211,29 @@ nav.headermenu ul li{
     text-transform: uppercase;
     position: relative;
 }
-nav.headermenu ul li:last-child{
+
+nav.headermenu ul li:last-child {
     margin-right: 0;
 }
-nav.headermenu ul li a{
+
+nav.headermenu ul li a {
     color: #000;
     text-decoration: none;
     padding: 8px 15px;
 }
-header.fixed nav.headermenu ul li a{
+
+header.fixed nav.headermenu ul li a {
     color: #000;
 }
-nav.headermenu ul li.active a{
-    background: #4ca24b;
-    color: #fff !important;
+
+nav.headermenu ul li.active a {
+    background: #ccc;
+    color: #000000 !important;
+    border: none;
+    border-bottom: 2px solid #0008a3;
 }
 
-
-
-
-
-.contact-info{
+.contact-info {
     float: right;
     height: auto;
     margin: 0 0 0 0;
@@ -237,7 +243,8 @@ nav.headermenu ul li.active a{
     display: flex;
     align-items: center;
 }
-.contact-info a{
+
+.contact-info a {
     float: left;
     font-size: 17px;
     color: #fff;
@@ -250,26 +257,94 @@ nav.headermenu ul li.active a{
     display: flex;
     align-items: center;
 }
-.contact-info a:first-of-type{
+
+.contact-info a:first-of-type {
     margin-right: 12px;
     flex: 1;
     display: flex;
     align-items: center;
 }
-.contact-info a:last-of-type{
+
+.contact-info a:last-of-type {
     margin-right: 0;
     flex: 1;
     display: flex;
     align-items: center;
 }
-.contact-info a i{
+
+.contact-info a i {
     color:  #0008a3;
     margin-right: 5px;
 }
-header.fixed .contact-info a{
+
+header.fixed .contact-info a {
     color: #000;
 }
-/* -- HEADER CSS ENDS -- */
+
+
+
+/* -- BANNER -- */
+.banner {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 500px;
+    margin: 0;
+    background-size: cover;
+    position: relative;
+    z-index: 1;
+    padding: 0;
+}
+
+.banner:before {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: #ffffff;
+    left: 0;
+    top: 0;
+    z-index: -1;
+    content: '';
+}
+
+.bannercontent {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    margin-top: 50px; /
+}
+
+.bannercontent .text h3 {
+    color: #000000;
+    font-size: 32px;
+    font-family: 'Poppins', sans-serif;
+    font-weight: normal;
+    margin-bottom: 20px;
+}
+
+.bannercontent .text h2 {
+    color: #000000;
+    font-size: 60px;
+    line-height: 1.1;
+    font-family: 'Poppins', sans-serif;
+    font-weight: bold;
+    margin-bottom: 25px;
+}
+
+.bannercontent .text p {
+    color: #000000;
+    font-size: 20px;
+    line-height: 1.6;
+    font-family: 'Poppins', sans-serif;
+}
+
+.bannercontent .text p u {
+    font-weight: bold;
+    color: #ffc818;
+}
+
 
 
 /* -- CONTACT STARTS -- */
@@ -316,6 +391,7 @@ header.fixed .contact-info a{
 .contactform form input[type="text"],
 .contactform form input[type="email"],
 .contactform form input[type="password"],
+.contactform form input[type="number"],
 .contactform form textarea{
     float:left;
     width:45%;
@@ -373,6 +449,258 @@ header.fixed .contact-info a{
 }
 /* -- CONTACT ENDS -- */
 
+
+/* -- ABOUT CSS STARTS -- */
+.about{
+    float:left;
+    width:100%;
+    margin:0 0 0 0;
+    padding:100px 0;
+}
+.about .contentinline{
+    display: flex;
+    justify-content: space-between;
+    flex-direction: row-reverse;
+}
+.about .imagearea{
+    width: 50%;
+    margin: 0 0 0 0;
+    overflow:hidden;
+}
+.about .imagearea img{
+    float: left;
+    width: 100%;
+    height: auto;
+    aspect-ratio: 2/1.75;
+    object-fit: cover;
+    object-position: center;
+}
+.about .text{
+    width: 45%;
+    margin: 0 0 0 0;
+}
+.about .text h3{
+    text-align:left;
+    color:#000;
+    font-size:60px;
+    font-family:'Poppins';
+    margin-bottom: 10px;
+    margin-top: 0px;
+}
+.about .text h4{
+    text-align:left;
+    color: #4ca24b;
+    font-size:30px;
+    font-family:'Poppins';
+    font-weight: normal;
+    font-style: normal;
+    margin-bottom: 30px;
+    position: relative;
+}
+.about .text p{
+    text-align:left;
+    color:#000;
+    font-size:18px;
+    line-height: 170%;
+    font-family:'Poppins';
+    margin-bottom: 20px;
+}
+.about .text ul{
+    list-style: disc;
+    padding-left: 18px;
+}
+.about .text ul li{
+    text-align:left;
+    color:#000;
+    font-size:18px;
+    font-family:'Poppins';
+    margin-bottom: 3px;
+}
+/* -- ABOUT CSS ENDS -- */
+
+
+/* -- SERVICES STARTS -- */
+.services{
+    float:left;
+    width:100%;
+    margin:0 0 0 0;
+    padding:100px 0 50px 0;
+    position: relative;
+}
+.services:before{
+    position:absolute;
+    width:200px;
+    height:1px;
+    background:#ccc;
+    left:0;
+    right:0;
+    top:0;
+    content:'';
+    margin:0 auto 0 auto;
+}
+.services h3{
+    text-align:center;
+    color:#000;
+    font-size:90px;
+    font-family:'Poppins';
+    margin-bottom: 10px;
+}
+.services h4{
+    text-align:center;
+    color: #4ca24b;
+    font-size:21px;
+    font-family:'Poppins';
+    font-weight: normal;
+    font-style: normal;
+    margin-bottom: 30px;
+    position: relative;
+}
+.services_wrap{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    margin-top: 65px;
+}
+.services_wrap .item{
+    flex-basis: 30%;
+    margin-bottom: 60px;
+}
+.services_wrap .item img{
+    float: left;
+    width: 100%;
+    height: auto;
+    aspect-ratio: 1.2/1;
+    object-fit: cover;
+    margin-bottom: 10px;
+}
+.services .item h6{
+    text-align:center;
+    color: #4ca24b;
+    font-size:12px;
+    font-family:'Poppins';
+    margin-bottom: 15px;
+    text-transform: uppercase;
+    font-weight: 300;
+}
+.services_wrap .item h5{
+    text-align:center;
+    color:#000;
+    font-size:21px;
+    font-family:'Poppins';
+    font-weight: 500;
+    margin-bottom: 12px;
+}
+.services_wrap .item p{
+    text-align:center;
+    color:#000000;
+    font-size:15px;
+    font-family:'Poppins';
+    font-style: italic;
+    margin-bottom: 10px;
+}
+
+.services_wrap .item form input[type="text"],
+.services_wrap form textarea{
+    text-align: center;
+    background: #fff;
+    border: none;
+    color:#111;
+    font-size:15px;
+    font-family:'Poppins';
+    padding: 2px 0px;
+    margin: auto;
+    display: block;
+    border: 1px solid grey;
+}
+.contactform .item form textarea{
+    text-align: center;
+    margin: auto;
+    display: block;
+}
+
+.services_wrap form input[type="submit"]{
+    text-align: center;
+    padding: 10px 25px;
+    color:#fff;
+    font-size:15px;
+    font-family:'Poppins';
+    font-style: italic;
+    cursor: pointer;
+    background: #4ca24b;
+    margin: auto;
+    display: block;
+}
+
+.services_wrap form input[type="submit"]:hover {
+    background-color: #48663c;
+}
+/* -- SERVICES ENDS -- */
+
+/* -- CARRITO STARTS-- */
+body{
+    margin-top:200px;
+    background: white;
+}
+.ui-w-40 {
+    width: 40px !important;
+    height: auto;
+}
+
+.card{
+    box-shadow: 0 1px 15px 1px rgba(52,40,104,.08);   
+    background: #a4ceac;
+    color:#000;
+    font-family:'Poppins';
+    margin-top: 100px;
+}
+
+.my-custom-margin {
+    margin-top: 70px; 
+    margin-bottom: 30px; 
+}
+
+.ui-product-color {
+    display: inline-block;
+    overflow: hidden;
+    margin: .144em;
+    width: .875rem;
+    height: .875rem;
+    border-radius: 5rem;
+    -webkit-box-shadow: 0 0 0 1px rgba(0,0,0,0.15) inset;
+    box-shadow: 0 0 0 1px rgba(0,0,0,0.15) inset;
+    vertical-align: middle;
+    
+}
+/* -- CARRITO ENDS-- */
+
+
+
+/* -- MAP AREA STARTS -- */
+.maparea{
+    float:left;
+    width:100%;
+    margin:0 0 0 0;
+    padding:0 0 0 0;
+    position: relative;
+}
+.maparea .mapheading{
+    float:left;
+    width:100%;
+    margin:0 0 0 0;
+    padding:40px 0;
+    background: #0008a3;
+    text-align:left;
+    color:#fff;
+    font-size:36px;
+    font-family:'Poppins';
+}
+.maparea iframe{
+    float:left;
+    width:100%;
+    height: 600px;
+    position: relative;
+}
+/* -- MAP AREA ENDS -- */
 
 
 /* -- FOOTER STARTS -- */
