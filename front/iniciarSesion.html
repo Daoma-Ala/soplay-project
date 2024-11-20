@@ -19,8 +19,8 @@
 
 
     <!-- FONT ICONS -->
-    <link rel="stylesheet" href="./css/style.css">
-    <link rel="stylesheet" href="./css/style-responsive.css">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/style-responsive.css">
 
 
 
@@ -35,8 +35,8 @@
 
                 <div class="site-branding">
                     <a href="index.jsp" class="logo">
-                        <img src="images/img/soplay-logo.jpg" alt="" class="logo-1">
-                        <img src="images/img/soplay-logo.jpg" alt="" class="logo-2">
+                        <img src="img/soplay-logo.png" alt="" class="logo-1">
+                        <img src="img/soplay-logo.png" alt="" class="logo-2">
                     </a>
                 </div>
 
@@ -61,7 +61,9 @@
 
                                     <nav class="headermenu leftmenu" id="headnav" role="navigation">
                                         <ul>
-                                            <li><a>Iniciar sesión</a></li>
+                                            <li class="active"><a>Iniciar sesión</a></li>
+											<li><a href="registro.html">Registrarme</a></li>
+                                            <li><a href="index.html">Inicio</a></li>
                                         </ul>
                                     </nav>
 
@@ -92,11 +94,11 @@
 
             <div class="contactform">
 
-                <form id="iniciar" action="iniciar" onsubmit="return validateForm(event)">
-                    <input type="email" name="correo" placeholder="Correo" required>
+                <form id="iniciar" action="iniciar" method="post" onsubmit="return validateForm()">
+                    <input type="text" name="nombre" placeholder="Nombre de usuario*" required>
                     <br clear="all" />
                     <br clear="all" />
-                    <input type="password" name="pass" placeholder="Contraseña" required>
+                    <input type="password" name="pass" placeholder="Contraseña*" required>
                     <br clear="all" />
                     <input type="submit" value="Iniciar sesión">
                 </form>
@@ -107,16 +109,14 @@
     </section>
 
     <script>
-        async function validateForm(event) {
-            event.preventDefault(); // Evita que el formulario se envíe de forma tradicional.
-
+        function validateForm() {
             // Obtener los valores de los campos
-            const correo = document.forms[0].elements["correo"].value;
+            const usuario = document.forms[0].elements["usuario"].value;
             const password = document.forms[0].elements["pass"].value;
 
-            // Validar el correo (no vacío)
-            if (correo === "") {
-                alert("El correo es obligatorio");
+            // Validar el nombre de usuario (no vacío)
+            if (usuario === "") {
+                alert("El nombre de usuario es obligatorio");
                 return false;
             }
 
@@ -138,32 +138,8 @@
                 return false;
             }
 
-            // Si todas las validaciones pasan, procede a enviar los datos a la API
-            try {
-                const response = await fetch('http://localhost:3000/api/v1/auth/login', {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json'
-                    },
-                    body: JSON.stringify({ correo, password })
-                });
-
-                const data = await response.json();
-
-                if (response.ok) {
-                    // Si el login es exitoso, redirigir al usuario.
-                    alert(data.message);
-                    window.location.href = "/dashboard"; // Cambiar por la ruta de tu página principal.
-                } else {
-                    // Si hay un error, mostrar un mensaje.
-                    alert(data.error || 'Error al iniciar sesión');
-                }
-            } catch (error) {
-                console.error('Error al iniciar sesión:', error);
-                alert('Ocurrió un error al procesar la solicitud.');
-            }
-
-            return true; // Si todo fue correcto
+            // Si todas las validaciones pasan, retorna true para permitir el envío del formulario
+            return true;
         }
     </script>
 
@@ -180,5 +156,3 @@
     <!-- FOOTER -->
 
 </body>
-
-</html>

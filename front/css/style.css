@@ -1,4 +1,4 @@
-* {
+*{
     box-sizing: border-box;
     -webkit-box-sizing: border-box;
     margin: 0;
@@ -7,59 +7,45 @@
     outline: 0;
     font-size: 100%;
 }
-
-ol,
-ul {
+ol, ul{
     list-style: none;
 }
-
-blockquote,
-q {
+blockquote, q{
     quotes: none;
 }
-
-table {
+table{
     border-collapse: collapse;
     border-spacing: 0;
 }
-
-:focus {
+:focus{
     outline: 0;
 }
-
-ins {
+ins{
     text-decoration: none;
 }
-
-del {
+del{
     text-decoration: line-through;
 }
-
-body {
+body{
     line-height: normal;
 }
-
 /* -- BREAK -- */
 
 
 
-body {
+body{
     background: #fff;
 }
-
-body.disablescroll {
+body.disablescroll{
     overflow-y: hidden;
 }
-
-.container {
+.container{
     width: 1200px;
     margin: 0 auto;
 }
-
-.container.psr {
+.container.psr{
     position: relative;
 }
-
 /* -- BREAK -- */
 
 
@@ -68,10 +54,6 @@ body.disablescroll {
 
 
 
-<<<<<<< HEAD:front/css/style.css
-/* -- HEADER CSS CODE -- */
-=======
->>>>>>> 98d58f11071505e0dfa0d0d0daeef6da471d07a4:soplay/style.css
 header {
     position: fixed;
     width: 100%;
@@ -80,20 +62,12 @@ header {
     top: 0;
     z-index: 3;
     transition: all 0.5s ease-in-out;
-<<<<<<< HEAD:front/css/style.css
-    border-bottom: 1px solid rgba(0, 0, 0, 0);
-}
-
-header.fixed {
-    background: #fff;
-=======
     border-bottom: 1px solid rgba(0,0,0,0);
     background: #ccc; 
 }
 
 header.fixed {
     background: #ccc;
->>>>>>> 98d58f11071505e0dfa0d0d0daeef6da471d07a4:soplay/style.css
     border-bottom: 1px solid #eee;
     height: 170px;
 }
@@ -103,29 +77,18 @@ header .container {
     height: 100%;
 }
 
-<<<<<<< HEAD:front/css/style.css
-
-.header_default {
-    float: left;
-    width: 100%;
-=======
 .header_default {
     float:left;
     width:100%;
->>>>>>> 98d58f11071505e0dfa0d0d0daeef6da471d07a4:soplay/style.css
     height: 100%;
     position: relative;
-    margin: 0 0 0 0;
-    padding: 0 0 0 0;
+    margin:0 0 0 0;
+    padding:0 0 0 0;
     display: flex;
     align-items: center;
     justify-content: space-between;
 }
 
-<<<<<<< HEAD:front/css/style.css
-
-=======
->>>>>>> 98d58f11071505e0dfa0d0d0daeef6da471d07a4:soplay/style.css
 .site-branding {
     display: flex;
 }
@@ -163,14 +126,10 @@ header.fixed .site-branding a.logo img.logo-1 {
 }
 
 .site-branding a.logo h3 {
-<<<<<<< HEAD:front/css/style.css
-    text-align: left;
-=======
     text-align:left;
->>>>>>> 98d58f11071505e0dfa0d0d0daeef6da471d07a4:soplay/style.css
     color: #000;
-    font-size: 27px;
-    font-family: 'Arial';
+    font-size:27px;
+    font-family:'Arial';
     letter-spacing: -1px;
 }
 
@@ -180,19 +139,9 @@ header.fixed .site-branding a.logo img.logo-1 {
     margin-left: 10px;
 }
 
-<<<<<<< HEAD:front/css/style.css
-
-.site-navwrap {
-    /*flex-grow: 1;*/
-    float: left;
-}
-
-
-=======
 .site-navwrap {
 }
 
->>>>>>> 98d58f11071505e0dfa0d0d0daeef6da471d07a4:soplay/style.css
 .navicons {
     display: none;
 }
@@ -212,12 +161,8 @@ header.fixed .site-branding a.logo img.logo-1 {
     transition: top 0.5s ease;
 }
 
-<<<<<<< HEAD:front/css/style.css
-.navicons a.navshow span {}
-=======
 .navicons a.navshow span {
 }
->>>>>>> 98d58f11071505e0dfa0d0d0daeef6da471d07a4:soplay/style.css
 
 .navicons a.navhide {
     position: fixed;
@@ -232,48 +177,34 @@ header.fixed .site-branding a.logo img.logo-1 {
     float: left;
     width: 48px;
     height: 48px;
-    color: #fff;
+    color:#fff;
     font-size: 36px;
     display: flex;
     align-items: center;
     justify-content: center;
 }
 
-<<<<<<< HEAD:front/css/style.css
-
-
-.sitenav {}
-
-.navwrap {}
-=======
 .sitenav {
 }
 
 .navwrap {
 }
->>>>>>> 98d58f11071505e0dfa0d0d0daeef6da471d07a4:soplay/style.css
 
 .navouter {
     display: flex;
 }
 
-<<<<<<< HEAD:front/css/style.css
-nav.headermenu {}
-
-nav.headermenu ul {}
-=======
 nav.headermenu {
 }
 
 nav.headermenu ul {
 }
->>>>>>> 98d58f11071505e0dfa0d0d0daeef6da471d07a4:soplay/style.css
 
 nav.headermenu ul li {
     float: left;
-    text-align: left;
-    color: #000;
-    font-size: 15px;
+    text-align:left;
+    color:#000;
+    font-size:15px;
     font-weight: 400;
     margin-right: 30px;
     font-family: 'Poppins';
@@ -296,23 +227,12 @@ header.fixed nav.headermenu ul li a {
 }
 
 nav.headermenu ul li.active a {
-<<<<<<< HEAD:front/css/style.css
-    background: #4ca24b;
-    color: #fff !important;
-}
-
-
-
-
-
-=======
     background: #ccc;
     color: #000000 !important;
     border: none;
     border-bottom: 2px solid #0008a3;
 }
 
->>>>>>> 98d58f11071505e0dfa0d0d0daeef6da471d07a4:soplay/style.css
 .contact-info {
     float: right;
     height: auto;
@@ -330,8 +250,8 @@ nav.headermenu ul li.active a {
     color: #fff;
     text-decoration: none;
     margin-right: 8px;
-    transition: 0.6s;
-    -webkit-transition: 0.6s;
+    transition:0.6s;
+    -webkit-transition:0.6s;
     font-family: 'Poppins';
     flex: 1;
     display: flex;
@@ -353,11 +273,7 @@ nav.headermenu ul li.active a {
 }
 
 .contact-info a i {
-<<<<<<< HEAD:front/css/style.css
-    color: #0008a3;
-=======
     color:  #0008a3;
->>>>>>> 98d58f11071505e0dfa0d0d0daeef6da471d07a4:soplay/style.css
     margin-right: 5px;
 }
 
@@ -365,9 +281,6 @@ header.fixed .contact-info a {
     color: #000;
 }
 
-<<<<<<< HEAD:front/css/style.css
-/* -- HEADER CSS ENDS -- */
-=======
 
 
 /* -- BANNER -- */
@@ -432,82 +345,54 @@ header.fixed .contact-info a {
     color: #ffc818;
 }
 
->>>>>>> 98d58f11071505e0dfa0d0d0daeef6da471d07a4:soplay/style.css
 
 
 /* -- CONTACT STARTS -- */
-.contactsection {
-    float: left;
-    width: 100%;
-    margin: 0 0 0 0;
-    padding: 100px 0 100px 0;
+.contactsection{
+    float:left;
+    width:100%;
+    margin:0 0 0 0;
+    padding:100px 0 100px 0;
     position: relative;
-    background: #fff;
+    background:  #fff;
 }
-
-.contactsection h3 {
-    text-align: left;
-    color: #0008a3;
-    font-size: 90px;
-    font-family: 'Poppins';
+.contactsection h3{
+    text-align:left;
+    color:#0008a3;
+    font-size:90px;
+    font-family:'Poppins';
     margin-bottom: 10px;
 }
-
-.contactsection h4 {
-    text-align: left;
-    color: #000;
-    font-size: 21px;
-    font-family: 'Poppins';
+.contactsection h4{
+    text-align:left;
+    color:#000;
+    font-size:21px;
+    font-family:'Poppins';
     font-weight: normal;
     font-style: normal;
     position: relative;
 }
-
-.contactsection p {
-    text-align: left;
-    color: #0008a3;
-    font-size: 13px;
-    font-family: 'Poppins';
+.contactsection p{
+    text-align:left;
+    color:#0008a3;
+    font-size:13px;
+    font-family:'Poppins';
     text-transform: uppercase;
 }
-
-.contactform {
+.contactform{
     display: table;
     width: 100%;
     margin: 0 auto 60px auto;
 }
-
-.contactform form {
-    float: left;
-    width: 100%;
+.contactform form{
+    float:left;
+    width:100%;
 }
-
-/*
-input[type="text"],
-input[type="email"],
-input[type="password"] {
-    float: left;
-    width: 100%;
-    height: 60px;
-    background: #fff;
-    border: 2px solid #0008a3;
-    text-align: left;
-    color: #000;
-    font-size: 16px;
-    font-family: 'Poppins';
-    padding-left: 20px;
-    border-radius: 5px;
-}
-*/
 .contactform form input[type="text"],
 .contactform form input[type="email"],
 .contactform form input[type="password"],
-<<<<<<< HEAD:front/css/style.css
-.contactform form textarea {
-=======
 .contactform form input[type="number"],
 .contactform form textarea{
->>>>>>> 98d58f11071505e0dfa0d0d0daeef6da471d07a4:soplay/style.css
     float:left;
     width:45%;
     height:60px ;
@@ -520,53 +405,48 @@ input[type="password"] {
     padding-left: 20px;
     border-radius: 5px;
 }
-
-.contactform form textarea {
+.contactform form textarea{
     width: 100%;
     height: 130px;
     padding: 25px;
     margin-top: 20px;
     margin-bottom: 10px;
-    color: #000 !important;
-    border: 2px solid #0008a3;
+    color:#000 !important; 
+    border: 2px solid #0008a3; 
     font-size: 16px;
     border-radius: 5px;
 }
-
-.contactform form input[type="email"] {
-    float: left;
+.contactform form input[type="email"]{
+    float: right;
 }
-
 .gender-select {
     float: left;
-    width: 45%;
+    width: 45%; 
     height: 60px;
     background: #fff;
-    border: 2px solid #0008a3;
-    color: #757575;
-    font-size: 19px;
+    border: 2px solid #0008a3; 
+    color: #757575; 
+    font-size: 19px; 
     font-family: 'Poppins';
-    padding-left: 20px;
-    border-radius: 5px;
+    padding-left: 20px; 
+    border-radius: 5px; 
     margin-bottom: 20px;
 }
-
-.contactform form input[type="submit"] {
+.contactform form input[type="submit"]{
     float: left;
     width: auto;
     height: 80px;
     padding: 0 40px;
-    text-align: center;
-    color: #fff;
-    font-size: 16px;
-    font-family: 'Poppins';
+    text-align:center;
+    color:#fff;
+    font-size:16px;
+    font-family:'Poppins';
     margin: 30px 0 0 0;
     cursor: pointer;
     background: #1b8f13;
     border: none;
     text-transform: uppercase;
 }
-
 /* -- CONTACT ENDS -- */
 
 
@@ -824,21 +704,20 @@ body{
 
 
 /* -- FOOTER STARTS -- */
-footer {
-    float: left;
-    width: 100%;
-    margin: 0 0 0 0;
-    padding: 70px 0;
-    background-color: #0008a3;
-    color: #fff;
+footer{
+    float:left;
+    width:100%;
+    margin:0 0 0 0;
+    padding:70px 0;
+    background-color: #0008a3; 
+    color: #fff; 
 }
-
-.copyright {
+.copyright{
     float: left;
-    text-align: left;
-    color: #fff;
-    font-size: 15px;
-    font-family: 'Poppins';
+    text-align:left;
+    color:#fff;
+    font-size:15px;
+    font-family:'Poppins';
 }
 
 /* -- FOOTER ENDS -- */
