@@ -20,7 +20,7 @@ exports.login = async (req, res) => {
             maxAge: 3600000
         });
 
-        res.status(201).json({ message: 'Usuario autenticado', id_usuario: data.id_usuario });
+        res.status(200).json({ message: 'Usuario autenticado', id_usuario: data.id_usuario });
         console.log(token);
     } catch (error) {
         console.error(error);

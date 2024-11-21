@@ -23,6 +23,7 @@ const corsOptions = {
     credentials: true, 
     methods: '*', 
 };
+
 app.use(cors(corsOptions));
 
 // Midelware de rutas para la autenticacion
@@ -51,5 +52,3 @@ const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
     console.log(`Servidor en ejecución en el puerto ${PORT}`);
 });
-
-

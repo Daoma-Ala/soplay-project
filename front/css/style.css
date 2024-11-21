@@ -599,7 +599,7 @@ header.fixed .contact-info a {
     margin-bottom: 10px;
 }
 
-.services_wrap .item form input[type="text"],
+.services_wrap .item form input[type="email"],
 .services_wrap form textarea{
     text-align: center;
     background: #fff;

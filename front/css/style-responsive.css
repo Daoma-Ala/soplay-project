@@ -232,6 +232,7 @@ max-width: 80px; /* Por ejemplo, puedes reducir un poco más el tamaño en el en
         font-size:13px;
     }
     .contactform{
+        
         width: 100%;
         margin: 0 auto 40px auto;
     }
@@ -239,6 +240,7 @@ max-width: 80px; /* Por ejemplo, puedes reducir un poco más el tamaño en el en
     .contactform form input[type="email"],
             .contactform form input[type="password"],
     .contactform form textarea{
+        
         width:100%;
     }
     .contactform form input[type="email"]{
