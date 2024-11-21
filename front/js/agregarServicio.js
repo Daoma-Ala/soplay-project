@@ -8,12 +8,13 @@ form.addEventListener('submit', async (event) => {
         const response = await fetch('http://localhost:3000/api/v1/servicio', {
             method: 'POST',
             body: formData,
+            credentials: 'include',
         });
 
         if (response.ok) {
             const data = await response.json();
             window.alert(`Servicio registrado con ID: ${data.id_servicio}`);
-            window.location.reload();
+            form.reset();
         } else {
             const errorData = await response.json();
             window.alert(`Error: ${errorData.error}`);

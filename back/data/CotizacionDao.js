@@ -8,15 +8,12 @@ class CotizacionDao {
         const connection = await createConnection();
         try {
             await connection.beginTransaction();
-            const { serie, id_usuario, cotizacion_servicios } = cotizacion;
+            const id_usuario= cotizacion;
             const [resultado] = await connection.query(
-                'INSERT INTO cotizaciones (serie, id_usuario) VALUES (?, ?)',
-                [serie, id_usuario]
+                'INSERT INTO cotizaciones (id_usuario) VALUES ( ?)',
+                [id_usuario]
             );
-            for (const cotizacion_servicio of cotizacion_servicios) {
-                cotizacion_servicio.id_cotizacion = resultado.insertId;
-                CotizacionServicioDao.addCotizacionDetalladaCreate(cotizacion_servicio, connection);
-            }
+
             await connection.commit();
             return resultado.insertId;
         } catch (error) {

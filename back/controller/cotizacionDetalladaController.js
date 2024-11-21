@@ -37,6 +37,7 @@ exports.getAllByCotizacionId = async (req, res) => {
 exports.deleteCotizacionDetallada = async (req, res) => {
     try {
         const { id_cotizacion, id_servicio } = req.params;
+        console.log(`controlador...Buscando cotización con id_cotizacion: ${id_cotizacion}, id_servicio: ${id_servicio}`);
         await CotizacionDetalladaService.deleteCotizacionDetallada({ id_cotizacion, id_servicio });
         res.status(200).json({ message: 'Cotización detallada eliminada con éxito' });
     } catch (error) {

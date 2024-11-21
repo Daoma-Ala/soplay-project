@@ -36,6 +36,8 @@ class CotizacionServicioDao {
     async getCotizacionDetalladaById(id_cotizacion, id_servicio) {
         const connection = await createConnection();
         try {
+            console.log(`dao buscar....Buscando cotización con id_cotizacion: ${id_cotizacion}, id_servicio: ${id_servicio}`);
+
             const [rows] = await connection.query(
                 'SELECT * FROM cotizaciones_servicios WHERE id_cotizacion = ? AND id_servicio = ?',
                 [id_cotizacion, id_servicio]
@@ -90,6 +92,7 @@ class CotizacionServicioDao {
     async deleteCotizacionDetallada(id_cotizacion, id_servicio) {
         const connection = await createConnection();
         try {
+            console.log(`dao elminar...Buscando cotización con id_cotizacion: ${id_cotizacion}, id_servicio: ${id_servicio}`);
             await connection.query('DELETE FROM cotizaciones_servicios WHERE id_cotizacion = ? AND id_servicio = ?', [id_cotizacion, id_servicio]);
         } catch (error) {
             console.error('Error al eliminar cotización-servicio:', error);

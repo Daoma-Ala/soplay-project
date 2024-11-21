@@ -2,8 +2,8 @@ const CotizacionServicio = require('../service/CotizacionService.js');
 
 exports.addCotizacion = async (req, res) => {
     try {
-        const cotizacionData = req.body;
-        const id_cotizacion = await CotizacionServicio.addCotizacion(cotizacionData);
+        const { id_usuario } = req;
+        const id_cotizacion = await CotizacionServicio.addCotizacion(id_usuario);
         res.status(201).json({ id_cotizacion });
     } catch (error) {
         console.error(error);

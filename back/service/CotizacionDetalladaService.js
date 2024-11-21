@@ -17,6 +17,7 @@ class CotizacionDetalladaService {
 
     async getCotizacionDetalladaById(data) {
         const { id_cotizacion, id_servicio } = data;
+        console.log(`servicio 2-.....Buscando cotización con id_cotizacion: ${id_cotizacion}, id_servicio: ${id_servicio}`);
         const cotizacionServicio = await CotizacionServicioDao.getCotizacionDetalladaById(id_cotizacion, id_servicio);
         if (!cotizacionServicio) {
             throw new Error('Cotización Detallada no encontrada');
@@ -37,7 +38,8 @@ class CotizacionDetalladaService {
 
     async deleteCotizacionDetallada(data) {
         const { id_cotizacion, id_servicio } = data;
-        const cotizacionDetalladaExistente = await this.getCotizacionDetalladaById(id_cotizacion, id_servicio);
+        console.log(`servicio....Buscando cotización con id_cotizacion: ${id_cotizacion}, id_servicio: ${id_servicio}`);
+        const cotizacionDetalladaExistente = await this.getCotizacionDetalladaById(data);
         if (!cotizacionDetalladaExistente) {
             throw new Error('No se puede Eliminar. Cotización Detallada no encontrada');
         }

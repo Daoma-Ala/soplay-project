@@ -1,0 +1,43 @@
+.tabla-contenedor {
+    display: flex;
+    justify-content: center; 
+    align-items: center;    
+    height: 100%;          
+}
+
+.tabla_servicios {
+    border-collapse: collapse;
+    margin: 25px 0;
+    font-size: 18px;
+    width: 100%;            
+    text-align: left;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.tabla_servicios thead tr {
+    background-color: #0008a3;
+    color: #ffffff;
+    text-align: center;
+    font-weight: bold;
+}
+
+.tabla_servicios th,
+.tabla_servicios td {
+    padding: 12px 15px;
+    border: 1px solid #ddd;
+}
+
+.tabla_servicios tbody tr {
+    background-color: #f3f3f3;
+}
+
+.tabla_serviciostbody tr:nth-child(even) {
+    background-color: #e2e2e2;
+}
+
+.tabla_servicios tbody tr:hover {
+    background-color: #ddd;
+    cursor: pointer;
+}
