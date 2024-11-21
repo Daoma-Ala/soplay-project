@@ -6,8 +6,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 
-    <title> SOPLAY </title>
-    <link rel="icon" type="image/jpg" href="./img/soplay-logo.jpg">
+    <title> Soplay </title>
+
+    <link rel="icon" type="image/png" href="./img/soplay-logo.jpg">
 
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -17,15 +18,18 @@
         rel="stylesheet">
 
 
+    <script src="js/agregarCotizacion.js"></script>
+
+    
     <!-- FONT ICONS -->
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/style-responsive.css">
+    <link rel="stylesheet" href="css/styleAdminServicios.css">
 
-    <!-- comment -->
+
 </head>
 
 <body>
-
     <header>
         <div class="container psr">
 
@@ -60,11 +64,9 @@
 
                                     <nav class="headermenu leftmenu" id="headnav" role="navigation">
                                         <ul>
-                                            <li><a href="catalogo.html">Regresar a servicios</a></li>
-                                            <li><a href="index.html">
-                                                    
-                                                Inicio
-                                                </a></li>
+                                            <li><a href="catalogo.html">Catalogo de servicios</a></li>
+                                            <li><a href="agrgarCotizacion.html">Cotizaciones</a></li>
+                                            <li><a href="index.html">Inicio</a></li>
                                         </ul>
                                     </nav>
 
@@ -85,19 +87,58 @@
 
         </div>
     </header>
+    <!-- HEADER -->
 
-
-    <section class="services" id="services">
+    <section class="contactsection" id="contact">
         <div class="container">
 
-            <h3>Cotizaciones</h3>
+            <h3>Neuva Cotización</h3>
+            <h4>Serie: </h4>
 
-            <div class="services_wrap" id="cotizacionesDesplegados">
-
+            <div class="tabla_contenedor">
+                <table class="tabla_servicios">
+                    <caption>Servicios</caption>
+                    <thead>
+                        <tr>
+                            <td>Nombre</td>
+                            <td>Descripción</td>
+                            <td>Precio</td>
+                            <td>Cantidad</td>
+                            <td>SubTotal</td>
+                            <td >Operaciones</td>
+                           
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Ejemplo</td>
+                            <td>Descripción</td>
+                            <td>Precio</td>
+                            <td>as</td>
+                            <td>as</td>
+                            <td>as</td>
+                        </tr>
+                    </tbody>
+                </table>
             </div>
-            <a href="agrgarCotizacion.html">Agregar Cotizacion</a>
-        </div>
+            
+
+                <form id="registrar" >
+                    <select name="servicios">
+                        <option selected>Serivicio</option>
+                    </select>
+        
+                    <input type="number" name="cantidad" placeholder="Cantidad" required>
+            
+                    <input type="submit" value="Registrar servicio">
+                 
+                </form>
+                <br clear="all" />
+                <h4>Total</h4> 
+            </div>
+        
     </section>
+
 
 
     <footer>
@@ -107,13 +148,8 @@
             <div class="copyright">
                 Copyright &copy; <span id="copyrightyear"></span> Equipo Web Emergentes
             </div>
-     
 
         </div>
     </footer>
 </body>
-
-
-<!-- FOOTER -->
-
 </html>

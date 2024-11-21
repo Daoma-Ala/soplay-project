@@ -4,9 +4,8 @@ const Cotizacion = require('../model/Cotizacion.js');
 class CotizacionService {
 
     async addCotizacion(data) {
-        const { serie, id_usuario, cotizacion_servicios } = data;
-        const nuevaCotizacion = new Cotizacion(null, serie, null, null, id_usuario, cotizacion_servicios);
-        const idCotizacion = await CotizacionDao.addCotizacion(nuevaCotizacion);
+        const id_usuario = data;;
+        const idCotizacion = await CotizacionDao.addCotizacion(id_usuario);
         return idCotizacion;
     }
 

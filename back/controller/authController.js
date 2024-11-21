@@ -9,16 +9,19 @@ exports.login = async (req, res) => {
                 { error: "El correo y la contraseña son obligatorios" }
             )
         }
-        
+
         const data = await UsuarioService.loginUsuario(correo, password);
         const token = tokenService.generateToken(data.id_usuario, data.tipo);
+
 
         res.cookie('token', token, {
             httpOnly: true,
             secure: true,
-            sameSite: 'strict',
-            maxAge: 3600000
+            sameSite: 'None',
+            maxAge: 3600000,
+             path: '/'
         });
+
 
         res.status(200).json({ message: 'Usuario autenticado', id_usuario: data.id_usuario });
         console.log(token);
@@ -50,7 +53,7 @@ exports.register = async (req, res) => {
 
 exports.protected = async (req, res) => {
     try {
-        
+
         res.status(200).json({ message: 'Usuario autenticado' });
     } catch (error) {
         console.error(error);

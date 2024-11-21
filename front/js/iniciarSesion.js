@@ -21,16 +21,16 @@ form.addEventListener('submit', async (event) => {
         const response = await fetch('http://localhost:3000/api/v1/auth/login', {
             method: 'POST',
             headers: {
-                'Content-Type': 'application/json' 
+                'Content-Type': 'application/json'
             },
-            body: JSON.stringify(requestData) 
+            body: JSON.stringify(requestData),
+            credentials: 'include'
         });
-  
+
         if (response.ok) {
             const data = await response.json();
-            console.log(data.cokies.token);
-            console.log(data.cokies);
-           // window.location.href = '/index.html';
+
+            window.location.href = '/index.html';
         } else {
             const errorData = await response.json();
             window.alert(`Error: ${errorData.error || 'Hubo un problema al iniciar sesión.'}`);

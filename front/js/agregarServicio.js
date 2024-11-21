@@ -8,6 +8,7 @@ form.addEventListener('submit', async (event) => {
         const response = await fetch('http://localhost:3000/api/v1/servicio', {
             method: 'POST',
             body: formData,
+            credentials: 'include',
         });
 
         if (response.ok) {
