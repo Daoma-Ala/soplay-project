@@ -721,3 +721,77 @@ footer{
 }
 
 /* -- FOOTER ENDS -- */
+
+/* Estilo general de la tabla de cotizaciones */
+.cotizaciones table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 20px 0;
+    font-size: 16px;
+    text-align: center;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* Encabezado de la tabla */
+.cotizaciones table thead th {
+    background-color: #001f8d; /* Azul intenso */
+    color: #ffffff; /* Texto blanco */
+    padding: 12px;
+    text-transform: uppercase;
+    font-weight: bold;
+}
+
+/* Filas de la tabla */
+.cotizaciones table tbody td {
+    background-color: #f9f9f9; /* Fondo gris claro */
+    border: 1px solid #dddddd;
+    padding: 10px;
+}
+
+/* Alternar colores de fila */
+.cotizaciones table tbody tr:nth-child(even) {
+    background-color: #e8e8e8; /* Gris más oscuro para alternar */
+}
+
+/* Botones de acción */
+.cotizaciones table tbody td button {
+    padding: 8px 12px;
+    border: none;
+    border-radius: 4px;
+    font-size: 14px;
+    cursor: pointer;
+    text-transform: uppercase;
+}
+
+/* Botón de eliminar */
+.cotizaciones table tbody td button.eliminar {
+    background-color: #ff4d4d; /* Rojo */
+    color: #ffffff;
+}
+
+/* Botón de ver */
+.cotizaciones table tbody td button.ver {
+    background-color: #007bff; /* Azul */
+    color: #ffffff;
+}
+
+/* Hover en botones */
+.cotizaciones table tbody td button:hover {
+    opacity: 0.8;
+}
+
+/* Encabezado del administrador */
+.banner .bannercontent h3,
+.banner .bannercontent h2 {
+    text-transform: uppercase;
+    color: #001f8d; /* Azul intenso */
+}
+
+/* Footer */
+footer .copyright {
+    text-align: center;
+    background-color: #001f8d; /* Azul intenso */
+    color: #ffffff; /* Blanco */
+    padding: 10px 0;
+    margin-top: 20px;
+}

@@ -6,8 +6,10 @@ const checkRole = require('../middlewares/checkRole.js');
 
 router.post('/', proctectedRoutes, checkRole(['CLIENTE']), cotizacionController.addCotizacion);
 router.get('/:id', proctectedRoutes, cotizacionController.getCotizacionById);
-router.get('/', proctectedRoutes, checkRole(['ENCARGADO']), cotizacionController.getAllCotizaciones);
-router.delete('/:id', proctectedRoutes, cotizacionController.deleteCotizacion);
+//router.get('/', proctectedRoutes, checkRole(['ENCARGADO']), cotizacionController.getAllCotizaciones);
+router.get('/', cotizacionController.getAllCotizaciones);
+//router.delete('/:id', proctectedRoutes, cotizacionController.deleteCotizacion);
+router.delete('/:id', cotizacionController.deleteCotizacion);
 router.get('/usuario/:id_usuario', proctectedRoutes, checkRole(['CLIENTE']),cotizacionController.getAllCotizacionesByUsuario);
 
 module.exports = router; 
