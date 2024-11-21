@@ -68,7 +68,7 @@ exports.deleteServicio = async (req, res) => {
         if(!servicio){
             return res.status(404).json({ error: 'Servicio no encontrado' });
         }
-        console.log(servicio);
+
         // Si tiene foto el servicio desde la base de datos
         if (servicio.foto) {
             const fotoPath = path.resolve(servicio.foto.ruta); // se extrae la ruta completa

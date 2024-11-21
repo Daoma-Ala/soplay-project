@@ -16,7 +16,8 @@
     <link
         href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&display=swap"
         rel="stylesheet">
-
+        <script src="servicioComponent/servicio.js"></script>
+        <script src="js/catalogoServicio.js"></script>
 
     <!-- FONT ICONS -->
     <link rel="stylesheet" href="css/style.css">
@@ -89,91 +90,12 @@
 
             <h3>Servicios</h3>
 
-            <div class="services_wrap">
+            <div class="services_wrap" id="serviciosDesplegados">
+        
+            </div>
 
-
-                <div class="item">
-                    <h5>SOLDADURA DE BINS</h5>
-                    <h6>Pláticos</h6>
-                    <img src="img/bins.jpg" alt="">
-                    <p>Costo: $500</p>
-                    <form action="RegistrarArticulo" method="post">                                
-                        <input type="hidden" name="id_producto" value="1">
-                        <input type="text" name="cantidad" placeholder="Cantidad*" required>
-                        <br clear="all" />
-                        <!-- <input type="submit" value="Agregar a la cotización"> -->
-                        <div class = "card-footer text-center">
-                            <div>
-                                <a href="Controlador?accion=AgregarCarrito&id=${p.getId()}" class = "btn btn-outline-info">Agregar a cotización</a>                                
-                            </div>
-                        </div>
-                    </form>
-                </div>
-
-
-                <div class="item">
-                    <h5>ENTOMATADAS (3 piezas)</h5>
-                    <h6>Antojitos</h6>
-                    <img src="images/entomatadas.jpg" alt="">
-                    <p>Rellenas de Panela</p>
-                    <p>Precio: $100</p>
-                    <form action="RegistrarArticulo" method="post">                                
-                        <input type="hidden" name="id_producto" value="2">
-                        <input type="text" name="cantidad" placeholder="Cantidad*" required>
-                        <br clear="all" />
-                        <div class = "card-footer text-center">
-                            <div>
-                                <a href="" class = "btn btn-outline-info">Agregar a Carrito</a>
-                            </div>
-                        </div>
-                    </form>
-                </div>
-
-
-                <div class="item">
-                    <h5>FLAUTA</h5>
-                    <h6>Antojitos</h6>
-                    <img src="images/flautas.jpg" alt="">
-                    <p>Relleno de Papa y Carne</p>
-                    <p>Precio: $38</p>
-                    <form action="RegistrarArticulo" method="post">                                
-                        <input type="hidden" name="id_producto" value="3">
-                        <input type="text" name="cantidad" placeholder="Cantidad*" required>
-                        <br clear="all" />
-                        <div class = "card-footer text-center">
-                            <div>
-                                <a href="" class = "btn btn-outline-info">Agregar a Carrito</a>
-                                <a href="" class = "btn btn-danger">Comprar</a>
-                            </div>
-                        </div>
-                    </form>
-                </div>
-
-
-
-                <div class="item">
-                    <h5>ENCHILADAS ROJAS (3 piezas)</h5>
-                    <h6>Antojitos</h6>
-                    <img src="images/enchiladas.jpg" alt="">
-                    <p>Rellenas de Panela</p>
-                    <p>Precio: $100</p>
-                    <form action="RegistrarArticulo" method="post">                                
-                        <input type="hidden" name="id_producto" value="4">
-                        <input type="text" name="cantidad" placeholder="Cantidad*" required>
-                        <br clear="all" />
-                        <div class = "card-footer text-center">
-                            <div>
-                                <a href="" class = "btn btn-outline-info">Agregar a Carrito</a>
-                                <a href="" class = "btn btn-danger">Comprar</a>
-                            </div>
-                        </div>
-                    </form>
-                </div>
-
-
-
-
-
+        </div>
+    </section>
     <footer>
         <div class="container">
 
@@ -184,4 +106,6 @@
 
         </div>
     </footer>
+
+ </body>
     <!-- FOOTER -->

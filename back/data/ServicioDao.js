@@ -53,7 +53,7 @@ class ServicioDao {
         try {
             const [rows] = await connection.query('SELECT * FROM servicios');
             const serviciosConFotos = await Promise.all(rows.map(async row => {
-                const fotos = await FotoDao.getFotos_servicio(row.id_servicio);
+                const fotos = await FotoDao.getFoto_servicio(row.id_servicio);
                 return new Servicio(row.id_servicio, row.nombre, row.descripcion, row.precio, fotos);
             }));
             return serviciosConFotos;

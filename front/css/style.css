@@ -40,7 +40,7 @@ body.disablescroll{
     overflow-y: hidden;
 }
 .container{
-    width: 1200px;
+    width: 700px;
     margin: 0 auto;
 }
 .container.psr{
@@ -565,39 +565,9 @@ header.fixed .contact-info a {
     flex-basis: 30%;
     margin-bottom: 60px;
 }
-.services_wrap .item img{
-    float: left;
-    width: 100%;
-    height: auto;
-    aspect-ratio: 1.2/1;
-    object-fit: cover;
-    margin-bottom: 10px;
-}
-.services .item h6{
-    text-align:center;
-    color: #4ca24b;
-    font-size:12px;
-    font-family:'Poppins';
-    margin-bottom: 15px;
-    text-transform: uppercase;
-    font-weight: 300;
-}
-.services_wrap .item h5{
-    text-align:center;
-    color:#000;
-    font-size:21px;
-    font-family:'Poppins';
-    font-weight: 500;
-    margin-bottom: 12px;
-}
-.services_wrap .item p{
-    text-align:center;
-    color:#000000;
-    font-size:15px;
-    font-family:'Poppins';
-    font-style: italic;
-    margin-bottom: 10px;
-}
+
+
+
 
 .services_wrap .item form input[type="email"],
 .services_wrap form textarea{
