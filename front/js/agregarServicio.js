@@ -14,7 +14,7 @@ form.addEventListener('submit', async (event) => {
         if (response.ok) {
             const data = await response.json();
             window.alert(`Servicio registrado con ID: ${data.id_servicio}`);
-            window.location.reload();
+            form.reset();
         } else {
             const errorData = await response.json();
             window.alert(`Error: ${errorData.error}`);

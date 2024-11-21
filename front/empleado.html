@@ -18,13 +18,9 @@
         rel="stylesheet">
 
 
-    <script src="js/agregarCotizacion.js"></script>
-
-    
     <!-- FONT ICONS -->
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/style-responsive.css">
-    <link rel="stylesheet" href="css/styleAdminServicios.css">
 
 
 </head>
@@ -63,10 +59,10 @@
 
 
                                     <nav class="headermenu leftmenu" id="headnav" role="navigation">
-                                        <ul>
-                                            <li><a href="catalogo.html">Catalogo de servicios</a></li>
-                                            <li><a href="agrgarCotizacion.html">Cotizaciones</a></li>
-                                            <li><a href="index.html">Inicio</a></li>
+                                        <ul>                                            
+                                            <li><a href="cotizacion.html">Cotizaciones</a></li>
+											<li><a href="catalogo.html">Catalogo de servicios</a></li>
+                                            <li><a href="index.html">Cerrar sesión</a></li>
                                         </ul>
                                     </nav>
 
@@ -87,59 +83,81 @@
 
         </div>
     </header>
-    <!-- HEADER -->
 
-    <section class="contactsection" id="contact">
+
+    <section class="banner">
         <div class="container">
 
-            <h3>Neuva Cotización</h3>
-            <h4>Serie: </h4>
+            <div class="bannercontent">
 
-            <div class="tabla_contenedor">
-                <table class="tabla_servicios">
-                    <caption>Servicios</caption>
-                    <thead>
-                        <tr>
-                            <td>Nombre</td>
-                            <td>Descripción</td>
-                            <td>Precio</td>
-                            <td>Cantidad</td>
-                            <td>SubTotal</td>
-                            <td >Operaciones</td>
-                           
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td>Ejemplo</td>
-                            <td>Descripción</td>
-                            <td>Precio</td>
-                            <td>as</td>
-                            <td>as</td>
-                            <td>as</td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
-            
 
-                <form id="registrar" >
-                    <select name="servicios">
-                        <option selected>Serivicio</option>
-                    </select>
-        
-                    <input type="number" name="cantidad" placeholder="Cantidad" required>
-            
-                    <input type="submit" value="Registrar servicio">
-                 
-                </form>
-                <br clear="all" />
-                <h4>Total</h4> 
+                <div class="text full">
+                    <h3>Soldadura de plásticos</h3>
+                    <h2>
+                        SOPLAY
+                    </h2>
+                    <p>
+                        20 años de experiencia.
+                    </p>
+                </div>
+
+
             </div>
-        
+            <!--bannercontent-->
+
+        </div>
     </section>
+    <!-- BANNER -->
+
+    <section class="contentblock about" id="about">
+		<div class="container">
 
 
+			<div class="contentinline">
+
+				<div class="text">
+					<h3>Sobre nosotros.</h3>
+					<p>
+						Somos líderes en soldadura plástica, ofreciendo servicios especializados 
+                        para unir y reparar materiales plásticos con máxima eficiencia y calidad. 
+                        Utilizamos tecnología avanzada para garantizar resultados duraderos en 
+                        sectores industriales, comerciales y domésticos.                                                                        
+					</p>
+                    <p>¿Por qué elegirnos?</p>
+					<ul>                    
+                        <br/>                    
+						<li>Soluciones personalizadas para cada proyecto.</li>
+                        <li>Compromiso con la innovación y la excelencia.</li>
+                        <li>Asesoría experta para optimizar tus necesidades.</li>
+                        <br/>
+						<p> (646) 119 20 14</p>
+					</ul>
+				</div>
+
+
+				<div class="imagearea">
+					<img src="img/soldadura.jpg" alt="" />
+				</div>
+
+
+			</div>
+
+
+		</div>
+	</section>
+	<!-- ABOUT -->
+
+
+    
+	<section class="maparea" id="map">
+		<div class="mapheading">
+			<div class="container">
+				Encuéntranos
+			</div>
+		</div>
+		<iframe
+			src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d14157.966097505441!2d-109.9400078579822!3d27.48508519817306!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x86c815fa377d7d99%3A0x7ae7b15ba6b380ca!2sAv.%20Jes%C3%BAs%20Garc%C3%ADa%20317%2C%20Centro%2C%20Urb.%20No.%207%2C%2085000%20Cdad.%20Obreg%C3%B3n%2C%20Son.!5e0!3m2!1ses-419!2smx!4v1731990497658!5m2!1ses-419!2smx"
+			style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
 
     <footer>
         <div class="container">
@@ -151,5 +169,4 @@
 
         </div>
     </footer>
-</body>
-</html>
+    <!-- FOOTER -->

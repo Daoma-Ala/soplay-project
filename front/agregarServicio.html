@@ -18,10 +18,9 @@
         rel="stylesheet">
 
 
-    <script src="js/agregarServicio.js"></script>
-    <script src="js/protegerPantallas.js"></script>
 
-    
+
+
     <!-- FONT ICONS -->
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/style-responsive.css">
@@ -65,9 +64,9 @@
 
                                     <nav class="headermenu leftmenu" id="headnav" role="navigation">
                                         <ul>
-                                            <li><a href="iniciarSesion.html">Iniciar sesión</a></li>
-                                            <li class="active"><a>Registrarme</a></li>
-                                            <li><a href="index.html">Inicio</a></li>
+                                            <li><a href="adminCotizaciones.html">Administrar cotizaciones</a></li>
+                                            <li><a href="adminServicios.html">Administrar servicios</a></li>
+                                            <li><a href="index.html">Cerrar sesión</a></li>
                                         </ul>
                                     </nav>
 
@@ -88,7 +87,6 @@
 
         </div>
     </header>
-    <!-- HEADER -->
 
     <section class="contactsection" id="contact">
         <div class="container">
@@ -98,7 +96,7 @@
 
             <div class="contactform">
 
-                <form id="registrar" action="nuevoservicio" method="post" enctype="multipart/form-data">
+                <form id="registrar">
                     <input type="text" name="nombre" placeholder="Nombre*" required>
                     <br clear="all" />
                     <br clear="all" />
@@ -132,5 +130,8 @@
 
         </div>
     </footer>
+    <script src="js/agregarServicio.js"></script>
+    <script src="js/protegerPantallas.js"></script>
 </body>
+
 </html>

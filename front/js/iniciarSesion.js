@@ -29,8 +29,15 @@ form.addEventListener('submit', async (event) => {
 
         if (response.ok) {
             const data = await response.json();
+            console.log(data);
 
-            window.location.href = '/index.html';
+         
+            if(data.rol === 'ENCARGADO'){
+                window.location.href = '/administrador.html';
+            }else if(data.rol === 'CLIENTE'){
+                window.location.href = '/empleado.html';
+            }
+         
         } else {
             const errorData = await response.json();
             window.alert(`Error: ${errorData.error || 'Hubo un problema al iniciar sesión.'}`);
