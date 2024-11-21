@@ -47,3 +47,13 @@ exports.register = async (req, res) => {
         res.status(500).json({ message: "No se pudo registar el usuario", error: error.message });
     }
 };
+
+exports.protected = async (req, res) => {
+    try {
+        
+        res.status(200).json({ message: 'Usuario autenticado' });
+    } catch (error) {
+        console.error(error);
+        res.status(500).json({ message: "No se pudo registar el usuario", error: error.message });
+    }
+};

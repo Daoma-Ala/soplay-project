@@ -28,7 +28,9 @@ form.addEventListener('submit', async (event) => {
   
         if (response.ok) {
             const data = await response.json();
-            window.location.href = '/index.html';
+            console.log(data.cokies.token);
+            console.log(data.cokies);
+           // window.location.href = '/index.html';
         } else {
             const errorData = await response.json();
             window.alert(`Error: ${errorData.error || 'Hubo un problema al iniciar sesión.'}`);

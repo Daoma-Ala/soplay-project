@@ -5,7 +5,7 @@ const jwt = require('jsonwebtoken');
 // Middleware para verificar el token en rutas protegidas
 const verifyToken = (req, res, next) => {
     const token = req.cookies.token;
-
+ 
     if (!token) {
         return res.status(401).json({ error: 'Token no proporcionado' });
     }
