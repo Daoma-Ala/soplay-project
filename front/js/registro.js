@@ -1,7 +1,6 @@
 const form = document.getElementById('registrar');
 
-form.addEventListener('submit', async(event) => {
-
+form.addEventListener('submit', async (event) => {
     event.preventDefault();
 
     const nombres = form.elements['nombres'].value;
@@ -9,12 +8,25 @@ form.addEventListener('submit', async(event) => {
     const apellidoMaterno = form.elements['apellidoMaterno'].value;
     const fechaNacimiento = form.elements['fechaNacimiento'].value;
     const telefono = form.elements['telefono'].value;
-    const correo = form.elements['correo '].value;
-    const contrasena = form.elements['contrasena'].value;
-    const sexo = form.elements['gender'].value;
+    const correo = form.elements['correo'].value;
+    const password = form.elements['contrasena'].value;
+    const genero = form.elements['gender'].value;
 
-    if(!validateForm(nombres, apellidoPaterno, apellidoMaterno, fechaNacimiento, telefono, correo, contrasena, sexo)){
+    if(!validateForm(nombres, apellidoPaterno, apellidoMaterno, fechaNacimiento, telefono, correo, password, genero)){
         return;
+    }
+
+    let sexoDB;
+    switch(genero){
+        case 'male':
+            sexoDB = 'MASCULINO';
+            break;
+        case 'female':
+            sexoDB = 'FEMENINO';
+            break;
+        case 'prefer_not_to_say':
+            sexoDB = 'OTRO';
+            break;
     }
 
     const requestData = {
@@ -24,15 +36,16 @@ form.addEventListener('submit', async(event) => {
         fecha_nacimiento: fechaNacimiento,
         telefono: telefono,
         correo: correo,
-        password: contrasena,
-        sexo: sexo.toUpperCase()
+        password: password,
+        sexo: sexoDB,
+        tipo: 'CLIENTE'
     };
 
     try{
-        const request = await fetch('http://localhost:3000/api/v1/auth/register', {
+        const response = await fetch('http://localhost:3000/api/v1/auth/register', {
             method: 'POST',
             headers: {
-                'Content-Type': 'application/json'
+                'Content_Type': 'application/json'
             },
             body: JSON.stringify(requestData)
         });
@@ -40,41 +53,47 @@ form.addEventListener('submit', async(event) => {
         if(response.ok){
             const data = await response.json();
             console.log(data);
-            window.alert(`Error: ${errorData.error || 'Hubo un problema al registrarse'}`);
+            window.alert('Registro exitoso');
+            window.location.href = '/iniciarSesion.html';
+        }else{
+            const errorData = await response.json();
+            window.alert(`Error ${errorData.error || 'Hubo un problema al registrar el usuario'}`);
         }
     }catch(error){
-        console.error('Error al registrarse', error);
-        window.alert('Error al intentar registrarse. Por favor, inténtalo más tarde.');
+        console.error('Error al registrar:', error);
+        window.alert('Error al intentar registrar. Por favor, inténtalo más tarde.');
     }
 });
 
-function validateForm(nombres, apellidoPaterno, apellidoMaterno, fechaNacimiento, telefono, correo, contrasena, sexo){
-    if(nombres === ""){
-        alert("El nombre es obligatorio");
+function validateForm(nombres, apellidoPaterno, apellidoMaterno, fechaNacimiento, telefono, correo, password, genero){
+    if(!nombres || !apellidoPaterno || !apellidoMaterno || !fechaNacimiento || !telefono || !correo || !password || !genero){
+        alert("Todos los campos son obligatorios");
         return false;
-    } if(apellidoPaterno === ""){
-        alert("El apellido paterno es obligatorio");
+    }
+
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if(!emailRegex.test(correo)){
+        alert("Por favor ingrese un correo electrónico válido");
         return false;
-    } if(apellidoMaterno === ""){
-        alert("El apellido materno es obligatorio");
+    }
+
+    const fechaRegex = /^\d{4}-\d{2}-\d{2}$/;
+    if(!fechaRegex.test(fechaNacimiento)){
+        alert("El formato de fecha debe ser YYYY-MM-DD");
         return false;
-    } if(telefono === ""){
-        alert("El teléfono es obligatorio");
-        return false;
-    }if(correo === ""){
-        alert("El correo del usuario es obligatorio");
-        return false;
-    }if(contrasena === ""){
-        alert("La contraseña es obligatoria");
-        return false;
-    }if(contrasena.length > 15){
+    }
+
+    if(password.length > 15){
         alert("La contraseña no puede tener más de 15 caracteres");
         return false;
-    }if(contrasena.includes(" ")){
+    }if(password.includes(" ")){
         alert("La contraseña no puede contener espacios");
         return false;
-    }if(sexo === ""){
-        alert("El género es obligatorio");
+    }
+
+    const telefonoRegex = /^\d{10}$/;
+    if(!telefonoRegex.test(telefono.replace(/[-\s]/g, ''))){
+        alert("El número de teléfono debe contener 10 dígitos");
         return false;
     }
 
