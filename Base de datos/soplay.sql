@@ -57,7 +57,7 @@ CREATE TABLE `cotizaciones_servicios` (
   `sub_total` float ,
   PRIMARY KEY (`id_cotizacion`,`id_servicio`),
   FOREIGN KEY (`id_cotizacion`) REFERENCES `cotizaciones`(`id_cotizacion`) ON DELETE CASCADE,
-  FOREIGN KEY (`id_servicio`) REFERENCES servicios(`id_servicio`)
+  FOREIGN KEY (`id_servicio`) REFERENCES servicios(`id_servicio`) ON DELETE CASCADE
 );
 
 
