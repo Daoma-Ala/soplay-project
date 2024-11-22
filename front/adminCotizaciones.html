@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+
+    <title> Soplay </title>
+
+    <link rel="icon" type="image/png" href="./img/soplay-logo.jpg">
+
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&display=swap"
+        rel="stylesheet">
+
+
+    <!-- FONT ICONS -->
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/style-responsive.css">
+
+    <script src="js/cotizaciones.js"></script>
+
+</head>
+
+<body>
+    <header>
+        <div class="container psr">
+
+            <div class="header_default">
+
+
+                <div class="site-branding">
+                    <a href="index.jsp" class="logo">
+                        <img src="img/soplay-logo.png" alt="" class="logo-1">
+                        <img src="img/soplay-logo.png" alt="" class="logo-2">
+                    </a>
+                </div>
+
+
+                <div class="header-right">
+
+
+                    <div class="site-navwrap">
+                        <div class="navicons">
+                            <a href="javascript:void;" class="navshow">
+                                <span class="lnr lnr-menu"></span>
+                            </a>
+                            <a href="javascript:void;" class="navhide">
+                                <span class="lnr lnr-cross"></span>
+                            </a>
+                        </div>
+
+                        <div class="sitenav" id="sitenav">
+                            <div class="navwrap">
+                                <div class="navouter">
+
+
+                                    <nav class="headermenu leftmenu" id="headnav" role="navigation">
+                                        <ul>                                            
+                                            <li class="active"><a>Administrar cotizaciones</a></li>
+											<li><a href="adminServicios.html">Administrar servicios</a></li>
+                                            <li><a href="index.html">Cerrar sesión</a></li>
+                                        </ul>
+                                    </nav>
+
+                                </div>
+                            </div>
+                        </div>
+                        <!--sitenav-->
+                    </div>
+                    <!--site-navwrap-->
+
+
+                </div>
+
+
+
+            </div>
+            <!--header_default-->
+
+        </div>
+    </header>
+    <!-- HEADER -->
+
+    <section class="banner">
+        <div class="container">
+
+            <div class="bannercontent">
+
+
+                <div class="text full">
+                    <h3>ADMINISTRADOR</h3>
+                    <h2>
+                        DE COTIZACIONES
+                    </h2>
+                    
+                </div>
+
+
+            </div>
+            <!--bannercontent-->
+
+        </div>
+    </section>
+    <!-- BANNER -->
+
+    <section class="cotizaciones">
+        <div class="container">
+            <h2>Cotizaciones registradas</h2>
+            <table id="cotizacionesTable">
+                <thead>
+                    <tr>
+                        <th>Serie</th>
+                        <th>Cliente</th>
+                        <th>Total</th>
+                        <th>Fecha</th>
+                        <th>Estatus</th>
+                        <th>Eliminar</th>
+                        <th>Ver</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- Filas dinámicas -->
+                </tbody>
+            </table>
+        </div>
+    </section>
+    
+    
+    
+
+    <footer>
+        <div class="container">
+
+
+            <div class="copyright">
+                Copyright &copy; <span id="copyrightyear"></span> Equipo Web Emergentes
+            </div>
+
+        </div>
+    </footer>
+    <!-- FOOTER -->

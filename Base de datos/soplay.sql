@@ -9,7 +9,7 @@ CREATE TABLE `usuarios` (
   `apellido_paterno` varchar(50) NOT NULL,
   `apellido_materno` varchar(50) NOT NULL,
   `fecha_nacimiento` date NOT NULL,
-  `tipo` ENUM('CLIENTE', 'ENCARGADO') NOT NULL,
+  `tipo` ENUM('CLIENTE', 'ENCARGADO') NOT NULL DEFAULT 'CLIENTE',
   `sexo` ENUM('MASCULINO', 'FEMENINO', 'OTRO') NOT NULL,
   `telefono` varchar(20) NOT NULL
 );
@@ -28,16 +28,17 @@ CREATE TABLE `direccion` (
 
 CREATE TABLE `cotizaciones` (
   `id_cotizacion` int(11) primary key auto_increment,
-  `serie` varchar(150) NOT NULL unique,
+  `serie` varchar(150) unique,
   `fecha_cotizacion` datetime NOT NULL DEFAULT current_timestamp,
   `monto` float,
+  `estatus` ENUM('PENDIENTE', 'APROBADA', 'RECHAZADA', 'BORRADOR') NOT NULL DEFAULT 'BORRADOR',
   `id_usuario` int(11) ,
   FOREIGN KEY (`id_usuario`) REFERENCES `usuarios`(`id_usuario`) ON delete set null
 );
 
 CREATE TABLE `servicios` (
   `id_servicio` int(11) PRIMARY KEY auto_increment,
-  `nombre` varchar(80) NOT NULL,
+  `nombre` varchar(80) NOT NULL unique,
   `descripcion` varchar(255) NOT NULL,
   `precio` float NOT NULL
 );
@@ -46,17 +47,17 @@ CREATE TABLE `fotos` (
   `id_foto` int(11) PRIMARY KEY auto_increment,
   `ruta` varchar(400) NOT NULL,
   `id_servicio` int(11) NOT NULL,
-  FOREIGN KEY (`id_servicio`) REFERENCES `servicios`(`id_servicio`)
+  FOREIGN KEY (`id_servicio`) REFERENCES `servicios`(`id_servicio`) ON DELETE CASCADE
 );
 
 CREATE TABLE `cotizaciones_servicios` (
   `id_cotizacion` INT(11),
   `id_servicio` INT(11),
   `cantidad` int NOT NULL,
-  `sub_total` float not null,
+  `sub_total` float ,
   PRIMARY KEY (`id_cotizacion`,`id_servicio`),
-  FOREIGN KEY (`id_cotizacion`) REFERENCES `cotizaciones`(`id_cotizacion`),
-  FOREIGN KEY (`id_servicio`) REFERENCES servicios(`id_servicio`)
+  FOREIGN KEY (`id_cotizacion`) REFERENCES `cotizaciones`(`id_cotizacion`) ON DELETE CASCADE,
+  FOREIGN KEY (`id_servicio`) REFERENCES servicios(`id_servicio`) ON DELETE CASCADE
 );
 
 
@@ -145,7 +146,26 @@ END;
 
 //
 
+CREATE TRIGGER before_insert_cotizacion
+BEFORE INSERT ON cotizaciones
+FOR EACH ROW
+BEGIN
+    DECLARE random_letter1 CHAR(1);
+    DECLARE random_letter2 CHAR(1);
+    DECLARE random_number INT;
+
+    SET random_letter1 = CHAR(FLOOR(65 + (RAND() * 26))); 
+    SET random_letter2 = CHAR(FLOOR(65 + (RAND() * 26))); 
+
+    SET random_number = FLOOR(1000 + (RAND() * 9000)); 
+    SET NEW.serie = CONCAT(random_letter1, random_letter2, random_number, random_letter1);
+END//
+
 DELIMITER ;
+
+INSERT INTO usuarios (correo, password, nombres, apellido_paterno, apellido_materno, fecha_nacimiento, tipo, sexo, telefono)
+VALUES ('encargado@gmail.com', 'password123', 'Daniel', 'López', 'López', '1985-05-15', 'ENCARGADO', 'MASCULINO', '555-123-4567');
+
 
 
 
