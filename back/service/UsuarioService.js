@@ -22,13 +22,13 @@ class UsuarioService {
                 apellido_paterno,
                 apellido_materno,
                 fecha_nacimiento,
-                tipo,
+
                 sexo,
                 telefono,
-                direccion
+
             } = usuario;
 
-            const usuarioNuevo = new Usuario(null, correo, password, nombres, apellido_paterno, apellido_materno, fecha_nacimiento, tipo, sexo, telefono, direccion);
+            const usuarioNuevo = new Usuario(null, correo, password, nombres, apellido_paterno, apellido_materno, fecha_nacimiento, null, sexo, telefono, null);
             const id_usuario = await UsuarioDao.addUsuario(usuarioNuevo);
 
             return id_usuario;

@@ -28,20 +28,23 @@ class UsuarioDao {
                 apellido_paterno,
                 apellido_materno,
                 fecha_nacimiento,
-                tipo,
+
                 sexo,
                 telefono,
-                direccion
+
             } = usuario;
 
             const [resultado] = await connection.query(
-                'INSERT INTO usuarios (correo, password, nombres, apellido_paterno, apellido_materno, fecha_nacimiento, tipo, sexo, telefono) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)',
-                [correo, password, nombres, apellido_paterno, apellido_materno, fecha_nacimiento, tipo, sexo, telefono]
+                'INSERT INTO usuarios (correo, password, nombres, apellido_paterno, apellido_materno, fecha_nacimiento, sexo, telefono) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)',
+                [correo, password, nombres, apellido_paterno, apellido_materno, fecha_nacimiento, sexo, telefono]
             );
 
             const id_usuario = resultado.insertId;
+
+            /*
             direccion.id_usuario = id_usuario;
             await DireccionDao.addDireccion(direccion, connection);
+*/
             await connection.commit();
 
             return id_usuario;

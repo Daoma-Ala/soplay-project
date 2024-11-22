@@ -40,8 +40,9 @@ exports.register = async (req, res) => {
         res.cookie('token', token, {
             httpOnly: true,
             secure: true,
-            sameSite: 'strict',
-            maxAge: 3600000
+            sameSite: 'None',
+            maxAge: 3600000,
+             path: '/'
         });
 
         res.status(201).json({ message: 'Usuario autenticado', id_usuario });
