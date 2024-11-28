@@ -1,5 +1,6 @@
 const CotizacionServicioDao = require('../data/CotizacionDetalladaDao.js');
 const CotizacionServicio = require('../model/CotizacionServicio.js');
+const ServicioDAO = require('../data/ServicioDao.js');
 
 
 class CotizacionDetalladaService {
@@ -27,14 +28,31 @@ class CotizacionDetalladaService {
 
     async getAllByCotizacionId(data) {
         const { id_cotizacion } = data;
+
         const cotizacionesDetalladas = await CotizacionServicioDao.getAllByCotizacionId(id_cotizacion);
-        if (!cotizacionesDetalladas) {
-            if (!cotizacionServicio) {
-                throw new Error('Cotizaciones Detalladas no encontradas');
-            }
+
+        if (!cotizacionesDetalladas || cotizacionesDetalladas.length === 0) {
+            throw new Error('Cotizaciones detalladas no encontradas');
         }
-        return cotizacionesDetalladas;
+
+        const detallesConServicios = await Promise.all(
+            cotizacionesDetalladas.map(async (detalle) => {
+                const servicio = await ServicioDAO.getServicioById(detalle.id_servicio);
+
+                if (!servicio) {
+                    console.warn(`Servicio con id ${detalle.id_servicio} no encontrado.`);
+                }
+
+                return {
+                    ...detalle, 
+                    servicio: servicio || null, 
+                };
+            })
+        );
+
+        return detallesConServicios; 
     }
+
 
     async deleteCotizacionDetallada(data) {
         const { id_cotizacion, id_servicio } = data;

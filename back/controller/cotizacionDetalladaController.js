@@ -26,13 +26,16 @@ exports.getCotizacionDetalladaById = async (req, res) => {
 exports.getAllByCotizacionId = async (req, res) => {
     try {
         const { id_cotizacion } = req.params;
+
         const cotizacionesDetalladas = await CotizacionDetalladaService.getAllByCotizacionId({ id_cotizacion });
+
         res.status(200).json(cotizacionesDetalladas);
     } catch (error) {
         console.error('Error al obtener las cotizaciones detalladas:', error);
-        res.status(404).json({ error: 'Cotizaciones detalladas no encontradas' });
+        res.status(500).json({ error: 'Error al obtener las cotizaciones detalladas.' });
     }
 };
+
 
 exports.deleteCotizacionDetallada = async (req, res) => {
     try {

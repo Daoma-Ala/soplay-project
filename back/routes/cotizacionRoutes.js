@@ -10,7 +10,6 @@ router.get('/:id', proctectedRoutes, cotizacionController.getCotizacionById);
 //router.get('/', proctectedRoutes, checkRole(['ENCARGADO']), cotizacionController.getAllCotizaciones);
 router.get('/', cotizacionController.getAllCotizaciones);
 
-//router.delete('/:id', proctectedRoutes, cotizacionController.deleteCotizacion);
 router.delete('/:id', proctectedRoutes, cotizacionController.deleteCotizacion);
 router.get('/usuario/:id_usuario', proctectedRoutes, checkRole(['CLIENTE']),cotizacionController.getAllCotizacionesByUsuario);
 
