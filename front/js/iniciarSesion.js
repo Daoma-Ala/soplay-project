@@ -35,7 +35,7 @@ form.addEventListener('submit', async (event) => {
             if(data.rol === 'ENCARGADO'){
                 window.location.href = '/administrador.html';
             }else if(data.rol === 'CLIENTE'){
-                window.location.href = '/empleado.html';
+                window.location.href = '/cliente.html';
             }
          
         } else {
