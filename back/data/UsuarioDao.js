@@ -35,7 +35,7 @@ class UsuarioDao {
             } = usuario;
 
             const [resultado] = await connection.query(
-                'INSERT INTO usuarios (correo, password, nombres, apellido_paterno, apellido_materno, fecha_nacimiento, sexo, telefono) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)',
+                'INSERT INTO usuarios (correo, password, nombres, apellido_paterno, apellido_materno, fecha_nacimiento, sexo, telefono) VALUES (?, ?, ?, ?, ?, ?, ?, ?)',
                 [correo, password, nombres, apellido_paterno, apellido_materno, fecha_nacimiento, sexo, telefono]
             );
 
