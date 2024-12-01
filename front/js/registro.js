@@ -10,13 +10,13 @@ form.addEventListener('submit', async (event) => {
     const apellidoMaterno = form.elements['apellidoMaterno'].value;
     const fechaNacimiento = form.elements['fechaNacimiento'].value;
     const telefono = form.elements['telefono'].value;
-    const correo = form.elements['correo'].value; // Corrige el nombre
+    const correo = form.elements['correo'].value;
     const contrasena = form.elements['contrasena'].value;
     const sexo = form.elements['gender'].value;
 
     console.log({ nombres, apellidoPaterno, apellidoMaterno, fechaNacimiento, telefono, correo, contrasena, sexo });
 
-   
+
     const requestData = {
         nombres: nombres,
         apellido_paterno: apellidoPaterno,
@@ -42,6 +42,7 @@ form.addEventListener('submit', async (event) => {
             const data = await request.json();
             console.log(data);
             window.alert(`Usuario registrado con éxito.`);
+            window.location.href = '/cliente.html';
         } else {
             const errorData = await request.json();
             window.alert(`Error: ${errorData.error || 'Hubo un problema al registrarse'}`);

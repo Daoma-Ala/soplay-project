@@ -19,11 +19,11 @@ exports.login = async (req, res) => {
             secure: true,
             sameSite: 'None',
             maxAge: 3600000,
-             path: '/'
+            path: '/'
         });
 
 
-        res.status(200).json({ message: 'Usuario autenticado', id_usuario: data.id_usuario, rol : data.tipo });
+        res.status(200).json({ message: 'Usuario autenticado', id_usuario: data.id_usuario, rol: data.tipo });
         console.log(token);
     } catch (error) {
         console.error(error);
@@ -42,7 +42,7 @@ exports.register = async (req, res) => {
             secure: true,
             sameSite: 'None',
             maxAge: 3600000,
-             path: '/'
+            path: '/'
         });
 
         res.status(201).json({ message: 'Usuario autenticado', id_usuario });
@@ -54,9 +54,25 @@ exports.register = async (req, res) => {
 
 exports.protected = async (req, res) => {
     try {
-        res.status(200).json({ message: req.rol });
+        res.status(200).json(req.rol);
     } catch (error) {
         console.error(error);
-        res.status(500).json({ message: "No se pudo registar el usuario", error: error.message });
+        res.status(500).json({ message: "No se pudo validar el usuario", error: error.message });
+    }
+};
+
+exports.logout = async (req, res) => {
+    try {
+        res.clearCookie('token', {
+            httpOnly: true,
+            secure: true,
+            sameSite: 'None',
+            path: '/',
+        });
+
+        res.status(200).json({ message: "Sesión cerrada correctamente" });
+    } catch (error) {
+        console.error(error);
+        res.status(500).json({ message: "No se pudo cerrar la sesión", error: error.message });
     }
 };
