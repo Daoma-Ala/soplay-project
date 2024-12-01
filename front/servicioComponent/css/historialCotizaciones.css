@@ -1,0 +1,150 @@
+.cotizacion-item{
+    border: 1px solid #ddd;
+    padding: 15px;
+    margin-bottom: 15px;
+    border-radius: 8px;
+    background-color: #f9f9f9;
+    text-align: center;
+}
+
+.cotizacion-item h3{
+    color: #333;
+    margin-bottom: 10px;
+}
+
+.cotizacion-item p{
+    color: #666;
+    margin: 5px 0;
+}
+
+.cotizacion-item button{
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 10px;
+}
+
+.cotizacion-item button:hover{
+    background-color: #0056b3;
+}
+
+.modal{
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    overflow-y: auto;
+}
+
+.modal-content{
+    background-color: #fefefe;
+    margin: 50px auto;
+    padding: 20px;
+    border-radius: 8px;
+    width: 90%;
+    max-width: 800px;
+    position: relative;
+    animation: modalSlideIn 0.3s ease-out;
+}
+
+@keyframes modalSlideIn{
+    from{
+        transform: translateY(-100px);
+        opacity: 0;
+    } to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+.close-modal{
+    position: absolute;
+    right: 20px;
+    top: 10px;
+    font-size: 20px;
+    font-weight: bold;
+    color: #666;
+    cursor: pointer;
+    transition: color 0.3s;
+}
+
+.close-modal:hover{
+    color: #000;
+}
+
+.modal-header{
+    border-bottom: 2px solid #eee;
+    padding-bottom: 15px;
+    margin-bottom: 20px;
+}
+
+.tabla-servicios{
+    width: 100%;
+    border-collapse: collapse;
+    margin: 20px 0;
+}
+
+.tabla-servicios th,
+.tabla-servicios td{
+    padding: 12px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+}
+
+.tabla-servicios th{
+    background-color: #f5f5f5;
+    font-weight: 600;
+}
+
+.tabla-servicios tr:hover{
+    background-color: #f9f9f9;
+}
+
+.total-section{
+    text-align: right;
+    padding: 20px;
+    border-top: 2px solid #eee;
+    margin-top: 20px;
+}
+
+#detalles-cotizacion{
+    background-color: #f9f9f9;
+    padding: 15px;
+    border-radius: 5px;
+    margin-bottom: 20px;
+}
+
+.status-badge{
+    display: inline-block;
+    padding: 5px 10px;
+    border-radius: 15px;
+    font-size: 0.9em;
+    font-weight: 500;
+}
+
+.status-PENDIENTE{
+    background-color: #fff3cd;
+    color: #856404;
+}
+
+.status-APROBADA{
+    background-color: #d4edda;
+    color: #155724;
+}
+
+.status-RECHAZADA{
+    background-color: #f8d7da;
+    color: #721c24;
+}
+
+.status-BORRADOR{
+    background-color: #e2e3e5;
+    color: #383d41;
+}

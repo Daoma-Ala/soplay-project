@@ -29,9 +29,11 @@ form.addEventListener('submit', async (event) => {
 
         if (response.ok) {
             const data = await response.json();
-            console.log(data);
 
-         
+            localStorage.setItem('authToken', data.token);
+            localStorage.setItem('userRole', data.rol);
+            localStorage.setItem('userId', String(data.id_usuario));
+   
             if(data.rol === 'ENCARGADO'){
                 window.location.href = '/administrador.html';
             }else if(data.rol === 'CLIENTE'){
@@ -44,7 +46,6 @@ form.addEventListener('submit', async (event) => {
 
         }
     } catch (error) {
-        console.error('Error al iniciar sesión:', error);
         window.alert('Error al intentar iniciar sesión. Por favor, inténtalo más tarde.');
 
     }

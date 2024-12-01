@@ -5,7 +5,7 @@ const proctectedRoutes = require('../middlewares/proctectedRoutes.js');
 const checkRole = require('../middlewares/checkRole.js');
 
 // Rutas
-router.post('/', proctectedRoutes, checkRole(['ENCARGADO']), usuarioController.addUsuario);
+router.post('/', usuarioController.addUsuario);
 router.get('/:id', proctectedRoutes, usuarioController.getUsuarioById);
 router.get('/', proctectedRoutes, checkRole(['ENCARGADO']), usuarioController.getAllUsuarios);
 router.delete('/:id', proctectedRoutes, checkRole(['ENCARGADO']), usuarioController.deleteUsuario);
