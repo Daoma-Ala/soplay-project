@@ -9,14 +9,15 @@ const deplegarDatos = async (idCotizacion) => {
 
         if (response.ok) {
             const datos = await response.json();
-            console.log(datos);
+
 
             actualizarUI(datos.serie, datos.monto);
 
             const tabla = document.querySelector('.tabla_servicios tbody');
             tabla.innerHTML = '';
             for (const detalle of datos.cotizacion_servicios) {
-                const servicioResponse = await fetch(`http://localhost:3000/api/v1/servicio/${detalle.servicio}`, {
+
+                const servicioResponse = await fetch(`http://localhost:3000/api/v1/servicio/${detalle.id_servicio}`, {
                     method: 'GET',
                     credentials: 'include',
                 });
@@ -42,7 +43,7 @@ const agregarFilaServicio = (servicio, cantidad, subTotal) => {
     const tabla = document.querySelector('.tabla_servicios tbody');
     const fila = document.createElement('tr');
 
-  
+
     fila.innerHTML = `
         <td>${servicio.nombre}</td>
         <td>${servicio.descripcion}</td>
@@ -65,7 +66,7 @@ const eliminarServicio = async (id_servicio) => {
 
         if (response.ok) {
             alert('Servicio eliminado');
-            deplegarDatos(id_cotizacion); 
+            deplegarDatos(id_cotizacion);
         } else {
             alert('Error al eliminar el servicio');
         }
@@ -131,8 +132,8 @@ const cargarServicios = async () => {
     }
 };
 
-// Manejo del formulario de registro
-const manejarRegistro = () => {
+// Manejo del formulario de registro de servicios para la cotizacion
+const manejarRegistro = async () => {
     const registrarForm = document.getElementById('registrar');
     const serviciosSelect = document.querySelector('select[name="servicios"]');
 
@@ -140,13 +141,14 @@ const manejarRegistro = () => {
         event.preventDefault();
 
         // Obtener el servicio seleccionado y la cantidad
-        const selectedService = serviciosSelect.value;
+        const selectedService = parseInt(serviciosSelect.value, 10);
         const cantidad = registrarForm.cantidad.value;
 
         if (!selectedService || !cantidad) {
             alert('Por favor, selecciona un servicio y escribe la cantidad.');
             return;
         }
+
 
         const data = {
             id_servicio: selectedService,
@@ -167,8 +169,8 @@ const manejarRegistro = () => {
             if (!response.ok) throw new Error('Error al registrar el servicio');
 
             const result = await response.json();
-            alert(result.message); 
-            registrarForm.reset(); 
+            alert(result.message);
+            registrarForm.reset();
             deplegarDatos(id_cotizacion);
         } catch (error) {
             console.error('Error al registrar el servicio:', error);
@@ -177,9 +179,38 @@ const manejarRegistro = () => {
     });
 };
 
+
+
+const eliminarBoton = document.getElementById('eliminarCotizacion');
+
+
+
+const eliminarCotizacion = async () => {
+    try {
+        const response = await fetch(`http://localhost:3000/api/v1/cotizacion/${id_cotizacion}`, {
+            method: 'DELETE',
+            credentials: 'include',
+        });
+
+        if (response.ok) {
+            alert('Cotización eliminada');
+            window.location.href = "/cotizacion.html"; // Redirige a la página de cotización
+        } else {
+            alert('Error al eliminar la cotización');
+        }
+    } catch (error) {
+        console.error('Error al eliminar la cotización:', error);
+        alert('Error al eliminar la cotización');
+    }
+};
+
+eliminarBoton.addEventListener('click', eliminarCotizacion);
+
 // Inicialización
 document.addEventListener('DOMContentLoaded', async () => {
     await agregarCotizacion();
     await cargarServicios();
-    manejarRegistro();
+    await manejarRegistro();
 });
+
+

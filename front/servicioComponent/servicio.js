@@ -18,11 +18,10 @@ class Servicio extends HTMLElement {
     #render(shadow) {
         shadow.innerHTML += `
           <section>
-            <h2><a href="#" id="nombre">...</a></h2>
+            <h2 id="nombre">...</h2>
             <p id="descripcion">...</p>
             <p id="precio">...</p>
             <img id="imagen" alt="Imagen del servicio" />
-            <br clear="all" />
             <button id="agregar-cotizacion">Agregar a cotización</button>
           </section>
         `;

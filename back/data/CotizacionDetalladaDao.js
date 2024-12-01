@@ -6,11 +6,11 @@ class CotizacionServicioDao {
     async addCotizacionDetallada(cotizacionServicio) {
         const connection = await createConnection();
         try {
-            const { id_cotizacion, servicio, cantidad } = cotizacionServicio;
+            const { id_cotizacion, id_servicio, cantidad } = cotizacionServicio;
 
             const [resultado] = await connection.query(
                 'INSERT INTO cotizaciones_servicios (id_cotizacion, id_servicio, cantidad) VALUES (?, ?, ?)',
-                [id_cotizacion, servicio, cantidad]
+                [id_cotizacion, id_servicio, cantidad]
             );
         } catch (error) {
             console.error('Error al crear cotización-servicio:', error);
