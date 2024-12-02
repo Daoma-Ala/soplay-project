@@ -19,7 +19,7 @@
 
     <!-- js-->
     <script type="module" src="/js/protegerPantallas.js"></script>
-    <script src="js/cotizacionesDetalladas.js"></script>
+
 
 
 
@@ -102,7 +102,8 @@
                     <h2>
                         DE COTIZACIÓN DETALLADA
                     </h2>
-
+                    <h3 id="serie"></h3>
+                    <h3 id="estatus"></h3>
                 </div>
 
 
@@ -129,8 +130,16 @@
                 <tbody>
                     <!-- Filas dinámicas -->
                 </tbody>
+
+
             </table>
+            <a href="adminCotizaciones.html"><button>Regresar</button></a>
+            <br>
+            <button class="estado-boton" data-estado="APROBADA">Aprobar</button>
+            <br>
+            <button class="estado-boton" data-estado="RECHAZADA">Rechazar</button>
         </div>
+
     </section>
 
 
@@ -146,8 +155,21 @@
 
         </div>
     </footer>
+</body>
+<script type="text/javascript"
+        src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js">
+</script>
+<script type="text/javascript">
 
-    </body>
-    <script src="js/cerrarSesion.js"></script>
-    </html>
-    <!-- FOOTER -->
+</script>
+
+
+<script src="js/cotizacionesDetalladas.js"></script>
+<script src="js/cerrarSesion.js"></script>
+
+<script src="js/estausCotizacion.js"></script>
+</body>
+
+
+</html>
+<!-- FOOTER -->

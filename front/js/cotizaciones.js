@@ -17,16 +17,30 @@ document.addEventListener("DOMContentLoaded", () => {
 
             tableBody.innerHTML = cotizaciones
                 .map((cotizacion) => {
-                    return `
-                    <tr>
-                        <td>${cotizacion.serie}</td>
-                        <td>${cotizacion.id_usuario}</td>
-                        <td>${cotizacion.monto.toLocaleString("es-MX", { style: "currency", currency: "MXN" })}</td>
-                        <td>${new Date(cotizacion.fecha_cotizacion).toLocaleDateString()}</td>
-                        <td>${cotizacion.estatus ? cotizacion.estatus : "Pendiente"}</td>
-                        <td><button class="eliminar" data-id="${cotizacion.id_cotizacion}">Eliminar</button></td>
-                        <td><button class="ver" data-id="${cotizacion.id_cotizacion}">Ver</button></td>
-                    </tr>`;
+
+                    if (cotizacion.estatus !== "BORRADOR") {
+                        const monto = cotizacion.monto
+                            ? cotizacion.monto.toLocaleString("es-MX", { style: "currency", currency: "MXN" })
+                            : "N/A";
+
+                        const fechaCotizacion = cotizacion.fecha_cotizacion
+                            ? new Date(cotizacion.fecha_cotizacion).toLocaleDateString()
+                            : "Fecha no disponible";
+
+                        return `
+            <tr>
+                <td>${cotizacion.serie || "Sin serie"}</td>
+                <td>${cotizacion.id_usuario || "Sin cliente"}</td>
+                <td>${monto}</td>
+                <td>${fechaCotizacion}</td>
+                <td>${cotizacion.estatus ? cotizacion.estatus : "Pendiente"}</td>
+                <td><button class="eliminar" data-id="${cotizacion.id_cotizacion}">Eliminar</button></td>
+                <td><button class="ver" data-id="${cotizacion.id_cotizacion}">Ver</button></td>
+            </tr>`;
+                    }
+
+
+
                 })
                 .join("");
         } catch (error) {
@@ -34,6 +48,7 @@ document.addEventListener("DOMContentLoaded", () => {
             alert("Ocurrió un error al intentar cargar las cotizaciones. Por favor, intente nuevamente.");
         }
     };
+
 
     cargarCotizaciones();
 

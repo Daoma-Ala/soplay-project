@@ -19,7 +19,7 @@ const listCotizaciones = async () => {
             cotizaciones.forEach(cotizacion => {
                 if (!cotizacion) return;
 
-               // if (cotizacion.estatus !== "BORRADOR") {
+             if (cotizacion.estatus !== "BORRADOR") {
                     const cotizacionElemento = document.createElement('div');
                     cotizacionElemento.classList.add('cotizacion-item');
 
@@ -39,7 +39,7 @@ const listCotizaciones = async () => {
                         <button onclick="verDetalleCotizacion(${id})">Ver Detalles</button>
                     `;
                     divCotizaciones.appendChild(cotizacionElemento);
-               // }
+                 }
 
             });
         } else {
@@ -54,11 +54,6 @@ const listCotizaciones = async () => {
         window.alert('Error al consultar las cotizaciones ' + error);
     }
 };
-
-
-
-
-
 
 
 

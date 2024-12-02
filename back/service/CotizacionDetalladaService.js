@@ -7,7 +7,7 @@ class CotizacionDetalladaService {
 
     async addCotizacionDetallada(data) {
         const { id_cotizacion, id_servicio, cantidad } = data;
-   
+
         const cotizacionServicio = new CotizacionServicio(id_cotizacion, id_servicio, cantidad, null);
         const idResultado = await CotizacionServicioDao.getCotizacionDetalladaById(id_cotizacion, id_servicio);
         if (idResultado === null) {
@@ -31,11 +31,11 @@ class CotizacionDetalladaService {
         const { id_cotizacion } = data;
 
         const cotizacionesDetalladas = await CotizacionServicioDao.getAllByCotizacionId(id_cotizacion);
-
         if (!cotizacionesDetalladas || cotizacionesDetalladas.length === 0) {
             throw new Error('Cotizaciones detalladas no encontradas');
         }
 
+        /*
         const detallesConServicios = await Promise.all(
             cotizacionesDetalladas.map(async (detalle) => {
                 const servicio = await ServicioDAO.getServicioById(detalle.id_servicio);
@@ -45,13 +45,14 @@ class CotizacionDetalladaService {
                 }
 
                 return {
-                    ...detalle, 
-                    servicio: servicio || null, 
+                    ...detalle,
+                    servicio: servicio || null,
                 };
             })
         );
+        */
 
-        return detallesConServicios; 
+        return cotizacionesDetalladas;
     }
 
 

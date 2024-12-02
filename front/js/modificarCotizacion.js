@@ -210,7 +210,7 @@ eliminarBoton.addEventListener('click', eliminarCotizacion);
 document.addEventListener('DOMContentLoaded', async () => {
 
     const urlParams = new URLSearchParams(window.location.search);
-    id_cotizacion = urlParams.get('id');
+    id_cotizacion = urlParams.get('id_cotizacion');
 
     if (id_cotizacion) {
         await agregarCotizacion(id_cotizacion);

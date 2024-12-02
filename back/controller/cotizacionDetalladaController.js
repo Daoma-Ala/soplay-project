@@ -26,7 +26,6 @@ exports.getCotizacionDetalladaById = async (req, res) => {
 exports.getAllByCotizacionId = async (req, res) => {
     try {
         const { id_cotizacion } = req.params;
-
         const cotizacionesDetalladas = await CotizacionDetalladaService.getAllByCotizacionId({ id_cotizacion });
 
         res.status(200).json(cotizacionesDetalladas);

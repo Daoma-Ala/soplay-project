@@ -10,16 +10,29 @@ document.addEventListener("DOMContentLoaded", async () => {
     const tableBody = document.querySelector("#cotizacionesTable tbody");
 
     try {
-        const response = await fetch(`/api/v1/cotizacion-detalle/${idCotizacion}`);
+        const response = await fetch(`http://localhost:3000/api/v1/cotizacion-detalle/${idCotizacion}`,
+            {
+                method: 'GET',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                credentials: 'include',
+            }
+        );
+
+
         if (!response.ok) {
             throw new Error("Error al obtener los servicios de la cotización.");
         }
 
         const detalles = await response.json();
+        console.log(detalles);
+        await buscarCotizacion(detalles[0].id_cotizacion);
+
 
         tableBody.innerHTML = detalles
             .map((detalle) => {
-                const servicio = detalle.servicio || {};
+                const servicio = detalle.id_servicio || {};
                 return `
                     <tr>
                         <td>${servicio.nombre || "Sin nombre"}</td>
@@ -28,7 +41,7 @@ document.addEventListener("DOMContentLoaded", async () => {
                         <td>${detalle.cantidad}</td>
                         <td>$${(servicio.precio * detalle.cantidad).toFixed(2)}</td>
                         <td>
-                            <button class="eliminar" data-id-servicio="${detalle.id_servicio}" data-id-cotizacion="${idCotizacion}">
+                            <button class="eliminar" data-id-servicio="${detalle.id_servicio.id_servicio}" data-id-cotizacion="${idCotizacion}">
                                 Eliminar
                             </button>
                         </td>
@@ -43,10 +56,22 @@ document.addEventListener("DOMContentLoaded", async () => {
 
                 if (confirm("¿Estás seguro de que deseas eliminar este servicio?")) {
                     try {
+
                         const deleteResponse = await fetch(
-                            `/api/v1/cotizacion-detalle/${idCotizacion}/${idServicio}`,
-                            { method: "DELETE" }
+                            `http://localhost:3000/api/v1/cotizacion-detalle/${idCotizacion}/${idServicio}`,
+                            {
+
+                                method: 'DELETE',
+                                headers: {
+                                    'Content-Type': 'application/json',
+                                },
+                                credentials: 'include',
+
+
+                            }
                         );
+
+
 
                         if (!deleteResponse.ok) {
                             throw new Error("Error al eliminar el servicio.");
@@ -66,3 +91,37 @@ document.addEventListener("DOMContentLoaded", async () => {
         alert("No se pudieron cargar los servicios de la cotización.");
     }
 });
+
+
+const buscarCotizacion = async (id_cotizacion) => {
+    try {
+        const response = await fetch(`http://localhost:3000/api/v1/cotizacion/${id_cotizacion}`, {
+            method: 'GET',
+            credentials: 'include',
+        });
+
+        if (response.ok) {
+            const datos = await response.json();
+
+            document.getElementById('serie').textContent = `Serie: ${datos.serie}`;
+            document.getElementById('estatus').textContent = `Estatus: ${datos.estatus}`;
+
+            if (datos.estatus !== "PENDIENTE") {
+                quitarBotonesEstado();
+            }
+
+        } else {
+            const errorData = await response.json();
+            window.alert(`Error: ${errorData.error}`);
+        }
+    } catch (error) {
+        console.error('Error al buscar una cotización:', error);
+        window.alert('Error al buscarr una cotización.');
+    }
+};
+
+const quitarBotonesEstado = () => {
+
+    const botones = document.querySelectorAll('.estado-boton');
+    botones.forEach(boton => boton.style.display = 'none');
+};

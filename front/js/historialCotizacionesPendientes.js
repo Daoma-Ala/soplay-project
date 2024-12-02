@@ -17,9 +17,10 @@ const listCotizaciones = async () => {
             }
 
             cotizaciones.forEach(cotizacion => {
+
                 if (!cotizacion) return;
 
-                // if (cotizacion.estatus !== "BORRADOR") {
+                if (cotizacion.estatus === "BORRADOR") {
                 const cotizacionElemento = document.createElement('div');
                 cotizacionElemento.classList.add('cotizacion-item');
 
@@ -29,17 +30,17 @@ const listCotizaciones = async () => {
                 const monto = typeof cotizacion.monto === 'number' ?
                     cotizacion.monto.toFixed(2) : '0.00';
                 const estatus = cotizacion.estatus || 'Pendiente';
-                const id = cotizacion.id_cotizacion || 0;
+                const id_cotizacion = cotizacion.id_cotizacion || 0;
 
                 cotizacionElemento.innerHTML = `
                         <h3>Cotización #${serie}</h3>
                         <p>Fecha: ${fecha}</p>
                         <p>Monto: $${monto}</p>
                         <p>Estatus: ${estatus}</p>
-                        <button onclick="verDetalleCotizacion(${id})">Ver Detalles</button>
+                        <button onclick="verDetalleCotizacion(${id_cotizacion})">Ver Detalles</button>
                     `;
                 divCotizaciones.appendChild(cotizacionElemento);
-                // }
+                 }
 
             });
         } else {
@@ -99,7 +100,7 @@ const verDetalleCotizacion = async (idCotizacion) => {
             <h3>Cotización #${data.serie || 'N/A'}</h3>
             <p>Fecha: ${formatDate(data.fecha_cotizacion)}</p>
             <p>Estatus: <span class="status-badge status-${data.estatus}">${data.estatus}</span></p>
-            <button onclick="window.location.href='modificarCotizacion.html?id=${data.id_cotizacion}';">Modificar</button>
+            <button onclick="window.location.href='modificarCotizacion.html?id_cotizacion=${data.id_cotizacion}';">Modificar</button>
             `;
 
             const servicioBody = document.getElementById('servicios-body');
