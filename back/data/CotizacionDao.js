@@ -8,7 +8,7 @@ class CotizacionDao {
         const connection = await createConnection();
         try {
             await connection.beginTransaction();
-            const id_usuario= cotizacion;
+            const id_usuario = cotizacion;
             const [resultado] = await connection.query(
                 'INSERT INTO cotizaciones (id_usuario) VALUES ( ?)',
                 [id_usuario]
@@ -45,14 +45,12 @@ class CotizacionDao {
         }
     }
 
-    async updateActualizacion(cotizacion) {
+    async updateCotizacion(id, estatus) {
         const connection = await createConnection();
         try {
-            const { id_cotizacion, serie, id_usuario } = cotizacion;
-
             await connection.query(
-                'UPDATE cotizaciones SET serie = ?, id_usuario = ? WHERE id_cotizacion = ?',
-                [serie, id_usuario, id_cotizacion]
+                'UPDATE cotizaciones SET estatus = ? WHERE id_cotizacion = ?',
+                [estatus, id]
             );
         } catch (error) {
             console.error('Error al actualizar cotización:', error);
@@ -64,7 +62,7 @@ class CotizacionDao {
 
     async getCotizacionesbyUsuario(id_usuario) {
         const connection = await createConnection();
-    
+
         try {
             const [rows] = await connection.query('SELECT * FROM cotizaciones WHERE id_usuario = ?', [id_usuario]);
 
@@ -73,7 +71,7 @@ class CotizacionDao {
                 const cotizacion_servicios = await CotizacionServicioDao.getAllByCotizacionId(cotizacion.id_cotizacion);
                 cotizacion.cotizacion_servicios = cotizacion_servicios;
             }
-            
+
             return cotizaciones;
 
         } catch (error) {

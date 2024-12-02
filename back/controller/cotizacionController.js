@@ -63,3 +63,26 @@ exports.deleteCotizacion = async (req, res) => {
         res.status(500).json({ message: "No se puede eliminar a la cotización", error: error.message });
     }
 };
+
+
+exports.updateCotizacion = async (req, res) => {
+    try {
+        const id_cotizacion = parseInt(req.params.id);
+        if (isNaN(id_cotizacion)) {
+            return res.status(400).json({ error: 'ID de la cotización no válido' });
+        }
+
+        const { estatus } = req.body;
+        if (!estatus) {
+            return res.status(400).json({ error: 'estatus de la cotización no válido' });
+        }
+
+        await CotizacionServicio.updateCotizacion(id_cotizacion, estatus);
+        res.status(201).json({ message: 'Cotización actualizada' });
+    } catch (error) {
+        console.error(error);
+        res.status(500).json({ message: "No se puede actualizar la cotización", error: error.message });
+    }
+};
+
+

@@ -39,6 +39,14 @@ class CotizacionService {
         await CotizacionDao.deleteCotizacion(id);
     }
 
+    async updateCotizacion(id, data){
+        const cotizacionExistente = await this.getCotizacionById(id);
+        if (!cotizacionExistente) {
+            throw new Error('No se puede actualizar. Cotización no encontrada');
+        }
+        await CotizacionDao.updateCotizacion(id, data);
+    }
+
 }
 
 module.exports = new CotizacionService();
