@@ -30,9 +30,7 @@ form.addEventListener('submit', async (event) => {
         if (response.ok) {
             const data = await response.json();
 
-            localStorage.setItem('authToken', data.token);
-            localStorage.setItem('userRole', data.rol);
-            localStorage.setItem('userId', String(data.id_usuario));
+
    
             if(data.rol === 'ENCARGADO'){
                 window.location.href = '/administrador.html';

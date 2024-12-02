@@ -1,4 +1,5 @@
-let id_cotizacion = '';
+
+let id_cotizacion;
 
 const deplegarDatos = async (idCotizacion) => {
     try {
@@ -84,10 +85,10 @@ const actualizarUI = (serie, total) => {
 };
 
 // Función para agregar una nueva cotización
-const agregarCotizacion = async () => {
+const agregarCotizacion = async (id_cotizacion) => {
     try {
-        const response = await fetch('http://localhost:3000/api/v1/cotizacion', {
-            method: 'POST',
+        const response = await fetch(`http://localhost:3000/api/v1/cotizacion/${id_cotizacion}`, {
+            method: 'GET',
             credentials: 'include',
         });
 
@@ -207,9 +208,22 @@ eliminarBoton.addEventListener('click', eliminarCotizacion);
 
 // Inicialización
 document.addEventListener('DOMContentLoaded', async () => {
-    await agregarCotizacion();
+
+    const urlParams = new URLSearchParams(window.location.search);
+    id_cotizacion = urlParams.get('id');
+
+    if (id_cotizacion) {
+        await agregarCotizacion(id_cotizacion);
+    } else {
+        alert('No se encontró un ID de cotización.');
+        window.location.href = "/cotizacion.html"
+    }
+
     await cargarServicios();
     await manejarRegistro();
+
+
+
 });
 
 

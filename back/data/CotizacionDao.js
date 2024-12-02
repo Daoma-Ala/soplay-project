@@ -36,7 +36,7 @@ class CotizacionDao {
 
             const cotizacion_servicios = await CotizacionServicioDao.getAllByCotizacionId(row.id_cotizacion);
 
-            return new Cotizacion(row.id_cotizacion, row.serie, row.fecha_cotizacion, row.monto, row.id_usuario, cotizacion_servicios);
+            return new Cotizacion(row.id_cotizacion, row.serie, row.fecha_cotizacion, row.monto, row.id_usuario, cotizacion_servicios, row.estatus);
         } catch (error) {
             console.error('Error al obtener cotización:', error);
             throw new Error('Error al obtener cotización');
@@ -64,14 +64,16 @@ class CotizacionDao {
 
     async getCotizacionesbyUsuario(id_usuario) {
         const connection = await createConnection();
+    
         try {
             const [rows] = await connection.query('SELECT * FROM cotizaciones WHERE id_usuario = ?', [id_usuario]);
 
-            let cotizaciones = rows.map(row => new Cotizacion(row.id_cotizacion, row.serie, row.fecha_cotizacion, row.monto, row.id_usuario));
+            let cotizaciones = rows.map(row => new Cotizacion(row.id_cotizacion, row.serie, row.fecha_cotizacion, row.monto, row.id_usuario, null, row.estatus));
             for (const cotizacion of cotizaciones) {
                 const cotizacion_servicios = await CotizacionServicioDao.getAllByCotizacionId(cotizacion.id_cotizacion);
                 cotizacion.cotizacion_servicios = cotizacion_servicios;
             }
+            
             return cotizaciones;
 
         } catch (error) {
@@ -86,7 +88,7 @@ class CotizacionDao {
         const connection = await createConnection();
         try {
             const [rows] = await connection.query('SELECT * FROM cotizaciones');
-            return rows.map(row => new Cotizacion(row.id_cotizacion, row.serie, row.fecha_cotizacion, row.monto, row.id_usuario));
+            return rows.map(row => new Cotizacion(row.id_cotizacion, row.serie, row.fecha_cotizacion, row.monto, row.id_usuario, null, row.estatus));
         } catch (error) {
             console.error('Error al obtener cotizaciones:', error);
             throw new Error('Error al obtener cotizaciones');

@@ -19,27 +19,27 @@ const listCotizaciones = async () => {
             cotizaciones.forEach(cotizacion => {
                 if (!cotizacion) return;
 
-               // if (cotizacion.estatus !== "BORRADOR") {
-                    const cotizacionElemento = document.createElement('div');
-                    cotizacionElemento.classList.add('cotizacion-item');
+                // if (cotizacion.estatus !== "BORRADOR") {
+                const cotizacionElemento = document.createElement('div');
+                cotizacionElemento.classList.add('cotizacion-item');
 
-                    const serie = cotizacion.serie || 'N/A';
-                    const fecha = cotizacion.fecha_cotizacion ?
-                        new Date(cotizacion.fecha_cotizacion).toLocaleString() : 'Fecha no disponible';
-                    const monto = typeof cotizacion.monto === 'number' ?
-                        cotizacion.monto.toFixed(2) : '0.00';
-                    const estatus = cotizacion.estatus || 'Pendiente';
-                    const id = cotizacion.id_cotizacion || 0;
+                const serie = cotizacion.serie || 'N/A';
+                const fecha = cotizacion.fecha_cotizacion ?
+                    new Date(cotizacion.fecha_cotizacion).toLocaleString() : 'Fecha no disponible';
+                const monto = typeof cotizacion.monto === 'number' ?
+                    cotizacion.monto.toFixed(2) : '0.00';
+                const estatus = cotizacion.estatus || 'Pendiente';
+                const id = cotizacion.id_cotizacion || 0;
 
-                    cotizacionElemento.innerHTML = `
+                cotizacionElemento.innerHTML = `
                         <h3>Cotización #${serie}</h3>
                         <p>Fecha: ${fecha}</p>
                         <p>Monto: $${monto}</p>
                         <p>Estatus: ${estatus}</p>
                         <button onclick="verDetalleCotizacion(${id})">Ver Detalles</button>
                     `;
-                    divCotizaciones.appendChild(cotizacionElemento);
-               // }
+                divCotizaciones.appendChild(cotizacionElemento);
+                // }
 
             });
         } else {
@@ -54,10 +54,6 @@ const listCotizaciones = async () => {
         window.alert('Error al consultar las cotizaciones ' + error);
     }
 };
-
-
-
-
 
 
 
@@ -97,13 +93,13 @@ const verDetalleCotizacion = async (idCotizacion) => {
 
         if (response.ok) {
             const data = await response.json();
-
-
+            console.log(data);
             const detallesCotizacion = document.getElementById('detalles-cotizacion');
             detallesCotizacion.innerHTML = `
             <h3>Cotización #${data.serie || 'N/A'}</h3>
             <p>Fecha: ${formatDate(data.fecha_cotizacion)}</p>
             <p>Estatus: <span class="status-badge status-${data.estatus}">${data.estatus}</span></p>
+            <button onclick="window.location.href='modificarCotizacion.html?id=${data.id_cotizacion}';">Modificar</button>
             `;
 
             const servicioBody = document.getElementById('servicios-body');

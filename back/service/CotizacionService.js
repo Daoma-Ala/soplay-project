@@ -18,6 +18,7 @@ class CotizacionService {
     }
 
     async getCotizacionesbyUsuario(id_usuario) {
+
         const cotizaciones = await CotizacionDao.getCotizacionesbyUsuario(id_usuario);
         if (cotizaciones.length === 0) {
             throw new Error('No se encontraron cotizaciones para el usuario');

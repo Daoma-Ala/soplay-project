@@ -8,5 +8,6 @@ export const permisosPorPagina = {
     "/catalogo.html": ["CLIENTE"],
     "/cliente.html": ["CLIENTE"],
     "/cotizacion.html": ["CLIENTE"],
-    "/historialCotizaciones.html": ["CLIENTE"]
+    "/historialCotizaciones.html": ["CLIENTE"],
+    "/modificarCotizacion.html": ["CLIENTE"]
 };

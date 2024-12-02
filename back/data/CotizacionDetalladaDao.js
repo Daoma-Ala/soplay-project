@@ -1,5 +1,6 @@
 const createConnection = require('../config/conexion.js');
 const CotizacionServicio = require('../model/CotizacionServicio.js');
+const ServicioService = require('../service/ServicioService.js');
 
 class CotizacionServicioDao {
 
@@ -63,7 +64,12 @@ class CotizacionServicioDao {
                 'SELECT * FROM cotizaciones_servicios WHERE id_cotizacion = ?',
                 [id_cotizacion]
             );
-            return rows.map(row => new CotizacionServicio(row.id_cotizacion, row.id_servicio, row.cantidad, row.sub_total));
+            return await Promise.all(
+                rows.map(async (row) => {
+                    const serviciooo = await ServicioService.getServicioById(row.id_servicio);
+                    return new CotizacionServicio(row.id_cotizacion, serviciooo, row.cantidad, row.sub_total);
+                })
+            );
         } catch (error) {
             console.error('Error al obtener servicios por cotización:', error);
             throw new Error('Error al obtener servicios por cotización');

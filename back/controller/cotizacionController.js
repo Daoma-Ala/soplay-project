@@ -41,7 +41,7 @@ exports.getAllCotizaciones = async (req, res) => {
 
 exports.getAllCotizacionesByUsuario = async (req, res) => {
     try {
-        const id_usuario = parseInt(req.params.id_usuario);
+        const { id_usuario } = req;
         const cotizaciones = await CotizacionServicio.getCotizacionesbyUsuario(id_usuario);
         res.status(201).json(cotizaciones);
     } catch (error) {

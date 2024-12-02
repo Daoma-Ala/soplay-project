@@ -6,10 +6,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 
-    <title> SOPLAY </title>
-    <link rel="icon" type="image/jpg" href="./img/soplay-logo.jpg">
+    <title>Soplay</title>
 
-    <script type="module" src="/js/protegerPantallas.js"></script>
+    <link rel="icon" type="image/png" href="./img/soplay-logo.jpg">
+
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -17,18 +17,18 @@
         href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&display=swap"
         rel="stylesheet">
 
-    <script src="js/historialCotizacionesPendientes.js"></script>
+    <script type="module" src="/js/protegerPantallas.js"></script>
+
 
     <!-- FONT ICONS -->
-    <link rel = "stylesheet" href="css/historialCotizaciones.css">
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/style-responsive.css">
+    <link rel="stylesheet" href="css/styleAdminServicios.css">
 
-    <!-- comment -->
+
 </head>
 
 <body>
-
     <header>
         <div class="container psr">
 
@@ -63,9 +63,8 @@
 
                                     <nav class="headermenu leftmenu" id="headnav" role="navigation">
                                         <ul>
-                                            <li><a href="historialCotizaciones.html">Historial de Cotizaciones</a></li>
-                                            <li><a href="cotizacion.html">Cotizaciones</a></li>
                                             <li><a href="catalogo.html">Catalogo de servicios</a></li>
+                                            <li><a href="cotizacion.html">Cotizaciones</a></li>
                                             <li> <a href="javascript:void(0);" id="logoutButton">Cerrar sesión</a></li>
                                         </ul>
                                     </nav>
@@ -87,52 +86,60 @@
 
         </div>
     </header>
+    <!-- HEADER -->
 
-  <section class="services" id="services">
+    <section class="contactsection" id="contact">
         <div class="container">
-            <h3>Historial de Cotizaciones</h3>
 
-            <a href="agregarCotizacion.html">Agregar Cotizacion</a>
-            <div class="services_wrap" id="serviciosDesplegados">
+            <h3>Cotización</h3>
+            <h4 id="serie">Serie:</h4>
 
+            <div class="tabla_contenedor">
+                <table class="tabla_servicios">
+                    <caption>Servicios</caption>
+                    <thead>
+                        <tr>
+                            <td>Nombre</td>
+                            <td>Descripción</td>
+                            <td>Precio</td>
+                            <td>Cantidad</td>
+                            <td>SubTotal</td>
+                            <td>Operaciones</td>
+
+                        </tr>
+                    </thead>
+                    <tbody>
+
+                    </tbody>
+                </table>
             </div>
-            <div id="modal-detalles" class="modal">
-                <div class="modal-content">
-                    <span class="close-modal">&times;</span>
-                    <div class="modal-header">
-                        <h2>Detalles de la cotización</h2>
-                    </div>
-                    <div class="modal-body">
-                        <div id="detalles-cotizacion"></div>
-                        <table id="tabla-servicios" class="tabla-servicios">
-                            <thead>
-                                <tr>
-                                    <th>Servicio</th>
-                                    <th>Cantidad</th>
-                                    <th>Precio Unitario</th>
-                                    <th>Subtotal</th>
-                                </tr>
-                            </thead>
-                            <tbody id="servicios-body"></tbody>
-                        </table>
-                        <div class="total-section">
-                            <h3>Total: <span id="total-monto"></span></h3>
-                        </div>
-                    </div>
-                </div>
-            </div>
+
+
+            <form id="registrar">
+                <select name="servicios">
+                    <option selected>Serivicio</option>
+                </select>
+
+                <input type="number" name="cantidad" placeholder="Cantidad" required>
+
+                <input type="submit" value="Registrar servicio">
+
+            </form>
+            <br clear="all" />
+            <h4 id="total">Total</h4>
+
+            <a href="cotizacion.html"> <button>Regresar</button></a>
+            <a href="javascript:void(0);" id="eliminarCotizacion"><button>Eliminar</button></a>
+            
+            <a href="cotizacion.html"> <button>Enviar</button></a>
+
+
         </div>
+
     </section>
 
 
-    <div id="cotizacionesDesplegadas"></div>
-<div id="modal-detalles" class="modal">
-    <!-- Aquí se mostrarán los detalles de la cotización -->
-    <div id="detalles-cotizacion"></div>
-</div>
 
-
-  
     <footer>
         <div class="container">
 
@@ -141,12 +148,11 @@
                 Copyright &copy; <span id="copyrightyear"></span> Equipo Web Emergentes
             </div>
 
-
         </div>
     </footer>
+
 </body>
 <script src="js/cerrarSesion.js"></script>
-
-<!-- FOOTER -->
+<script src="js/modificarCotizacion.js"></script>
 
 </html>
