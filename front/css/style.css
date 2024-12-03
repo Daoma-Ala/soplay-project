@@ -700,6 +700,64 @@ body {
 
 /* -- CARRITO ENDS-- */
 
+/* -- FORM COTIZACIÓN STARTS -- */
+#registrar {
+    font-family: 'Poppins', sans-serif;
+}
+
+#registrar select,
+#registrar input[type="number"],
+#registrar input[type="submit"] {
+    font-family: 'Poppins', sans-serif;
+}
+
+#registrar input[type="submit"] {
+    background-color: #1b8f13;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    border-radius: 8px;
+    font-size: 16px;
+    text-transform: uppercase;
+    transition: background-color 0.3s ease;
+}
+
+#registrar input[type="submit"]:hover {
+    background-color: #166c10;
+}
+
+#total {
+    font-family: 'Poppins', sans-serif;
+    font-size: 18px;
+    color: #000;
+}
+
+/* Estilo solo para los botones dentro de los enlaces específicos */
+a[href="cotizacion.html"] button,
+#aeliminarCotizacion button,
+#aactualizar_cotizacion button {
+    background-color: #1b8f13;
+    color: #ffffff;
+    padding: 10px 20px;
+    font-size: 16px;
+    font-family: 'Poppins', sans-serif;
+    text-transform: uppercase;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+/* Efecto hover para los botones */
+a[href="cotizacion.html"] button:hover,
+#aeliminarCotizacion button:hover,
+#aactualizar_cotizacion button:hover {
+    background-color: #166c10;
+}
+
+
+/* -- FORM COTIZACIÓN ENDS -- */
 
 
 /* -- MAP AREA STARTS -- */

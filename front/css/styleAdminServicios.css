@@ -1,8 +1,8 @@
 .tabla-contenedor {
     display: flex;
-    justify-content: center; 
-    align-items: center;    
-    height: 100%;          
+    justify-content: center;
+    align-items: center;
+    height: 100%;
 }
 
 .tabla_servicios {
@@ -10,7 +10,7 @@
     margin: 25px 0;
     font-size: 18px;
     font-family: 'Poppins';
-    width: 100%;            
+    width: 100%;
     text-align: left;
     border-radius: 8px;
     overflow: hidden;
@@ -19,19 +19,14 @@
 
 .tabla_contenedor .tabla_servicios caption {
     font-family: 'Poppins', sans-serif;
-    /* Aplica la fuente Poppins */
+
     font-size: 28px;
-    /* Ajusta el tamaño según lo necesario */
+
     font-weight: 600;
-    /* Aplica un peso adecuado para destacar */
     color: #001f8d;
-    /* Usa el azul intenso para consistencia */
     text-align: center;
-    /* Centra el encabezado */
     margin-bottom: 20px;
-    /* Ajusta el espaciado inferior */
     text-transform: uppercase;
-    /* Opcional: convierte el texto a mayúsculas */
 }
 
 .tabla_servicios thead tr {
@@ -59,4 +54,5 @@
     background-color: #ddd;
     cursor: pointer;
 }
+
 
