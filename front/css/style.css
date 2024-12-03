@@ -1,4 +1,4 @@
-*{
+* {
     box-sizing: border-box;
     -webkit-box-sizing: border-box;
     margin: 0;
@@ -7,45 +7,59 @@
     outline: 0;
     font-size: 100%;
 }
-ol, ul{
+
+ol,
+ul {
     list-style: none;
 }
-blockquote, q{
+
+blockquote,
+q {
     quotes: none;
 }
-table{
+
+table {
     border-collapse: collapse;
     border-spacing: 0;
 }
-:focus{
+
+:focus {
     outline: 0;
 }
-ins{
+
+ins {
     text-decoration: none;
 }
-del{
+
+del {
     text-decoration: line-through;
 }
-body{
+
+body {
     line-height: normal;
 }
+
 /* -- BREAK -- */
 
 
 
-body{
+body {
     background: #fff;
 }
-body.disablescroll{
+
+body.disablescroll {
     overflow-y: hidden;
 }
-.container{
+
+.container {
     width: 700px;
     margin: 0 auto;
 }
-.container.psr{
+
+.container.psr {
     position: relative;
 }
+
 /* -- BREAK -- */
 
 
@@ -62,8 +76,8 @@ header {
     top: 0;
     z-index: 3;
     transition: all 0.5s ease-in-out;
-    border-bottom: 1px solid rgba(0,0,0,0);
-    background: #ccc; 
+    border-bottom: 1px solid rgba(0, 0, 0, 0);
+    background: #ccc;
 }
 
 header.fixed {
@@ -78,12 +92,12 @@ header .container {
 }
 
 .header_default {
-    float:left;
-    width:100%;
+    float: left;
+    width: 100%;
     height: 100%;
     position: relative;
-    margin:0 0 0 0;
-    padding:0 0 0 0;
+    margin: 0 0 0 0;
+    padding: 0 0 0 0;
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -126,10 +140,10 @@ header.fixed .site-branding a.logo img.logo-1 {
 }
 
 .site-branding a.logo h3 {
-    text-align:left;
+    text-align: left;
     color: #000;
-    font-size:27px;
-    font-family:'Arial';
+    font-size: 27px;
+    font-family: 'Arial';
     letter-spacing: -1px;
 }
 
@@ -139,8 +153,7 @@ header.fixed .site-branding a.logo img.logo-1 {
     margin-left: 10px;
 }
 
-.site-navwrap {
-}
+.site-navwrap {}
 
 .navicons {
     display: none;
@@ -161,8 +174,7 @@ header.fixed .site-branding a.logo img.logo-1 {
     transition: top 0.5s ease;
 }
 
-.navicons a.navshow span {
-}
+.navicons a.navshow span {}
 
 .navicons a.navhide {
     position: fixed;
@@ -177,34 +189,30 @@ header.fixed .site-branding a.logo img.logo-1 {
     float: left;
     width: 48px;
     height: 48px;
-    color:#fff;
+    color: #fff;
     font-size: 36px;
     display: flex;
     align-items: center;
     justify-content: center;
 }
 
-.sitenav {
-}
+.sitenav {}
 
-.navwrap {
-}
+.navwrap {}
 
 .navouter {
     display: flex;
 }
 
-nav.headermenu {
-}
+nav.headermenu {}
 
-nav.headermenu ul {
-}
+nav.headermenu ul {}
 
 nav.headermenu ul li {
     float: left;
-    text-align:left;
-    color:#000;
-    font-size:15px;
+    text-align: left;
+    color: #000;
+    font-size: 15px;
     font-weight: 400;
     margin-right: 30px;
     font-family: 'Poppins';
@@ -250,8 +258,8 @@ nav.headermenu ul li.active a {
     color: #fff;
     text-decoration: none;
     margin-right: 8px;
-    transition:0.6s;
-    -webkit-transition:0.6s;
+    transition: 0.6s;
+    -webkit-transition: 0.6s;
     font-family: 'Poppins';
     flex: 1;
     display: flex;
@@ -273,7 +281,7 @@ nav.headermenu ul li.active a {
 }
 
 .contact-info a i {
-    color:  #0008a3;
+    color: #0008a3;
     margin-right: 5px;
 }
 
@@ -313,7 +321,7 @@ header.fixed .contact-info a {
     flex-direction: column;
     align-items: center;
     text-align: center;
-    margin-top: 50px; /
+    margin-top: 50px;/
 }
 
 .bannercontent .text h3 {
@@ -345,130 +353,162 @@ header.fixed .contact-info a {
     color: #ffc818;
 }
 
+.bannercontent a button {
+    background-color: #1b8f13;
+    color: #ffffff;
+    padding: 10px 20px;
+    font-size: 16px;
+    font-family: 'Poppins', sans-serif;
+    text-transform: uppercase;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+/* Efecto hover para el botón "Agregar Servicio" */
+.bannercontenttabla_servicios a button:hover {
+    background-color: #166c10;
+}
+
 
 
 /* -- CONTACT STARTS -- */
-.contactsection{
-    float:left;
-    width:100%;
-    margin:0 0 0 0;
-    padding:100px 0 100px 0;
+.contactsection {
+    float: left;
+    width: 100%;
+    margin: 0 0 0 0;
+    padding: 100px 0 100px 0;
     position: relative;
-    background:  #fff;
+    background: #fff;
 }
-.contactsection h3{
-    text-align:left;
-    color:#0008a3;
-    font-size:90px;
-    font-family:'Poppins';
+
+.contactsection h3 {
+    text-align: left;
+    color: #0008a3;
+    font-size: 90px;
+    font-family: 'Poppins';
     margin-bottom: 10px;
 }
-.contactsection h4{
-    text-align:left;
-    color:#000;
-    font-size:21px;
-    font-family:'Poppins';
+
+.contactsection h4 {
+    text-align: left;
+    color: #000;
+    font-size: 21px;
+    font-family: 'Poppins';
     font-weight: normal;
     font-style: normal;
     position: relative;
 }
-.contactsection p{
-    text-align:left;
-    color:#0008a3;
-    font-size:13px;
-    font-family:'Poppins';
+
+.contactsection p {
+    text-align: left;
+    color: #0008a3;
+    font-size: 13px;
+    font-family: 'Poppins';
     text-transform: uppercase;
 }
-.contactform{
+
+.contactform {
     display: table;
     width: 100%;
     margin: 0 auto 60px auto;
 }
-.contactform form{
-    float:left;
-    width:100%;
+
+.contactform form {
+    float: left;
+    width: 100%;
 }
+
 .contactform form input[type="text"],
 .contactform form input[type="email"],
 .contactform form input[type="password"],
 .contactform form input[type="number"],
 .contactform form input[type="date"],
-.contactform form textarea{
-    float:left;
-    width:45%;
-    height:60px ;
+.contactform form textarea {
+    float: left;
+    width: 45%;
+    height: 60px;
     background: #fff;
-    border: 2px solid #0008a3; 
-    text-align:left;
-    color:#000 !important; 
-    font-size:16px;
-    font-family:'Poppins';
+    border: 2px solid #0008a3;
+    text-align: left;
+    color: #000 !important;
+    font-size: 16px;
+    font-family: 'Poppins';
     padding-left: 20px;
     border-radius: 5px;
 }
-.contactform form textarea{
+
+.contactform form textarea {
     width: 100%;
     height: 130px;
     padding: 25px;
     margin-top: 20px;
     margin-bottom: 10px;
-    color:#000 !important; 
-    border: 2px solid #0008a3; 
+    color: #000 !important;
+    border: 2px solid #0008a3;
     font-size: 16px;
     border-radius: 5px;
 }
-.contactform form input[type="email"]{
+
+.contactform form input[type="email"] {
     float: right;
 }
+
 .gender-select {
     float: left;
-    width: 45%; 
+    width: 45%;
     height: 60px;
     background: #fff;
-    border: 2px solid #0008a3; 
-    color: #757575; 
-    font-size: 19px; 
+    border: 2px solid #0008a3;
+    color: #757575;
+    font-size: 19px;
     font-family: 'Poppins';
-    padding-left: 20px; 
-    border-radius: 5px; 
+    padding-left: 20px;
+    border-radius: 5px;
     margin-bottom: 20px;
 }
-.contactform form input[type="submit"]{
+
+.contactform form input[type="submit"] {
     float: left;
     width: auto;
     height: 80px;
     padding: 0 40px;
-    text-align:center;
-    color:#fff;
-    font-size:16px;
-    font-family:'Poppins';
+    text-align: center;
+    color: #fff;
+    font-size: 16px;
+    font-family: 'Poppins';
     margin: 30px 0 0 0;
     cursor: pointer;
     background: #1b8f13;
     border: none;
     text-transform: uppercase;
 }
+
 /* -- CONTACT ENDS -- */
 
 
 /* -- ABOUT CSS STARTS -- */
-.about{
-    float:left;
-    width:100%;
-    margin:0 0 0 0;
-    padding:100px 0;
+.about {
+    float: left;
+    width: 100%;
+    margin: 0 0 0 0;
+    padding: 100px 0;
 }
-.about .contentinline{
+
+.about .contentinline {
     display: flex;
     justify-content: space-between;
     flex-direction: row-reverse;
 }
-.about .imagearea{
+
+.about .imagearea {
     width: 50%;
     margin: 0 0 0 0;
-    overflow:hidden;
+    overflow: hidden;
 }
-.about .imagearea img{
+
+.about .imagearea img {
     float: left;
     width: 100%;
     height: auto;
@@ -476,93 +516,105 @@ header.fixed .contact-info a {
     object-fit: cover;
     object-position: center;
 }
-.about .text{
+
+.about .text {
     width: 45%;
     margin: 0 0 0 0;
 }
-.about .text h3{
-    text-align:left;
-    color:#000;
-    font-size:20px;
-    font-family:'Poppins';
+
+.about .text h3 {
+    text-align: left;
+    color: #000;
+    font-size: 20px;
+    font-family: 'Poppins';
     margin-bottom: 10px;
     margin-top: 0px;
 }
-.about .text h4{
-    text-align:left;
+
+.about .text h4 {
+    text-align: left;
     color: #4ca24b;
-    font-size:30px;
-    font-family:'Poppins';
+    font-size: 30px;
+    font-family: 'Poppins';
     font-weight: normal;
     font-style: normal;
     margin-bottom: 30px;
     position: relative;
 }
-.about .text p{
-    text-align:left;
-    color:#000;
-    font-size:14px;
+
+.about .text p {
+    text-align: left;
+    color: #000;
+    font-size: 14px;
     line-height: 170%;
-    font-family:'Poppins';
+    font-family: 'Poppins';
     margin-bottom: 20px;
 }
-.about .text ul{
+
+.about .text ul {
     list-style: disc;
     padding-left: 18px;
 }
-.about .text ul li{
-    text-align:left;
-    color:#000;
-    font-size:14px;
-    font-family:'Poppins';
+
+.about .text ul li {
+    text-align: left;
+    color: #000;
+    font-size: 14px;
+    font-family: 'Poppins';
     margin-bottom: 3px;
 }
+
 /* -- ABOUT CSS ENDS -- */
 
 
 /* -- SERVICES STARTS -- */
-.services{
-    float:left;
-    width:100%;
-    margin:0 0 0 0;
-    padding:100px 0 50px 0;
+.services {
+    float: left;
+    width: 100%;
+    margin: 0 0 0 0;
+    padding: 100px 0 50px 0;
     position: relative;
 }
-.services:before{
-    position:absolute;
-    width:200px;
-    height:1px;
-    background:#ccc;
-    left:0;
-    right:0;
-    top:0;
-    content:'';
-    margin:0 auto 0 auto;
+
+.services:before {
+    position: absolute;
+    width: 200px;
+    height: 1px;
+    background: #ccc;
+    left: 0;
+    right: 0;
+    top: 0;
+    content: '';
+    margin: 0 auto 0 auto;
 }
-.services h3{
-    text-align:center;
-    color:#000;
-    font-size:90px;
-    font-family:'Poppins';
+
+.services h3 {
+    text-align: center;
+    color: #000;
+    font-size: 90px;
+    font-family: 'Poppins';
     margin-bottom: 10px;
 }
-.services h4{
-    text-align:center;
+
+.services h4 {
+    text-align: center;
     color: #4ca24b;
-    font-size:21px;
-    font-family:'Poppins';
+    font-size: 21px;
+    font-family: 'Poppins';
     font-weight: normal;
     font-style: normal;
     margin-bottom: 30px;
     position: relative;
 }
-.services_wrap{
+
+.services_wrap {
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
     margin-top: 65px;
 }
-.services_wrap .item{
+
+.services_wrap .item {
     flex-basis: 30%;
     margin-bottom: 60px;
 }
@@ -571,30 +623,31 @@ header.fixed .contact-info a {
 
 
 .services_wrap .item form input[type="email"],
-.services_wrap form textarea{
+.services_wrap form textarea {
     text-align: center;
     background: #fff;
     border: none;
-    color:#111;
-    font-size:15px;
-    font-family:'Poppins';
+    color: #111;
+    font-size: 15px;
+    font-family: 'Poppins';
     padding: 2px 0px;
     margin: auto;
     display: block;
     border: 1px solid grey;
 }
-.contactform .item form textarea{
+
+.contactform .item form textarea {
     text-align: center;
     margin: auto;
     display: block;
 }
 
-.services_wrap form input[type="submit"]{
+.services_wrap form input[type="submit"] {
     text-align: center;
     padding: 10px 25px;
-    color:#fff;
-    font-size:15px;
-    font-family:'Poppins';
+    color: #fff;
+    font-size: 15px;
+    font-family: 'Poppins';
     font-style: italic;
     cursor: pointer;
     background: #4ca24b;
@@ -605,29 +658,31 @@ header.fixed .contact-info a {
 .services_wrap form input[type="submit"]:hover {
     background-color: #48663c;
 }
+
 /* -- SERVICES ENDS -- */
 
 /* -- CARRITO STARTS-- */
-body{
-    margin-top:200px;
+body {
+    margin-top: 200px;
     background: white;
 }
+
 .ui-w-40 {
     width: 40px !important;
     height: auto;
 }
 
-.card{
-    box-shadow: 0 1px 15px 1px rgba(52,40,104,.08);   
+.card {
+    box-shadow: 0 1px 15px 1px rgba(52, 40, 104, .08);
     background: #a4ceac;
-    color:#000;
-    font-family:'Poppins';
+    color: #000;
+    font-family: 'Poppins';
     margin-top: 100px;
 }
 
 .my-custom-margin {
-    margin-top: 70px; 
-    margin-bottom: 30px; 
+    margin-top: 70px;
+    margin-bottom: 30px;
 }
 
 .ui-product-color {
@@ -637,58 +692,63 @@ body{
     width: .875rem;
     height: .875rem;
     border-radius: 5rem;
-    -webkit-box-shadow: 0 0 0 1px rgba(0,0,0,0.15) inset;
-    box-shadow: 0 0 0 1px rgba(0,0,0,0.15) inset;
+    -webkit-box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.15) inset;
+    box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.15) inset;
     vertical-align: middle;
-    
+
 }
+
 /* -- CARRITO ENDS-- */
 
 
 
 /* -- MAP AREA STARTS -- */
-.maparea{
-    float:left;
-    width:100%;
-    margin:0 0 0 0;
-    padding:0 0 0 0;
+.maparea {
+    float: left;
+    width: 100%;
+    margin: 0 0 0 0;
+    padding: 0 0 0 0;
     position: relative;
 }
-.maparea .mapheading{
-    float:left;
-    width:100%;
-    margin:0 0 0 0;
-    padding:40px 0;
+
+.maparea .mapheading {
+    float: left;
+    width: 100%;
+    margin: 0 0 0 0;
+    padding: 40px 0;
     background: #0008a3;
-    text-align:left;
-    color:#fff;
-    font-size:36px;
-    font-family:'Poppins';
+    text-align: left;
+    color: #fff;
+    font-size: 36px;
+    font-family: 'Poppins';
 }
-.maparea iframe{
-    float:left;
-    width:100%;
+
+.maparea iframe {
+    float: left;
+    width: 100%;
     height: 600px;
     position: relative;
 }
+
 /* -- MAP AREA ENDS -- */
 
 
 /* -- FOOTER STARTS -- */
-footer{
-    float:left;
-    width:100%;
-    margin:0 0 0 0;
-    padding:70px 0;
-    background-color: #0008a3; 
-    color: #fff; 
-}
-.copyright{
+footer {
     float: left;
-    text-align:left;
-    color:#fff;
-    font-size:15px;
-    font-family:'Poppins';
+    width: 100%;
+    margin: 0 0 0 0;
+    padding: 70px 0;
+    background-color: #0008a3;
+    color: #fff;
+}
+
+.copyright {
+    float: left;
+    text-align: left;
+    color: #fff;
+    font-size: 15px;
+    font-family: 'Poppins';
 }
 
 /* -- FOOTER ENDS -- */
@@ -699,29 +759,52 @@ footer{
     border-collapse: collapse;
     margin: 20px 0;
     font-size: 16px;
+    font-family: 'Poppins';
     text-align: center;
     box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
 }
 
+.cotizaciones h2 {
+    font-family: 'Poppins', sans-serif;
+    /* Aplica la fuente Poppins */
+    font-size: 28px;
+    /* Ajusta el tamaño según lo necesario */
+    font-weight: 600;
+    /* Aplica un peso adecuado para destacar */
+    color: #001f8d;
+    /* Usa el azul intenso para consistencia */
+    text-align: center;
+    /* Centra el encabezado */
+    margin-bottom: 20px;
+    /* Ajusta el espaciado inferior */
+    text-transform: uppercase;
+    /* Opcional: convierte el texto a mayúsculas */
+}
+
 /* Encabezado de la tabla */
 .cotizaciones table thead th {
-    background-color: #001f8d; /* Azul intenso */
-    color: #ffffff; /* Texto blanco */
+    background-color: #001f8d;
+    /* Azul intenso */
+    color: #ffffff;
+    /* Texto blanco */
     padding: 12px;
     text-transform: uppercase;
     font-weight: bold;
+    font-family: 'Poppins';
 }
 
 /* Filas de la tabla */
 .cotizaciones table tbody td {
-    background-color: #f9f9f9; /* Fondo gris claro */
+    background-color: #f9f9f9;
+    /* Fondo gris claro */
     border: 1px solid #dddddd;
     padding: 10px;
 }
 
 /* Alternar colores de fila */
 .cotizaciones table tbody tr:nth-child(even) {
-    background-color: #e8e8e8; /* Gris más oscuro para alternar */
+    background-color: #e8e8e8;
+    /* Gris más oscuro para alternar */
 }
 
 /* Botones de acción */
@@ -730,19 +813,22 @@ footer{
     border: none;
     border-radius: 4px;
     font-size: 14px;
+    font-family: 'Poppins';
     cursor: pointer;
     text-transform: uppercase;
 }
 
 /* Botón de eliminar */
 .cotizaciones table tbody td button.eliminar {
-    background-color: #ff4d4d; /* Rojo */
+    background-color: #ff4d4d;
+    /* Rojo */
     color: #ffffff;
 }
 
 /* Botón de ver */
 .cotizaciones table tbody td button.ver {
-    background-color: #007bff; /* Azul */
+    background-color: #007bff;
+    /* Azul */
     color: #ffffff;
 }
 
@@ -755,14 +841,17 @@ footer{
 .banner .bannercontent h3,
 .banner .bannercontent h2 {
     text-transform: uppercase;
-    color: #001f8d; /* Azul intenso */
+    color: #001f8d;
+    /* Azul intenso */
 }
 
 /* Footer */
 footer .copyright {
     text-align: center;
-    background-color: #0008a3; /* Azul intenso */
-    color: #ffffff; /* Blanco */
+    background-color: #0008a3;
+    /* Azul intenso */
+    color: #ffffff;
+    /* Blanco */
     padding: 10px 0;
     margin-top: 20px;
 }
